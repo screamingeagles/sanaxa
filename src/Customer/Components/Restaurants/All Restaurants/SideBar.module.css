@@ -1,0 +1,35 @@
+@import '../../../../shared/assets/CSS/colors.css';
+
+.SideBar {
+    width: 100%;
+}
+
+.SideBar__Container {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+    border: 1px solid var(--primary-light-gray);
+    border-radius: 10px;
+    color: var(--primary-gray);
+    padding: 1.5rem .5rem;
+}
+
+.SideBar__Quote {
+    position: relative;
+    margin: 1rem 0;
+    padding: 0 1rem;
+    text-indent: 0px;
+}
+
+.quoteIcon__Image1,
+.quoteIcon__Image2 {
+    position: absolute;
+    top: -16px;
+    left: 12px
+}
+
+.quoteIcon__Image2 {
+    top: 95%;
+    /* right: 10; */
+    left: 85%;
+}

@@ -1,0 +1,61 @@
+.formContainer {
+    max-width: 80vw;
+    min-width: 25vw;
+    margin: 0rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formContainer__Hotel {
+    margin: 2rem auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputContainer {
+    background-color: white;
+    width: 100%;
+    padding: .4rem 0rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+
+}
+
+.inputContainer__Hotel {
+    border: 1px solid #ccc;
+    width: 100%;
+    padding: .4rem 0rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+}
+
+.inputContainer input,
+.inputContainer__Hotel input {
+    width: 80%;
+    border: none;
+    margin-left: .6rem;
+}
+
+.inputContainer input::placeholder {
+    color: black;
+    font-size: 12px;
+}
+
+.inputContainer__Hotel input::placeholder {
+    color: black;
+    font-size: 12px;
+}
+
+.inputContainer img,
+.inputContainer__Hotel img {
+    width: 6%;
+    margin: 0 .3rem;
+    cursor: pointer;
+}

@@ -1,0 +1,101 @@
+@import "../../../shared/assets/CSS/colors.css";
+
+.MainNavigation {
+    width: 95%;
+    height: 100%;
+    max-width: 1320px;
+    /* height: 100%; */
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    align-items: center;
+    padding: 1rem 0rem;
+}
+
+.NavLinks {
+    display: flex;
+    align-items: center;
+}
+
+.Icons {
+    margin: 0rem 1.5rem;
+}
+
+.Icons img {
+    margin: 0 0.3rem;
+}
+
+.span {
+    color: red;
+}
+
+.userIcon {
+    cursor: pointer;
+}
+
+.Burger {
+    display: none;
+    cursor: pointer;
+}
+
+.Line {
+    height: 2px;
+    width: 20px;
+    margin: 3px auto;
+    background-color: var(--primary-red);
+    transition: all 0.2s ease;
+}
+
+.middleDiv,
+.topDiv,
+.bottomDiv {
+    transition: all 0.2s ease;
+}
+
+.middleDiv {
+    display: none;
+}
+
+.topDiv {
+    transform: rotate(45deg) translate(0px, 6px);
+}
+
+.bottomDiv {
+    transform: rotate(-45deg) translate(-2px, -4px);
+}
+
+.MobileNavigation {
+    display: none;
+    padding: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 0px;
+    transition: all 0.3s ease;
+    background-color: var(--primary-red-light);
+}
+
+@media (max-width: 1000px) {
+    .Burger {
+        display: block;
+    }
+
+    .NavLinks {
+        display: none;
+    }
+
+    .MobileNavigation {}
+
+    .Icons {
+        padding: 1rem;
+    }
+
+    .Icons img {
+        margin: 0 1.2rem;
+    }
+
+    .height {
+        display: flex;
+        height: 227px;
+    }
+}

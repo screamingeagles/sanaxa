@@ -1,0 +1,50 @@
+.form-control {
+    margin: 1rem 0;
+}
+
+.form-control label,
+.form-control input,
+.form-control textarea {
+    display: block;
+}
+
+.form-control label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.form-control input,
+.form-control textarea {
+    width: 100%;
+    font: inherit;
+    border: 1px solid #f3f3f3;
+    /* background: ; */
+    padding: 0.35rem 0.35rem;
+}
+
+.form-control input:focus,
+.form-control textarea:focus {
+    outline: none;
+    background: #ebebeb;
+    border-color: #ffcccf;
+}
+
+.form-control input::placeholder,
+.form-control textarea::placeholder {
+    font-size: 9px;
+}
+
+.form-control--invalid label,
+.form-control--invalid p {
+    color: #ed1b24;
+    margin-top: 5px;
+    font-size: 12px;
+    text-align: left;
+}
+
+.form-control--invalid input,
+.form-control--invalid textarea {
+    border-color: #ed1b24;
+    background: #ffffff;
+}
+

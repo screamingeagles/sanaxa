@@ -1,0 +1,22 @@
+.DescriptionReviews__Heading {
+    display: flex;
+}
+
+.DescriptionReviews__Content {
+    margin: 1rem auto;
+}
+
+.DescriptionReviews__Heading h5 {
+    color: white;
+    padding: 10px 20px;
+    border: 1px solid #ed1b24;
+    background-color: #ed1b24;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.Inactive {
+    border: 1px solid rgb(223, 223, 223) !important;
+    background-color: white !important;
+    color: black !important;
+}

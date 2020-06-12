@@ -1,0 +1,41 @@
+.SortBy {}
+
+.SortBy__Container {
+    display: flex;
+    margin-left: .5rem;
+    font-weight: bold;
+    color: black;
+    white-space: nowrap;
+}
+
+.SortBy__Container p {
+
+    padding: 0 0 1rem 0;
+    transition: all 0.3s ease;
+}
+
+.SortBy__Container_Scrollable {
+    /* overflow-x: scroll; */
+    display: flex;
+    scroll-behavior: smooth;
+}
+
+.SortBy__Container .SortBy__Container_Scrollable>p {
+    margin-left: 1.5rem;
+    cursor: pointer;
+
+}
+
+.SortBy__Container p:hover {
+    opacity: 1 !important;
+}
+
+.Inactive {
+    opacity: .15 !important;
+}
+
+@media (max-width:630px) {
+    .SortBy__Container_Scrollable {
+        overflow-x: scroll;
+    }
+}

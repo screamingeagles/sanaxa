@@ -1,0 +1,94 @@
+.SlideBanner {
+    width: 100%;
+    background-color: #ccc;
+}
+
+.SlideBanner__Image {
+    position: relative;
+}
+
+.SlideBanner__Content {
+    position: absolute;
+    top: 20%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.SlideBanner__Content h1 {
+    font-size: 3.2vw;
+}
+
+.SlideBanner__Content p {
+    font-size: 1vw;
+    margin: 10px;
+    margin-bottom: 20px;
+    width: 25vw;
+    line-height: 1.5;
+    text-align: center;
+}
+
+@media (max-width: 1030px) {
+    .SlideBanner__Content h1 {}
+
+    .SlideBanner__Content p {
+        font-size: 1.2vw;
+        width: 100vw;
+    }
+}
+
+@media (max-width: 790px) {
+    .SlideBanner__Content {
+        top: 15%;
+    }
+
+    .SlideBanner__Content h1 {
+        font-size: 3.5vw;
+    }
+
+    .SlideBanner__Content p {
+        font-size: 1.6vw;
+        width: 60vw;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 550px) {
+    .SlideBanner__Content {
+        top: 10%;
+    }
+
+    .SlideBanner__Content h1 {
+        font-size: 4.5vw;
+    }
+
+    .SlideBanner__Content p {
+        font-size: 2.2vw;
+        width: 70vw;
+        margin: 3px;
+        margin-bottom: 5px;
+    }
+}
+
+@media (max-width: 330px) {
+    .SlideBanner__Content {
+        top: 2%;
+    }
+
+    .SlideBanner__Content h1 {
+        font-size: 4.5vw;
+    }
+
+    .SlideBanner__Content p {
+        font-size: 2.2vw;
+        width: 100vw;
+        margin: 3px;
+        margin-bottom: 5px;
+    }
+}

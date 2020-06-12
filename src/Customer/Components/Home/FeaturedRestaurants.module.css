@@ -1,0 +1,77 @@
+@import '../../../shared/assets/CSS/colors.css';
+
+.FeaturedRestaurants {
+    text-align: center;
+    width: 95%;
+    max-width: 1320px;
+    margin: 0 auto;
+}
+
+.FeaturedRestaurants h2 {
+    font-size: 26px;
+    color: var(--primary-red)
+}
+
+.FeaturedRestaurants p {
+    margin-top: .2rem;
+    color: var(--primary-gray)
+}
+
+.FeaturedRestaurants__Features {
+    display: flex;
+    padding: 80px 1rem 0px;
+    justify-content: space-around;
+}
+
+.FeaturedRestaurants__Features_Block {
+    width: 25%;
+    text-decoration: none;
+    background: white;
+    padding: 5px;
+}
+
+.FeaturedRestaurants__Features_Img img {
+    /* width: 100%; */
+}
+
+.FeaturedRestaurants__Features_Text {
+    text-align: left;
+}
+
+.FeaturedRestaurants__Features_Text h4 {
+    /* font-size: 26px; */
+    color: var(--primary-red);
+    margin-top: 5px;
+}
+
+.FeaturedRestaurants__Features_Text p {
+    margin: 15px 0;
+}
+
+.FeaturedRestaurants__Button_ViewAll {
+    margin-top: 40px;
+}
+
+@media (max-width:1100px) {
+
+    .FeaturedRestaurants__Features_Block {
+        width: 30%;
+    }
+}
+@media (max-width:800px) {
+
+    .FeaturedRestaurants__Features_Block {
+        width: 33%;
+    }
+}
+
+@media (max-width:600px) {
+    .FeaturedRestaurants__Features {
+        flex-flow: column;
+    }
+
+    .FeaturedRestaurants__Features_Block {
+        width: 80%;
+        margin: 1rem auto;
+    }
+}

@@ -1,0 +1,9 @@
+@import "../../../shared/assets/CSS/colors.css";
+
+.MainHeader {
+    /* height: 55px; */
+    width: 100%;
+    background-color: var(--primary-red-light);
+    display: flex;
+    flex-direction: column;
+}

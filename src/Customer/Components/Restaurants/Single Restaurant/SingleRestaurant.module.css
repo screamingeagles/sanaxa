@@ -1,0 +1,57 @@
+@import "../../../../shared/assets/CSS/colors.css";
+
+.Restaurant {
+    margin: 0 auto;
+    text-align: left;
+    width: 100%;
+    padding: 1rem;
+}
+
+.SingleFoodItem {
+    /* width: calc(45% - 2rem); */
+    /* min-width: calc(45% - 2rem); */
+    /* max-width: 450px; */
+    /* width: 40%; */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 2px 3px 6px -1px #ccc;
+    padding: 1.5rem;
+}
+
+.ImageName {
+    display: flex;
+    color: var(--primary-red);
+}
+
+.ImageName img {
+    margin-right: 10px;
+}
+
+.priceButton {
+    display: flex;
+    color: var(--primary-red);
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.ImageName {
+    color: var(--primary-red);
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .SingleFoodItem {
+        /* display: block; */
+    }
+
+    .priceButton {
+        margin: 1.5rem 0;
+        justify-content: space-evenly;
+        flex-direction: row;
+    }
+
+    .priceButton h4 {
+        width: 100%;
+    }
+}

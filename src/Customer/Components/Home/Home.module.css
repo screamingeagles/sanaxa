@@ -1,0 +1,107 @@
+@import '../../../shared/assets/CSS/colors.css';
+
+.Home {
+    width: 100%;
+}
+
+.SliderBanner {
+    width: 100%;
+    position: relative;
+    background-color: #ccc;
+}
+
+.SearchBar {
+    top: 30%;
+    margin: auto;
+    left: 0;
+    right: 0;
+    color: white;
+    position: absolute;
+    text-align: center;
+}
+
+.SearchBar p {
+    /* text-align: center; */
+    /* font-size: 1.5rem; */
+    font-size: 2.6rem;
+}
+
+.SliderBottomBar {
+    background-color: white;
+    position: absolute;
+    bottom: -57px;
+    left: 0;
+    right: 0;
+    width: 95%;
+    margin: 1rem auto;
+    max-width: 1320px;
+    /* background-color: wheat; */
+    padding: 1.5rem 1rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    /* border: 1px solid rgb(112, 112, 112); */
+    box-shadow: 1px 1px 1px 0px rgb(141, 141, 141);
+    border-radius: 5px;
+}
+
+
+.homeContainer {
+    width: 95%;
+    margin: 0 auto;
+    margin-top: calc(1rem + 40px);
+
+    max-width: 1320px;
+    /* background-color: wheat; */
+    padding: 1rem 0;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+}
+
+
+.homeContainer__homeBlock {
+    width: 100%;
+    padding: 80px 0;
+}
+
+@media (max-width: 1080px) {
+    .SliderBottomBar {
+        bottom: -65px
+    }
+}
+
+@media (max-width: 640px) {
+    .SearchBar p {
+        font-size: 2.3rem;
+    }
+}
+
+@media (max-width: 530px) {
+    .SearchBar p {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 430px) {
+    .SearchBar p {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 830px) {
+    .SliderBottomBar {
+        top: 80%;
+        bottom: unset;
+        flex-flow: column;
+        align-items: flex-start;
+    }
+
+    .homeContainer {
+        margin-top: calc(1rem + 210px);
+    }
+
+    /* .SearchBar p {
+        font-size: 2.2rem;
+    } */
+}
