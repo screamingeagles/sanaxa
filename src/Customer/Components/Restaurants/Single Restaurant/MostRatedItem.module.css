@@ -1,0 +1,25 @@
+@import '../../../../shared/assets/CSS/colors.css';
+
+.MostRatedItem {
+    display: flex;
+    width: 88%;
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+    color: inherit;
+}
+
+.MostRatedItem h4 {
+    color: var(--primary-red);
+}
+
+.MostRatedItem p {
+    margin: 4px 0;
+}
+
+.MostRatedItem__Content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 1rem;
+}

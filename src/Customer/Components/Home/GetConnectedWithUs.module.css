@@ -1,0 +1,52 @@
+@import '../../../shared/assets/CSS/colors.css';
+
+.GetConnectedWithUs {
+    text-align: center;
+}
+
+.GetConnectedWithUs h2 {
+    font-size: 26px;
+    color: var(--primary-red)
+}
+
+.GetConnectedWithUs p {
+    margin-top: .2rem;
+    color: var(--primary-gray)
+}
+
+.GetConnectedWithUs__Features {
+    display: flex;
+    padding: 80px 1rem 0px;
+    justify-content: space-around;
+}
+
+.GetConnectedWithUs__Features_Block {
+    width: 20%;
+}
+
+.GetConnectedWithUs__Features_Img img {
+    /* width: 100%; */
+}
+
+.GetConnectedWithUs__Features_Text h2 {
+    margin-top: 20px;
+}
+
+.GetConnectedWithUs__Features_Text p {
+    margin-top: 5px;
+}
+
+.FeaturedRestaurants__Button_ViewAll {
+    width: 10% !important;
+}
+
+@media (max-width:600px) {
+    .GetConnectedWithUs__Features {
+        flex-flow: column;
+    }
+
+    .GetConnectedWithUs__Features_Block {
+        width: 70%;
+        margin: 1rem auto;
+    }
+}

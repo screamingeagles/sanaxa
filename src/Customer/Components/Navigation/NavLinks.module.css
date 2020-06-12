@@ -1,0 +1,45 @@
+@import "../../../shared/assets/CSS/colors.css";
+
+.NavLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.NavLink a {
+    font-size: 13px;
+    color: var(--primary-red);
+    text-decoration: none;
+    padding: 0.5rem 0.15rem;
+    font-weight: bold;
+    margin: 0 0.5rem;
+}
+
+@media (max-width: 1000px) {
+    .NavLink {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.NavLinkFooter {
+    justify-content: space-around;
+    padding: 0 1.5rem;
+}
+
+.NavLinkFooter a {
+    color: white;
+}
+
+@media (max-width: 1000px) {
+    .NavLinkFooter {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 490px) {
+    .NavLinkFooter {
+        flex-direction: column;
+    }
+}

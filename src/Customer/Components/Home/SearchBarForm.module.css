@@ -1,0 +1,73 @@
+.formContainer {
+    max-width: 490px;
+    margin: 1rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputContainer {
+    background-color: white;
+    width: 75%;
+    margin: 0 .5rem;
+    padding: .5rem .1rem;
+    border-radius: 40px;
+
+}
+
+.inputContainer input {
+    width: 80%;
+    border: 0;
+    height: 100%;
+    color: black;
+    margin-left: .3rem;
+}
+
+.inputContainer input::placeholder {
+    color: black;
+    font-weight: bold;
+    opacity: 1;
+}
+
+.inputContainer img {
+    width: 6%;
+    margin: 0 .3rem;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .inputContainer {
+        width: 70%;
+        margin: 0 .5rem;
+    }
+
+    .inputContainer input {
+        width: 70%;
+    }
+}
+
+@media (max-width: 500px) {
+    .inputContainer {
+        width: 70%;
+        margin: 0 .3rem;
+    }
+
+    .inputContainer input {
+        width: 70%;
+    }
+}
+
+@media (max-width: 450px) {
+    .searchButton {
+        display: none;
+    }
+
+    .inputContainer {
+        width: 90%;
+        margin: 0 .3rem;
+    }
+
+    .inputContainer input {
+        width: 70%;
+    }
+}

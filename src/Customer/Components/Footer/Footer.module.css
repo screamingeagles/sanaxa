@@ -1,0 +1,138 @@
+.Footer {
+    background-image: url('../../../shared/assets/Images/footerImage.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    /* height: 280px; */
+    color: white;
+}
+
+.Footer__Container {
+    width: 95%;
+    margin: 1rem auto;
+    max-width: 1320px;
+    /* background-color: wheat; */
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.FooterContainer_Block_Left {
+    width: 15%;
+}
+
+.FooterContainer_Block_Left_SocialIcons {
+    margin: 1.2rem 0;
+}
+
+.FooterContainer_Block_Left_SocialIcons img {
+    margin-right: .3rem;
+    cursor: pointer;
+}
+
+.FooterContainer_Block_Middle {
+    padding-left: 1.3rem;
+    border-left: 1px solid white;
+    width: 25%;
+}
+
+.FooterContainer_Block_Right {
+    width: 30%;
+}
+
+.FooterContainer_Block_Right_EmailIcon {
+    display: flex;
+    justify-content: space-between;
+}
+
+.FooterContainer_Block_Right_EmailIcon img {
+    height: 20px;
+    margin-right: 10px;
+}
+
+.NavLinks {
+    width: 95%;
+    max-width: 1320px;
+    margin: 1.5rem auto;
+}
+
+.hr {
+    width: 95%;
+    max-width: 1320px;
+    margin: 0 auto;
+    color: white;
+}
+
+@media (max-width:1200px) {
+    .FooterContainer_Block_Left {
+        width: 15%;
+    }
+
+    .FooterContainer_Block_Middle {
+        /* width: 15%;   */
+    }
+
+    .FooterContainer_Block_Right {
+        width: 30%;
+    }
+}
+
+@media (max-width:1030px) {
+    .FooterContainer_Block_Left {
+        width: 15%;
+    }
+
+    .FooterContainer_Block_Middle {
+        width: 35%;
+    }
+
+    .FooterContainer_Block_Right {
+        width: 35%;
+    }
+}
+
+@media (max-width:900px) {
+    .FooterContainer_Block_Left {
+        width: 20%;
+    }
+
+    .FooterContainer_Block_Middle {
+        width: 35%;
+    }
+
+    .FooterContainer_Block_Right {
+        width: 40%;
+    }
+}
+
+@media (max-width:786px) {
+    .Footer__Container {
+        flex-direction: column;
+        align-items: center;
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    .FooterContainer_Block {
+        margin: auto;
+    }
+
+    .FooterContainer_Block_Left {
+        margin: 2rem auto 0rem;
+    }
+
+    .FooterContainer_Block_Middle {
+        margin: 2rem auto 3rem;
+    }
+
+    .FooterContainer_Block_Left,
+    .FooterContainer_Block_Middle,
+    .FooterContainer_Block_Right {
+        width: 100%;
+    }
+
+    .FooterContainer_Block_Right_EmailIcon {
+        justify-content: start;
+    }
+}

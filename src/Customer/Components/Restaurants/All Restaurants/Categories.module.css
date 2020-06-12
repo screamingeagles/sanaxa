@@ -1,0 +1,21 @@
+.Categories {
+    margin: 3.5rem 0;
+}
+
+.Categories__List {
+    margin: 1.5rem 0 0 0;
+}
+
+.Categories__List label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin: .5rem 0;
+    border-bottom: 1px solid #b1b1b1;
+    padding: .5rem 0;
+}
+
+.Categories__List label>span {
+    font-weight: bold;
+    margin-left: 10px;
+}

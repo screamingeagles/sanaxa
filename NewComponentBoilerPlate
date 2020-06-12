@@ -1,0 +1,12 @@
+import React from "react";
+import classes from "./SortBy.module.css";
+
+const SortBy = (props) => {
+	return (
+		<div className={classes.SortBy}>
+			<div>SortBy</div>
+		</div>
+	);
+};
+
+export default SortBy;
