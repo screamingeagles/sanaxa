@@ -9,10 +9,13 @@ import ShoppingCart from "../../../shared/assets/Images/shopping-cart.svg";
 import CartLineUser from "../../../shared/assets/Images/cart-user-line.svg";
 import { NavLink } from "react-router-dom";
 import { AuthContext } from "../../../shared/context/auth-context";
+import { useBasket } from "./../../../shared/hooks/basket-hook";
 
 const MainNavigation = (props) => {
 	const auth = useContext(AuthContext);
 	const uid = auth.userId;
+
+	const { showBasket, showBasketHandler, basketContent } = useBasket();
 
 	const [show, setShow] = useState(false);
 	const pushHeight = () => {
@@ -25,6 +28,7 @@ const MainNavigation = (props) => {
 	}
 	return (
 		<MainHeader>
+			{basketContent}
 			<div className={classes.MainNavigation}>
 				<div className={classes.Logo}>
 					<NavLink to='/'>
@@ -56,9 +60,15 @@ const MainNavigation = (props) => {
 						</NavLink>
 						<img src={CartLineUser} alt='line' height='20px' width='1px' />
 						{/* <NavLink onClick={props.onClick} to={`/cart/${uid}`}> */}
-						<NavLink onClick={props.onClick} to='/checkout'>
-							<img src={ShoppingCart} width='18px' alt='cart' />
-						</NavLink>
+						{/* <NavLink onClick={props.onClick} to='/basket'> */}
+						<img
+							src={ShoppingCart}
+							width='18px'
+							alt='cart'
+							style={{ cursor: "pointer" }}
+							onClick={() => showBasketHandler()}
+						/>
+						{/* </NavLink> */}
 					</div>
 				</div>
 			</div>
@@ -78,9 +88,13 @@ const MainNavigation = (props) => {
 						/>
 					</NavLink>
 					<span className={classes.span}>|</span>
-					<NavLink to='/checkout'>
-						<img src={ShoppingCart} width='16px' alt='cart' />
-					</NavLink>
+					<img
+						src={ShoppingCart}
+						width='16px'
+						alt='cart'
+						style={{ cursor: "pointer" }}
+						onClick={() => showBasketHandler()}
+					/>
 				</div>
 			</div>
 		</MainHeader>

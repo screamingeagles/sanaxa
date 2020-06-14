@@ -14,6 +14,7 @@ import { useAuth } from "../../shared/hooks/auth-hook";
 
 import classes from "./Layout.module.css";
 import Checkout from "./../Components/Checkout/Checkout";
+import Basket from "./../Components/Basket/Basket";
 
 const Layout = (props) => {
 	const { login, logout, token, userId } = useAuth();
@@ -32,6 +33,7 @@ const Layout = (props) => {
 				<Route path='/restaurants' component={AllRestaurants} />
 				<Route path='/restaurant/:id/:name' component={SingleRestaurant} />
 				<Route path='/checkout' component={Checkout} />
+				{/* <Route path='/basket' component={Basket} /> */}
 				{/* <Redirect from='/checkout' to='/authentication' /> */}
 				<Redirect to='/' />
 			</Switch>
