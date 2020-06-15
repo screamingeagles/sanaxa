@@ -68,7 +68,10 @@ const MainNavigation = (props) => {
 							width='18px'
 							alt='cart'
 							style={{ cursor: "pointer" }}
-							onClick={() => basket.showBasketHandler()}
+							onClick={() => {
+								pushHeight();
+								basket.showBasketHandler();
+							}}
 						/>
 						{/* </NavLink> */}
 					</div>
@@ -95,7 +98,10 @@ const MainNavigation = (props) => {
 						width='16px'
 						alt='cart'
 						style={{ cursor: "pointer" }}
-						onClick={() => basket.showBasketHandler()}
+						onClick={() => {
+							pushHeight();
+							basket.showBasketHandler();
+						}}
 					/>
 				</div>
 			</div>

@@ -1,4 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
+import { AuthContext } from "./../context/auth-context";
 
 let logoutTimer;
 
@@ -38,9 +39,10 @@ export const useAuth = () => {
 		} else {
 			clearTimeout(logoutTimer);
 		}
-	}, [token, logout, tokenExpirationDate]);
+	}, []);
 
-	useEffect(() => {
+	const firstLogin = () => {
+		console.log("logging");
 		const storedData = JSON.parse(localStorage.getItem("userData"));
 		if (
 			storedData &&
@@ -53,12 +55,29 @@ export const useAuth = () => {
 				new Date(storedData.expirationDate)
 			);
 		}
-	}, [login]);
+	};
+
+	useEffect(() => {
+		// console.log("logging");
+		const storedData = JSON.parse(localStorage.getItem("userData"));
+		if (
+			storedData &&
+			storedData.token &&
+			new Date(storedData.expirationDate) > new Date()
+		) {
+			login(
+				storedData.userId,
+				storedData.token,
+				new Date(storedData.expirationDate)
+			);
+		}
+	}, []);
 
 	return {
 		token,
 		login,
 		logout,
 		userId,
+		firstLogin
 	};
 };

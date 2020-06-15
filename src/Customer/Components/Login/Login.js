@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useHistory, NavLink } from "react-router-dom";
+import { useHistory, NavLink, useParams } from "react-router-dom";
 
 import Logo from "../../../shared/assets/Images/snaxaLogo.svg";
 import google from "../../../shared/assets/Images/google.png";
@@ -21,14 +21,18 @@ import Button from "./../../../shared/components/FormElements/Button";
 import LoadingSpinner from "./../../../shared/components/UIElements/LoadingSpinner";
 
 import classes from "./Login.module.css";
+import { BasketContext } from "./../../../shared/context/basket-context";
 
 const Login = (props) => {
 	const auth = useContext(AuthContext);
 	const history = useHistory();
 	const [isLogin, setIsLogin] = useState(true);
 	const [submitting, setIsSubmitting] = useState(false);
+	const params = useParams().checkout;
+	console.log(params);
 	let heading = "Log In";
 	const { isLoading, error, sendRequest, clearError } = useHttpClient();
+	const basket = useContext(BasketContext);
 	const [formState, inputHandler, setFormData] = useForm(
 		{
 			email: {
@@ -88,9 +92,16 @@ const Login = (props) => {
 					JSON.stringify({
 						email: formState.inputs.email.value,
 						password: formState.inputs.password.value,
+						basket: basket.items,
 					})
 				);
 				auth.login(responseData.userId, responseData.token);
+				if (params === "checkout") {
+					history.push(
+						`/checkout/${Math.floor(Math.random() * 1000 * 1000 * 1000)}`
+					);
+					return;
+				}
 				history.go("/");
 			} catch (err) {}
 		} else {

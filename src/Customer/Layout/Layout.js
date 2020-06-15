@@ -1,4 +1,4 @@
-import React, { Suspense, useContext, useEffect } from "react";
+import React, { Suspense, useContext, useEffect, useState } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 import MainNavigation from "./../Components/Navigation/MainNavigation";
@@ -15,51 +15,68 @@ import { useAuth } from "../../shared/hooks/auth-hook";
 import classes from "./Layout.module.css";
 import Checkout from "./../Components/Checkout/Checkout";
 import Basket from "./../Components/Basket/Basket";
+import LoadingSpinner from "./../../shared/components/UIElements/LoadingSpinner";
 
 const Layout = (props) => {
-	const { login, logout, token, userId } = useAuth();
-	const auth = useContext(AuthContext);
-
-	useEffect(() => {
-		document.getElementById("root").scrollTop = 0;
-	}, [document.getElementById("root").scrollTop > 0]);
-
+	const { login, logout, userId, firstLogin, token } = useAuth();
 	let routes;
 	if (!token) {
 		routes = (
 			<Switch>
 				<Route path='/' exact component={Home} />
-				<Route path='/authentication' component={Login} />
+				<Route path='/authentication' exact component={Login} />
+				<Route path='/authentication/:checkout' component={Login} />
 				<Route path='/restaurants' component={AllRestaurants} />
 				<Route path='/restaurant/:id/:name' component={SingleRestaurant} />
-				<Route path='/checkout' component={Checkout} />
+				{/* <Route path='/checkout' exact component={Checkout} /> */}
+				{/* <Route path='/checkout/:id' component={Checkout} /> */}
 				{/* <Route path='/basket' component={Basket} /> */}
 				{/* <Redirect from='/checkout' to='/authentication' /> */}
-				<Redirect to='/' />
+				{/* <Redirect to='/' /> */}
+				{/* <Route exact path='/*' component={() => <Redirect to='/auth' />} /> */}
 			</Switch>
 		);
 	} else {
 		routes = (
 			<Switch>
 				<Route path='/' exact component={Home} />
-				<Route path='/user-detail' render={() => <UserDetail />} />
 				<Route path='/restaurants' component={AllRestaurants} />
 				<Route path='/restaurant/:id/:name' component={SingleRestaurant} />
-				<Route path='/checkout' component={Checkout} />
+				<Route path='/checkout/:id' component={Checkout} />
+				<Route path='/checkout' exact component={Checkout} />
+				<Route path='/user-detail' component={UserDetail} />
+				{/* <Route exact path='/*' component={() => <Redirect to='/auth' />} /> */}
+				{/* <Route path='/checkout/:id' component={Checkout} /> */}
 				{/* <Route path='/cart/:id' component={Cart} /> */}
 				{/* <Route path='/orders/:id' component={Restaurant} /> */}
-				<Redirect to='/' />
+				{/* <Redirect to='/' /> */}
 			</Switch>
 		);
 	}
 	return (
-		<div className={classes.Layout}>
-			<div className={classes.Layout__Contaienr}>
-				<MainNavigation />
-				<div>{routes}</div>
+		<AuthContext.Provider
+			value={{
+				isLoggedIn: !!token,
+				token: token,
+				userId: userId,
+				login,
+				logout,
+			}}>
+			<div className={classes.Layout}>
+				<div className={classes.Layout__Contaienr}>
+					<MainNavigation />
+					<Suspense
+						fallback={
+							<div className='center'>
+								<LoadingSpinner />
+							</div>
+						}>
+						<div>{routes}</div>
+					</Suspense>
+				</div>
+				<Footer />
 			</div>
-			<Footer />
-		</div>
+		</AuthContext.Provider>
 	);
 };
 

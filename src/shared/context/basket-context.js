@@ -8,4 +8,8 @@ export const BasketContext = createContext({
 	// logout: () => {},
 	setBasketContent: () => {},
 	showBasketHandler: () => {},
+	addQuantityToBasket: () => {},
+	removeProduct: () => {},
+	fetchBasket: () => {},
+	items: [],
 });

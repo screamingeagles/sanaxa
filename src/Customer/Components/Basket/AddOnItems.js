@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import classes from "./AddOnItems.module.css";
 import Button from "../../../shared/components/FormElements/Button";
 import { useBasket } from "./../../../shared/hooks/basket-hook";
 import { useParams } from "react-router-dom";
+import { BasketContext } from './../../../shared/context/basket-context';
 
 const AddOnItems = (props) => {
 	const [quantity, setQuantity] = useState(1);
 	const restaurantId = useParams().id;
 	const RestaurantName = useParams().name.replace("+", " ");
+	
 	// console.log(restaurantId, RestaurantName);
 
 	const increaseQuantity = (number) => {
@@ -45,7 +47,7 @@ const AddOnItems = (props) => {
 								<label onClick={() => increaseQuantity(-1)}>+</label>
 							</form>
 						</div>
-						<h4>${props.price}</h4>
+						<h4>${quantity * props.price}</h4>
 					</div>
 				</div>
 			</div>
@@ -71,7 +73,8 @@ const AddOnItems = (props) => {
 						quantity,
 						props.productId,
 						props.name,
-						props.price
+						props.price,
+						quantity * props.price
 					);
 				}}>
 				<Button backgroundColor='#0dd6ff' color='white' padding='10px 20%'>
