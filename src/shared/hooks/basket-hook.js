@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Modal from "../components/UIElements/Modal";
 import Basket from "../../Customer/Components/Basket/Basket";
 
@@ -7,46 +7,25 @@ export const useBasket = () => {
 	// const [productDetails, setProductDetails] = useState(undefined);
 	const [items, setItems] = useState([]);
 
-	// useEffect(() => {
-	// 	addToCart(productDetails);
-	// }, [productDetails]);
+	const showBasketHandler = () => {
+		return setShowBasket((prevState) => !prevState);
+	};
 
 	useEffect(() => {
-		fetchCart();
+		fetchBasket();
 	}, []);
 
-	const addToCart = (
-		restaurantId,
-		RestaurantName,
-		quantity,
-		productId,
-		name,
-		price
-	) => {
-		// if (!productDetails) return;
-		// if (productDetails) {
-		// items.push(productDetails);
-		const bucketData = {
-			restaurantId,
-			RestaurantName,
-			quantity,
-			productId,
-			name,
-			price,
-		};
-		items.push(bucketData);
-		setItems(items);
-		localStorage.setItem("cart", JSON.stringify(items));
-		// fetchCart();
-		// }
-	};
-
-	const fetchCart = () => {
-		let cart = JSON.parse(localStorage.getItem("cart"));
-		if (!cart) return;
-		setItems(cart);
-		console.log(cart);
-	};
+	const fetchBasket = useCallback(() => {
+		const cart = JSON.parse(localStorage.getItem("cart"));
+		if (cart) {
+			// console.log("Updating cart", cart);
+			setItems((prevState) => [...cart]);
+		}
+		if (!cart) {
+			setItems([]);
+		}
+		// console.log("cart", cart);
+	}, [items]);
 
 	const setBasketData = (
 		restaurantId,
@@ -57,15 +36,25 @@ export const useBasket = () => {
 		price
 	) => {
 		console.log(restaurantId, RestaurantName, quantity, productId, name, price);
-		addToCart(restaurantId, RestaurantName, quantity, productId, name, price);
-	};
+		const cartItems = {
+			restaurantId,
+			RestaurantName,
+			quantity,
+			productId,
+			name,
+			price,
+		};
 
-	const showBasketHandler = () => {
-		return setShowBasket((prevState) => !prevState);
+		items.map((i) => console.log(i.productId, i.quantity));
+
+		// console.log("items", items);
+		// items.push(cartItems);
+		// setItems(items);
+		// localStorage.setItem("cart", JSON.stringify(items));
+		// fetchBasket();
 	};
 
 	let basketContent;
-
 	basketContent = (
 		<Modal
 			// syle={{ width: "0% !important" }}
