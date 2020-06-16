@@ -1,0 +1,158 @@
+.formControl {
+    margin: 1rem 0;
+    display: flex;
+    align-items: center;
+}
+
+.formControl label {
+    display: block;
+    width: 50%;
+}
+
+.formControl input,
+.formControl textarea {
+    width: 100%;
+    /* display: block; */
+}
+
+.formControl input:disabled,
+.formControl textarea:disabled {
+    cursor: not-allowed;
+}
+
+.formControl label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    margin-top: 5px;
+    font-size: 13px;
+    text-align: left;
+}
+
+.formControl input,
+.formControl textarea {
+    width: 100%;
+    /* font: inherit; */
+    border: 1px solid #d3d2d2;
+    /* background: ; */
+    padding: 0.35rem 0.35rem;
+}
+
+.formControl input:focus,
+.formControl textarea:focus {
+    outline: none;
+    background: #ebebeb;
+    border-color: #ffcccf;
+}
+
+.formControl input::placeholder,
+.formControl textarea::placeholder {
+    font-size: 11px;
+}
+
+.formControlInvalid label,
+.formControlInvalid p {
+    color: #ed1b24;
+    margin-top: 5px;
+    font-size: 13px;
+    text-align: left;
+}
+
+.formControlInvalid input,
+.formControlInvalid textarea {
+    border-color: #ed1b24;
+    background: #ffffff;
+}
+
+.formControlInvalidP {
+    color: #ed1b24;
+    margin-top: 0px;
+    font-size: 13px;
+    text-align: left !important;
+    align-items: flex-start;
+}
+
+.formControlInvalidP p {
+    text-align: right;
+}
+
+.DescriptionReviews__Heading {
+    /* display: flex;
+    width: 100%; */
+    width: 100%;
+    margin: 0 0 1.5rem;
+    box-sizing: border-box;
+    font-size: 0;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+    align-items: stretch;
+}
+
+.DescriptionReviews__Heading h5 {
+    /* color: black;
+    width: 50%;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    background-color: white;
+    cursor: pointer;
+    transition: all .3s ease; */
+}
+
+.DescriptionReviews__Heading input {
+    width: 0;
+    height: 0;
+    position: absolute;
+    left: -9999px;
+}
+
+.formControl input[type="date"] {
+    font-family: sans-serif !important;
+    color: rgb(75, 75, 75) !important;
+}
+
+.formControl input[type="date"]::placeholder {
+    font-family: sans-serif !important;
+    color: rgb(75, 75, 75) !important;
+}
+
+.DescriptionReviews__Heading input+label {
+    width: 100%;
+    margin: 0;
+    padding: .75rem 2rem;
+    box-sizing: border-box;
+    position: relative;
+    display: inline-block;
+    border: solid 1px #DDD;
+    background-color: #FFF;
+    font-size: 1rem;
+    line-height: 140%;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: 0 0 0 rgba(255, 255, 255, 0);
+    transition: border-color .15s ease-out,
+        color .25s ease-out,
+        background-color .15s ease-out,
+        box-shadow .15s ease-out;
+
+    /* ADD THESE PROPERTIES TO SWITCH FROM AUTO WIDTH TO FULL WIDTH */
+    /*flex: 0 0 50%; display: flex; justify-content: center; align-items: center;*/
+    /* ----- */
+
+}
+
+.Inactive {
+    border: 1px solid #ed1b24 !important;
+    background-color: #ed1b24 !important;
+    color: white !important;
+}
+
+@media (max-width:520px) {
+    .formControl {
+        flex-flow: column;
+    }
+
+    .formControl label {
+        text-align: left;
+        width: 100%;
+    }
+}

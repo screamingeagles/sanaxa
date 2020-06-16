@@ -1,0 +1,51 @@
+@import '../../../shared/assets/CSS/colors.css';
+
+.Credits {
+    /* text-align: left; */
+}
+
+.CreditsDetail {}
+
+.CreditsDetail span {
+    color: var(--primary-red);
+}
+
+.CreditsDetail_Toggle {
+    display: flex;
+    margin: 2rem auto;
+    text-align: center;
+    width: 60%;
+}
+
+.CreditsDetail__Content {
+    margin: 1rem auto;
+}
+
+.CreditsDetail_Toggle h5 {
+    width: 50%;
+    color: white;
+    padding: 10px 20px;
+    border: 1px solid #ed1b24;
+    background-color: #ed1b24;
+    cursor: pointer;
+    margin: 0 auto;
+    transition: all .3s ease;
+}
+
+.Inactive {
+    border: 1px solid rgb(223, 223, 223) !important;
+    background-color: white !important;
+    color: black !important;
+}
+
+.CreditsDetail_Table {
+    width: 100%;
+    margin: 2rem 0;
+    border: 1px solid #ccc;
+}
+
+.CreditsDetail_Table th {
+    border-bottom: 2px solid #ccc;
+    padding: .8rem .5rem;
+
+}

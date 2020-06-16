@@ -1,0 +1,12 @@
+.Address {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.Address p {
+    margin-top: 1.5rem;
+    font-weight: bold;
+}

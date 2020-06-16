@@ -49,7 +49,7 @@ export const validate = (value, validators) => {
 		}
 		if (validator.type === VALIDATOR_TYPE_CONFIRMPASSWORD) {
 			isValid = validator.password === validator.confirmPassword;
-			// console.log(isValid, validator.password, validator.confirmPassword);
+			console.log(isValid, validator.password, validator.confirmPassword);
 		}
 	}
 	return isValid;
