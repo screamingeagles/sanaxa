@@ -83,7 +83,7 @@ const UserDetail = (props) => {
 	}
 
 	return (
-		<div className={classes.UserDetail}>
+		<div className={[classes.UserDetail, "Container"].join(" ")}>
 			<h2 className={classes.UserDetail__Heading}>My Account</h2>
 			<div className={classes.UserDetail__SubHeadings}>
 				<div className={classes.UserDetail__Sidebar}>

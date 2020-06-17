@@ -15,7 +15,9 @@ function App() {
 		removeProduct,
 		totalPrice,
 		fetchBasket,
-		items,
+		cart,
+		error,
+		clearBasket
 	} = useBasket();
 
 	return (
@@ -29,7 +31,9 @@ function App() {
 				removeProduct,
 				totalPrice,
 				fetchBasket,
-				items,
+				cart,
+				error,
+				clearBasket
 			}}>
 			<div className={classes.App}>
 				<Layout />

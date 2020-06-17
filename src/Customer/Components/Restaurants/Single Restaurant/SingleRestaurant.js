@@ -25,7 +25,6 @@ const SingleRestaurant = (props) => {
 	const RestaurantName = useParams().name.replace("+", " ");
 	const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
-
 	useEffect(() => {
 		const fetchAllRestaurants = async () => {
 			try {
@@ -59,6 +58,7 @@ const SingleRestaurant = (props) => {
 						dishes={i.foodItems}
 						// name='Zinger 1'
 						// price='20'
+						restaurantId={restaurantId}
 						shortDescription='Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum'
 					/>
 				);

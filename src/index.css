@@ -59,6 +59,11 @@
     height: 100%;
 }
 
+.center {
+    text-align: center;
+    margin-top: 2rem;
+}
+
 html,
 body,
 div,
@@ -151,7 +156,7 @@ body {
         Geneva,
         Verdana,
         sans-serif; */
-        font-family:sans-serif;
+    font-family: sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 15px;

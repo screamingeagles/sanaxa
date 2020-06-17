@@ -150,7 +150,7 @@
     display: block;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 810px) {
     .Burger {
         display: block;
     }
@@ -171,6 +171,6 @@
 
     .height {
         display: flex;
-        height: 227px;
+        height: 430px;
     }
 }

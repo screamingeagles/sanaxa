@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import classes from "./CategoryView.module.css";
 import Button from "../../../../shared/components/FormElements/Button";
 import Modal from "./../../../../shared/components/UIElements/Modal";
@@ -11,15 +11,32 @@ const CategoryView = (props) => {
 	const [productId, setProductId] = useState(false);
 	const [productName, setProductName] = useState(false);
 	const [productPrice, setProductPrice] = useState(false);
+	const [error, setError] = useState(false);
 	// const { showBasketHandler, basketContent, setBasketData } = useBasket();
 	const basket = useContext(BasketContext);
+	// console.log(basket.cart);
 
 	const addToCart = (id, name, price) => {
-		// console.log(id);
-		setProductId(id);
-		setProductName(name);
-		setProductPrice(price);
-		setAddingToCart(true);
+		if (
+			basket.cart.restaurantId &&
+			props.restaurantId !== basket.cart.restaurantId
+		) {
+			setError(true);
+			setProductId(id);
+			setProductName(name);
+			setProductPrice(price);
+			return;
+		}
+		if (
+			!basket.cart.restaurantId ||
+			props.restaurantId === basket.cart.restaurantId
+		) {
+			setProductId(id);
+			setProductName(name);
+			setProductPrice(price);
+			setAddingToCart(true);
+			return;
+		}
 	};
 
 	const closeCart = () => {
@@ -30,7 +47,37 @@ const CategoryView = (props) => {
 		<div className={classes.CategoryView}>
 			<div>
 				{basket.basketContent}
-				<Modal show={addingToCart} header='True' onCancel={closeCart}>
+				<Modal
+					header='Alert'
+					show={error}
+					onCancel={() => setError(false)}
+					footer={
+						<div style={{ display: "flex", justifyContent: "flex-end" }}>
+							<div style={{ margin: "0 1rem" }}>
+								<Button
+									onClick={() => {
+										setError(false);
+										basket.clearBasket();
+										setAddingToCart(true);
+									}}
+									inverse>
+									Yes
+								</Button>
+							</div>
+							<div style={{ margin: "0 1rem" }}>
+								<Button onClick={() => setError(false)}>No</Button>
+							</div>
+						</div>
+					}>
+					<p style={{ fontWeight: "bold" }}>
+						There are items in your cart from{" "}
+						<span style={{ color: "#ed1b24" }}>
+							{basket.cart.RestaurantName}
+						</span>
+						. Do you want to clear your cart?
+					</p>
+				</Modal>
+				<Modal show={!error && addingToCart} onCancel={closeCart}>
 					<AddOnItems
 						onCancel={closeCart}
 						basketHandler={basket.showBasketHandler}

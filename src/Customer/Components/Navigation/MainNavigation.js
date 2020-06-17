@@ -18,6 +18,7 @@ import { useBasket } from "./../../../shared/hooks/basket-hook";
 import { BasketContext } from "../../../shared/context/basket-context";
 import Modal from "../../../shared/components/UIElements/Modal";
 import Login from "../Login/Login";
+import MobileNavLinks from "./MobileNavLinks";
 
 const MainNavigation = (props) => {
 	const auth = useContext(AuthContext);
@@ -26,14 +27,14 @@ const MainNavigation = (props) => {
 	const history = useHistory();
 
 	const uid = auth.userId;
-
-	const [loginShow, setLoginShow] = useState(false);
+	
 	const [show, setShow] = useState(false);
-
+	
 	const pushHeight = () => {
 		setShow(!show);
 	};
-
+	
+	const [loginShow, setLoginShow] = useState(false);
 	const loginShowHandler = () => {
 		setLoginShow((prevState) => !prevState);
 	};
@@ -80,7 +81,7 @@ const MainNavigation = (props) => {
 				</div>
 				<div className={classes.NavLinks}>
 					<NavLinks />
-					{!auth.token && basket.items.length > 0 && (
+					{!auth.token && basket.cart.items && basket.cart.items.length > 0 && (
 						<img
 							src={ShoppingCart}
 							width='18px'
@@ -176,8 +177,12 @@ const MainNavigation = (props) => {
 				className={[classes.MobileNavigation, show && classes.height].join(
 					" "
 				)}>
-				
-				<NavLinks onClick={pushHeight} />
+				<MobileNavLinks
+					logoutHandler={logoutHandler}
+					loginShowHandler={loginShowHandler}
+					onClick={pushHeight}
+				/>
+				{/* <NavLinks onClick={pushHeight} /> */}
 
 				{/* <div className={classes.Icons}>
 					<NavLink to={link}>

@@ -15,10 +15,30 @@
     margin: 0 0.5rem;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 810px) {
     .NavLink {
         display: flex;
         flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        margin-left: 1rem;
+    }
+
+    .LoginContainer,
+    .NavLink a {
+        margin: 0 0.5rem;
+        color: var(--primary-red);
+        text-align: left;
+        padding: 1.2rem 0;
+        width: 90%;
+        border-bottom: 1px solid #dddddd;
+        font-weight: 500;
+    }
+    
+    .LoginContainer p {
+        cursor: pointer;
+        font-weight: 500;
+
     }
 }
 

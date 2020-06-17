@@ -127,7 +127,7 @@ const Checkout = (props) => {
 				</div>
 			</div>
 			<div className='LeftContainer'>
-				{basket.items.map((i) => (
+				{basket.cart.items.map((i) => (
 					<div
 						style={{ marginBottom: "1rem" }}
 						className={classes.Checkout__Sidebar}>
@@ -143,7 +143,7 @@ const Checkout = (props) => {
 								</div>
 								<div className={classes.Checkout__Sidebar_Restaurant}>
 									<img src={restaurantIconSmall} alt='restaurantIconSmall' />
-									<h5>{i.restaurantName}</h5>
+									<h5>{basket.cart.RestaurantName}</h5>
 								</div>
 							</div>
 						</>

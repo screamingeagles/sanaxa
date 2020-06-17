@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import classes from "./Credits.module.css";
+import Input from "./../../../shared/components/FormElements/Input";
+import Button from "../../../shared/components/FormElements/Button";
 
 const Credits = (props) => {
-	const [description, setDescription] = useState(true);
+	const [description, setDescription] = useState(false);
+	const [redeemCode, setRedeemCode] = useState("");
 
 	const changeStatement = () => {
 		setDescription(true);
@@ -23,18 +26,38 @@ const Credits = (props) => {
 					<th>Balance</th>
 				</tr>
 				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
-					<td></td>
+					{/* <td>asdasdlkasda</td>
+					<td>asdasdlkasda</td>
+					<td>asdasdlkas kldmadl lasdmaskld askdlmasldk klasmdaskldm askldmas klsadmsa kasdklasm da</td>
+					<td>asdasdlkasda</td>
+					<td>asdasdlkasda</td> */}
 				</tr>
 			</table>
 			<p>Transactions made using Snaxa credit will appear here.</p>
 		</>
 	);
 
-	if (!description) content = "Redeem";
+	if (!description)
+		content = (
+			<div className={classes.RedeemCode}>
+				<div>
+					<h3>Redeem voucher code below</h3>
+				</div>
+				<div className={classes.RedeemCode_Enter}>
+					<p>Please enter your voucher code here:</p>
+					<input
+						type='text'
+						value={redeemCode}
+						placeholder='Voucher Code'
+						onChange={(e) => setRedeemCode(e.target.value)}
+					/>
+				</div>
+				<div className={classes.RedeemCode_EnterButton}>
+
+				<Button type='submit'>REDEEM VOUCHER</Button>
+				</div>
+			</div>
+		);
 
 	return (
 		<div className={classes.Credits}>

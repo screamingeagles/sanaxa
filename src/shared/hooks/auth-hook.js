@@ -78,6 +78,6 @@ export const useAuth = () => {
 		login,
 		logout,
 		userId,
-		firstLogin
+		firstLogin,
 	};
 };
