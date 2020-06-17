@@ -1,0 +1,12 @@
+.SavedCards {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.SavedCards p {
+    margin-top: 1.5rem;
+    font-weight: bold;
+}

@@ -1,28 +1,40 @@
 import React, { Suspense, useEffect, useState } from "react";
-import { Switch, Route, Redirect, BrowserRouter } from "react-router-dom";
-
-import { AuthContext } from "./shared/context/auth-context";
-import { useAuth } from "./shared/hooks/auth-hook";
+import { BasketContext } from "./shared/context/basket-context";
+import { useBasket } from "./shared/hooks/basket-hook";
 
 import Layout from "./Customer/Layout/Layout";
 import classes from "./App.module.css";
 
 function App() {
-	const { login, logout, token, userId } = useAuth();
+	const {
+		basketContent,
+		setBasketData,
+		showBasketHandler,
+		showBasket,
+		addQuantityToBasket,
+		removeProduct,
+		totalPrice,
+		fetchBasket,
+		items,
+	} = useBasket();
 
 	return (
-		<AuthContext.Provider
+		<BasketContext.Provider
 			value={{
-				isLoggedIn: !!token,
-				token: token,
-				userId: userId,
-				login: login,
-				logout: logout,
+				basketContent,
+				setBasketData,
+				showBasketHandler,
+				showBasket,
+				addQuantityToBasket,
+				removeProduct,
+				totalPrice,
+				fetchBasket,
+				items,
 			}}>
 			<div className={classes.App}>
 				<Layout />
 			</div>
-		</AuthContext.Provider>
+		</BasketContext.Provider>
 	);
 }
 

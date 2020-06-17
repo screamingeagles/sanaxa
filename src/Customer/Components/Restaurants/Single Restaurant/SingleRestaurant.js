@@ -17,14 +17,14 @@ import CategoryView from "./CategoryView";
 import Modal from "./../../../../shared/components/UIElements/Modal";
 
 import classes from "./SingleRestaurant.module.css";
-import AddOnItems from "./../../Bucket/AddOnItems";
+// import AddOnItems from "./../../Bucket/AddOnItems";
 
 const SingleRestaurant = (props) => {
 	const [restaurant, setRestaurant] = useState([]);
 	const restaurantId = useParams().id;
+	const RestaurantName = useParams().name.replace("+", " ");
 	const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
-	const RestaurantName = useParams().name.replace("+", " ");
 
 	useEffect(() => {
 		const fetchAllRestaurants = async () => {
@@ -39,7 +39,7 @@ const SingleRestaurant = (props) => {
 						restaurantId,
 					})
 				);
-				console.log(responseData);
+				// console.log(responseData);
 				setRestaurant(responseData);
 			} catch (error) {}
 		};

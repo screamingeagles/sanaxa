@@ -75,6 +75,81 @@
     background-color: var(--primary-red-light);
 }
 
+.LoginContainer {
+    font-size: 16px;
+    color: var(--primary-red);
+    text-decoration: none;
+    padding: 12px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 500;
+    margin: 0 0.5rem 0rem 1.5rem;
+    border: 1px solid var(--primary-red);
+    transition: all .3s ease;
+}
+
+.LoginContainer:hover {
+    background-color: var(--primary-red);
+    color: white;
+}
+
+.myAccount {
+    font-size: 16px;
+    color: var(--primary-red);
+    text-decoration: none;
+    border-radius: 8px;
+    cursor: pointer;
+    padding: 12px 15px;
+    font-weight: 500;
+    margin: 0 0.5rem 0rem 0.5rem;
+    transition: all .3s ease;
+    position: relative;
+}
+
+.myAccount__Dropdown {
+    opacity: 0;
+    position: absolute;
+    background-color: white;
+    border-bottom: 3px solid var(--primary-red);
+    transition: opacity .3s ease;
+    padding: 1rem 0rem;
+    z-index: 10;
+    width: 260px;
+    top: 100%;
+    display: none;
+    right: 0;
+}
+
+.myAccount__Dropdown_Item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: .8rem .5rem;
+    text-decoration: none;
+}
+
+.myAccount__Dropdown_Item:hover {
+    background-color: rgb(233, 233, 233);
+}
+
+.myAccount__Dropdown_Item p {
+    margin-left: 15px;
+    color: black;
+    font-weight: bold;
+}
+
+.myAccount__Dropdown_Item img {
+    margin-left: 15px;
+}
+
+.myAccount__UpArrow {}
+
+.myAccount:hover .myAccount__Dropdown,
+.myAccount__Dropdown:hover .myAccount__Dropdown {
+    opacity: 1;
+    display: block;
+}
+
 @media (max-width: 1000px) {
     .Burger {
         display: block;

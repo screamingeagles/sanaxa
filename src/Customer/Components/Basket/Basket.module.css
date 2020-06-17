@@ -1,0 +1,131 @@
+@import '../../../shared/assets/CSS/colors.css';
+
+.Basket {
+    padding: 0 1rem;
+}
+
+.Basket__Header {
+    margin: 0 auto;
+    text-align: center;
+    width: 100%;
+}
+
+.Basket__Content_Height {
+    height: 55vh;
+    overflow-y: scroll;
+}
+
+.Basket__Content {
+    display: flex;
+    margin: 20px auto;
+    flex-flow: column;
+    padding: 1rem;
+    border-bottom: 1px solid rgb(223, 223, 223);
+}
+
+.Basket__Content_Top {
+    display: flex;
+}
+
+.Basket__Content_Details {
+    display: flex;
+    justify-content: space-between;
+    flex: 1;
+}
+
+.Basket__Content_Name {
+    margin-left: 10px;
+    display: flex;
+    flex-flow: column;
+}
+
+.Basket__Content_Name h4 {
+    color: var(--primary-red);
+    font-style: italic;
+}
+
+.Basket__Content_Name_Restaurant {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.Basket__Content_Name_Restaurant h5 {
+    margin-left: 10px;
+}
+
+.Basket__Content_Price {
+    font-style: italic;
+}
+
+.Basket__Content_AddItem {
+    display: flex;
+    justify-content: space-between;
+    margin: 18px 0;
+    align-items: center;
+}
+
+
+.Bucket__Content_List_Form {
+    display: flex;
+    margin-left: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.Bucket__Content_List_Form label {
+    color: #ffb711;
+    font-size: 22px;
+    width: 13px;
+    height: 15px;
+    /* margin: 2px; */
+    cursor: pointer;
+    /* border: 1px solid #ccc; */
+    border-radius: 2px;
+    line-height: 10px;
+}
+
+.Bucket__Content_List_Form input {
+    width: 20px;
+    border: none;
+    margin: 0 3px 0 7px;
+    text-align: center;
+}
+
+.Bucket__Content_List_Form input::-webkit-outer-spin-button,
+.Bucket__Content_List_Form input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+.Bucket__Content_List_Form input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.Bucket__Content_Checkout_Button {
+    margin: 0 auto;
+    text-align: center;
+    width: 95%;
+    background-color: #0dd6ff;
+    padding: 10px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    text-decoration: none;
+}
+
+.Bucket__Content_Checkout_Button a {
+    width: 100%;
+    color: white;
+}
+
+.Basket__Content_Flex_Total {
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    margin-bottom: 5px;
+    justify-content: space-between;
+}

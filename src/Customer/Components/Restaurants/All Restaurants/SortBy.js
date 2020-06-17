@@ -4,7 +4,7 @@ import "./SortBy.css";
 
 const SortBy = (props) => {
 	const sortFunction = (e) => {
-		console.log(e.currentTarget.innerText);
+		// console.log(e.currentTarget.innerText);
 		const hello = document.getElementsByClassName("SortingActive");
 		hello[0].classList.add("Inactive");
 		hello[1].classList.add("Inactive");

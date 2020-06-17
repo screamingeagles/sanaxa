@@ -1,0 +1,44 @@
+@import '../../../shared/assets/CSS/colors.css';
+
+.AccountForm {
+    display: flex;
+}
+
+.FormContainer {
+    width: 70%;
+}
+
+.checkboxForm_Container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ChangeContainer {
+    display: flex;
+    margin-top: 16px;
+    align-items: flex-start;
+    width: 45%;
+}
+
+.ChangeContainer p {
+    margin-left: 15px;
+    cursor: pointer;
+    color: var(--primary-red);
+    font-weight: bold;
+    font-size: 14px;
+}
+
+@media (max-width: 780px) {
+    .AccountForm {
+        flex-flow: column;
+    }
+
+    .ChangeContainer {
+        width: 100%;
+    }
+
+    .FormContainer {
+        width: 100%;
+    }
+}

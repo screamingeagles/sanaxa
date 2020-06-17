@@ -1,5 +1,58 @@
+@import '../../../shared/assets/CSS/colors.css';
+
 .UserDetail {
-	display: flex;
-	padding: 2rem;
-	justify-content: center;
+    display: flex;
+    padding: 2rem;
+    justify-content: flex-start;
+    width: 100%;
+    flex-flow: column;
+}
+
+.UserDetail__Heading {
+    width: 100%;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+}
+
+.UserDetail__SubHeadings {
+    display: flex;
+    margin-top: 15px;
+    justify-content: space-between;
+}
+
+.UserDetail__Sidebar {
+    border-right: 1px solid #ccc;
+    width: 18%;
+}
+
+.UserDetail__Sidebar p {
+    padding: 1rem 1rem;
+    border-left: 1px solid transparent;
+    margin-bottom: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all .3s ease;
+}
+
+.UserDetail__Sidebar p:hover,
+.active {
+    border-left: 1px solid var(--primary-red) !important;
+    color: var(--primary-red) !important;
+}
+
+.UserDetail__Main {
+    width: 75%;
+    text-align: center;
+    margin: 0rem auto 0;
+}
+
+@media (max-width: 990px) {
+    .UserDetail__SubHeadings {
+        flex-flow: column;
+    }
+
+    .UserDetail__Sidebar,
+    .UserDetail__Main {
+        width: 100%;
+    }
 }

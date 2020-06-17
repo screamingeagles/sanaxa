@@ -2,6 +2,7 @@
 
 * {
     box-sizing: border-box;
+    text-decoration: none;
 }
 
 .Container {
@@ -27,6 +28,13 @@
     /* background-color: #ccc; */
 }
 
+.basketContainer {
+    width: 30rem !important;
+    left: calc(50% - 15rem) !important;
+    top: 2vh !important;
+    /* bottom: 10h !important; */
+}
+
 @media (max-width:960px) {
     .Container {
         flex-flow: column;
@@ -37,6 +45,13 @@
     .LeftContainer {
         width: 100%;
         margin: 0 auto;
+    }
+}
+
+@media (max-width:768px) {
+    .basketContainer {
+        width: 95% !important;
+        left: 2.5% !important;
     }
 }
 
@@ -132,13 +147,16 @@ video {
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma,
+    /* font-family: 'Segoe UI', Tahoma,
         Geneva,
         Verdana,
-        sans-serif;
+        sans-serif; */
+        font-family:sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 15px;
+    /* font-size: calc(15px + (26 - 15) * ((100vw - 300px) / (1600 - 300))); */
+    /* font-size: 2vw; */
     color: var(--primary-gray);
     line-height: 1;
     overflow-x: hidden;

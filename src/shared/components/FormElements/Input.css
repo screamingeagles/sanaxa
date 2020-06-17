@@ -16,8 +16,8 @@
 .form-control input,
 .form-control textarea {
     width: 100%;
-    font: inherit;
-    border: 1px solid #f3f3f3;
+    /* font: inherit; */
+    border: 1px solid #d3d2d2;
     /* background: ; */
     padding: 0.35rem 0.35rem;
 }
@@ -31,14 +31,14 @@
 
 .form-control input::placeholder,
 .form-control textarea::placeholder {
-    font-size: 9px;
+    font-size: 11px;
 }
 
 .form-control--invalid label,
 .form-control--invalid p {
     color: #ed1b24;
     margin-top: 5px;
-    font-size: 12px;
+    font-size: 13px;
     text-align: left;
 }
 
@@ -47,4 +47,3 @@
     border-color: #ed1b24;
     background: #ffffff;
 }
-

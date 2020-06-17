@@ -16,15 +16,18 @@ const NavLinks = (props) => {
 					Home
 				</NavLink>
 			)}
+			<NavLink to='/'>Offers</NavLink>
+			{!props.footer && <NavLink to='#'>Become a Partner</NavLink>}
 			<NavLink onClick={props.onClick} to='/restaurants'>
-				Restaurants
-			</NavLink>
-			<NavLink onClick={props.onClick} to={`/orders/${uid}`}>
-				My Orders
+				All Restaurants
 			</NavLink>
 			<NavLink to='#'>Ramadan Deals</NavLink>
-			{!props.footer && <NavLink to='#'>Become a Partner</NavLink>}
-			{props.footer && <NavLink to='/'>Offers</NavLink>}
+
+			{/* {auth.token && (
+				<NavLink onClick={props.onClick} to={`/orders/${uid}`}>
+					My Orders
+				</NavLink>
+			)} */}
 		</nav>
 	);
 };

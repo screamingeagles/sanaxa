@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useHistory, NavLink } from "react-router-dom";
+import { useHistory, NavLink, useParams } from "react-router-dom";
 
 import Logo from "../../../shared/assets/Images/snaxaLogo.svg";
 import google from "../../../shared/assets/Images/google.png";
@@ -15,20 +15,29 @@ import {
 import { useForm } from "./../../../shared/hooks/form-hook";
 import { useHttpClient } from "./../../../shared/hooks/http-hook";
 import { AuthContext } from "../../../shared/context/auth-context";
+import { BasketContext } from "./../../../shared/context/basket-context";
 
 import Input from "./../../../shared/components/FormElements/Input";
 import Button from "./../../../shared/components/FormElements/Button";
 import LoadingSpinner from "./../../../shared/components/UIElements/LoadingSpinner";
 
 import classes from "./Login.module.css";
+import SignUp from "./SignUp";
 
 const Login = (props) => {
 	const auth = useContext(AuthContext);
+	const basket = useContext(BasketContext);
 	const history = useHistory();
+
 	const [isLogin, setIsLogin] = useState(true);
 	const [submitting, setIsSubmitting] = useState(false);
+
+	const params = useParams().checkout;
+
 	let heading = "Log In";
+
 	const { isLoading, error, sendRequest, clearError } = useHttpClient();
+
 	const [formState, inputHandler, setFormData] = useForm(
 		{
 			email: {
@@ -88,9 +97,16 @@ const Login = (props) => {
 					JSON.stringify({
 						email: formState.inputs.email.value,
 						password: formState.inputs.password.value,
+						basket: basket.items,
 					})
 				);
 				auth.login(responseData.userId, responseData.token);
+				if (params === "checkout") {
+					history.push(
+						`/checkout/${Math.floor(Math.random() * 1000 * 1000 * 1000)}`
+					);
+					return;
+				}
 				history.go("/");
 			} catch (err) {}
 		} else {
@@ -121,43 +137,53 @@ const Login = (props) => {
 		}
 	};
 
+	let contentForm = (
+		<>
+			<Input
+				id='email'
+				element='input'
+				type='email'
+				validators={[VALIDATOR_EMAIL()]}
+				errorText='Please enter a valid email!'
+				onInput={inputHandler}
+				placeholder='Email Address'
+			/>
+			<Input
+				id='password'
+				element='input'
+				type='password'
+				validators={[VALIDATOR_MINLENGTH(6)]}
+				errorText='Please enter a valid password of 6 characters at least!'
+				onInput={inputHandler}
+				placeholder='Password'
+			/>
+		</>
+	);
+
+	if (!isLogin)
+		contentForm = (
+			<>
+				<Input
+					id='name'
+					element='input'
+					type='text  '
+					validators={[VALIDATOR_REQUIRE()]}
+					errorText='Please enter a valid name'
+					onInput={inputHandler}
+					placeholder='Name'
+				/>
+			</>
+		);
+
 	let content = (
 		<React.Fragment>
 			{error && (
 				<h3 style={{ color: "#ed1b24", marginBottom: "10px" }}>{error}</h3>
 			)}
-			<h4>{heading}</h4>
+			<h2>{heading}</h2>
 			<div className={classes.FormElements}>
 				<form onSubmit={isSubmitHandler}>
-					{!isLogin && (
-						<Input
-							id='name'
-							element='input'
-							type='text  '
-							validators={[VALIDATOR_REQUIRE()]}
-							errorText='Please enter a valid name'
-							onInput={inputHandler}
-							placeholder='Name'
-						/>
-					)}
-					<Input
-						id='email'
-						element='input'
-						type='email'
-						validators={[VALIDATOR_EMAIL()]}
-						errorText='Please enter a valid email!'
-						onInput={inputHandler}
-						placeholder='Email Address'
-					/>
-					<Input
-						id='password'
-						element='input'
-						type='password'
-						validators={[VALIDATOR_MINLENGTH(6)]}
-						errorText='Please enter a valid password of 6 characters at least!'
-						onInput={inputHandler}
-						placeholder='Password'
-					/>
+					{contentForm}
 					{/* {!isLogin && (
 								<Input
 									id='confirmPassword'
@@ -188,33 +214,37 @@ const Login = (props) => {
 				</form>
 				{isLogin && <p className={classes.forgotPassword}>Forgot Password?</p>}
 			</div>
-			{isLogin && (
-				<div>
-					<div className={classes.OR}>
-						<h2>
-							<span>OR</span>
-						</h2>
-					</div>
+			<div>
+				<div className={classes.OR}>
+					<h2>
+						<span>OR</span>
+					</h2>
+				</div>
 
-					<div className={classes.SocialContainer}>
-						<div>
-							<span>Login via Google</span>
-							<span>
-								<img src={google} alt='Google' width='20px' />
-							</span>
-						</div>
-						<div>
-							<span>Login via Facebook</span>
-							<img src={facebook} alt='Facebook' width='20px' />
-						</div>
+				<div className={classes.SocialContainer}>
+					<div>
+						<span>Login via Google</span>
+						<span>
+							<img src={google} alt='Google' width='20px' />
+						</span>
+					</div>
+					<div>
+						<span>Login via Facebook</span>
+						<img src={facebook} alt='Facebook' width='20px' />
 					</div>
 				</div>
-			)}
-
+			</div>
 			{isLogin ? (
 				<p className={classes.NewAccount}>
 					Don't have an account?{" "}
-					<span onClick={isLoginModeHandler}>Create new Account!</span>
+					<NavLink
+						to='/signup'
+						onClick={() => {
+							// return isLoginModeHandler();
+							props.onCancel();
+						}}>
+						Create new Account!
+					</NavLink>
 				</p>
 			) : (
 				<p className={classes.NewAccount}>
@@ -231,12 +261,12 @@ const Login = (props) => {
 
 	return (
 		<div className={classes.LoginScreen}>
-			<header className={classes.header}>
+			{/* <header className={classes.header}>
 				<NavLink to='/'>
 					<img src={Logo} alt='Logo Snaxa' width='90px' />
 				</NavLink>
-			</header>
-			<section>
+			</header> */}
+			<section className={classes.section}>
 				<div className={classes.FormContainer}>{content}</div>
 			</section>
 		</div>
