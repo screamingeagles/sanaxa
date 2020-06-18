@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useCallback } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import restaurantIconSmall from "../../../shared/assets/Images/restaurantIconSmall.png";
 import masterCard from "../../../shared/assets/Images/masterCard.png";
@@ -9,17 +9,18 @@ import Button from "../../../shared/components/FormElements/Button";
 import CheckoutCardForm from "./CheckoutCardForm";
 import DeliveryAddressForn from "./DeliveryAddressForn";
 import { BasketContext } from "./../../../shared/context/basket-context";
-import { useHistory, useParams } from "react-router-dom";
-import { useBasket } from "./../../../shared/hooks/oldbaskethook";
+import { useParams, useHistory } from "react-router-dom";
+import { useHttpClient } from "../../../shared/hooks/http-hook";
+import { AuthContext } from "../../../shared/context/auth-context";
+import LoadingSpinner from "../../../shared/components/UIElements/LoadingSpinner";
 
 const Checkout = (props) => {
 	const [cod, setCOD] = useState(false);
 	const basket = useContext(BasketContext);
-	// const [totalPrice, setTotalPrice] = useState(0);
-	// const [items, setItems] = useState([]);
-	const history = useHistory();
 	const params = useParams().id;
-	// console.log(params);
+	const { isLoading, error, sendRequest, clearError } = useHttpClient();
+	const { userId, token } = useContext(AuthContext);
+	const history = useHistory();
 
 	useEffect(() => {
 		if (params) basket.showBasketHandler();
@@ -30,26 +31,29 @@ const Checkout = (props) => {
 		basket.fetchBasket();
 	}, []);
 
-	// const fetchBasket = useCallback(() => {
-	// 	const cart = JSON.parse(localStorage.getItem("cart"));
-	// 	if (cart) {
-	// 		setItems((prevState) => [...cart]);
-	// 	}
-	// 	if (!cart) {
-	// 		setItems([]);
-	// 		history.push("/");
-	// 		return;
-	// 	}
-	// 	let totPrice = 0;
-	// 	cart.map((i) => (totPrice += i.totalPrice));
-	// 	setTotalPrice(totPrice);
-	// }, [basket.items]);
-
 	const changeCOD = (bool) => {
 		setCOD(bool);
 	};
 
-	return (
+	const orderHandler = async () => {
+		try {
+			localStorage.setItem("cart", JSON.stringify({ items: [] }));
+			const resp = await sendRequest(
+				`${process.env.REACT_APP_BACKEND_URL}/checkout`,
+				"POST",
+				{
+					"Content-Type": "application/json",
+					Authorization: "Bearer " + token,
+				},
+				JSON.stringify({ userId })
+			);
+			history.replace("/user-detail/orders");
+		} catch (err) {}
+	};
+
+	let content;
+
+	content = (
 		<div className={[classes.Checkout, "Container"].join(" ")}>
 			<div className='RightContainer'>
 				<div className={classes.Checkout_PaymentContainer}>
@@ -120,7 +124,11 @@ const Checkout = (props) => {
 						</div>
 					</div>
 					<div className={classes.Checkout__Button}>
-						<Button backgroundColor='#0dd6ff' color='white' padding='10px 20%'>
+						<Button
+							backgroundColor='#0dd6ff'
+							color='white'
+							padding='10px 20%'
+							onClick={() => orderHandler()}>
 							Place Order
 						</Button>
 					</div>
@@ -170,6 +178,15 @@ const Checkout = (props) => {
 			</div>
 		</div>
 	);
+
+	if (isLoading)
+		content = (
+			<div style={{ padding: "2rem", textAlign: "center" }}>
+				<LoadingSpinner />
+			</div>
+		);
+
+	return content;
 };
 
 export default Checkout;

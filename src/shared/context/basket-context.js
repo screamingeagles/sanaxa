@@ -15,4 +15,5 @@ export const BasketContext = createContext({
 	cart: { items: [] },
 	// totalPrice: 0,
 	error: false,
+	isLoading: false,
 });

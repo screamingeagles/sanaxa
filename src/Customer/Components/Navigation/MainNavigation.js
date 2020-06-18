@@ -27,13 +27,13 @@ const MainNavigation = (props) => {
 	const history = useHistory();
 
 	const uid = auth.userId;
-	
+
 	const [show, setShow] = useState(false);
-	
+
 	const pushHeight = () => {
 		setShow(!show);
 	};
-	
+
 	const [loginShow, setLoginShow] = useState(false);
 	const loginShowHandler = () => {
 		setLoginShow((prevState) => !prevState);
@@ -41,7 +41,7 @@ const MainNavigation = (props) => {
 
 	const logoutHandler = () => {
 		auth.logout();
-		history.push("/");
+		history.go("/");
 	};
 
 	let link = "/authentication";

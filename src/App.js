@@ -17,7 +17,8 @@ function App() {
 		fetchBasket,
 		cart,
 		error,
-		clearBasket
+		clearBasket,
+		isLoading,
 	} = useBasket();
 
 	return (
@@ -33,7 +34,8 @@ function App() {
 				fetchBasket,
 				cart,
 				error,
-				clearBasket
+				clearBasket,
+				isLoading,
 			}}>
 			<div className={classes.App}>
 				<Layout />
