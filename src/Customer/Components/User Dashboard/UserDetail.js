@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useCallback, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 
 import { AuthContext } from "../../../shared/context/auth-context";
@@ -20,7 +20,7 @@ const UserDetail = (props) => {
 	const [user, setUser] = useState();
 	const [heading, setHeading] = useState();
 
-	const { isLoading, error, sendRequest, clearError } = useHttpClient();
+	const { isLoading, sendRequest } = useHttpClient();
 	const auth = useContext(AuthContext);
 	const params = useParams().id;
 	const history = useHistory();
@@ -40,7 +40,7 @@ const UserDetail = (props) => {
 			} catch (err) {}
 		};
 		fetchUser();
-	}, [sendRequest]);
+	}, [sendRequest, auth.userId]);
 
 	useEffect(() => {
 		if (params === "account") {

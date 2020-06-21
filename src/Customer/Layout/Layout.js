@@ -1,5 +1,5 @@
-import React, { Suspense, useContext, useEffect, useState } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import React, { Suspense } from "react";
+import { Switch, Route } from "react-router-dom";
 
 import MainNavigation from "./../Components/Navigation/MainNavigation";
 import Login from "../Components/Login/Login";
@@ -8,7 +8,7 @@ import LoadingSpinner from "./../../shared/components/UIElements/LoadingSpinner"
 
 import { AuthContext } from "../../shared/context/auth-context";
 import { useAuth } from "../../shared/hooks/auth-hook";
-import Basket from "./../Components/Basket/Basket";
+// import Basket from "./../Components/Basket/Basket";
 
 import classes from "./Layout.module.css";
 
@@ -32,7 +32,7 @@ const SignUp = React.lazy(() => import("../Components/Login/SignUp"));
 // import Home from "./../Components/Home/Home";
 
 const Layout = (props) => {
-	const { login, logout, userId, firstLogin, token } = useAuth();
+	const { login, logout, userId, token } = useAuth();
 	let routes;
 	if (!token) {
 		routes = (
@@ -47,12 +47,6 @@ const Layout = (props) => {
 				</Route>
 				<Route path='/restaurants' component={AllRestaurants} />
 				<Route path='/restaurant/:id/:name' component={SingleRestaurant} />
-				{/* <Route path='/checkout' exact component={Checkout} /> */}
-				{/* <Route path='/checkout/:id' component={Checkout} /> */}
-				{/* <Route path='/basket' component={Basket} /> */}
-				{/* <Redirect from='/checkout' to='/authentication' /> */}
-				{/* <Redirect to='/' /> */}
-				{/* <Route exact path='/*' component={() => <Redirect to='/auth' />} /> */}
 				<Route component={Home} />
 			</Switch>
 		);
@@ -66,11 +60,6 @@ const Layout = (props) => {
 				<Route path='/checkout' exact component={Checkout} />
 				<Route path='/user-detail/:id' component={UserDetail} />
 				<Route path='/user-detail' component={UserDetail} />
-				{/* <Route exact path='/*' component={() => <Redirect to='/auth' />} /> */}
-				{/* <Route path='/checkout/:id' component={Checkout} /> */}
-				{/* <Route path='/cart/:id' component={Cart} /> */}
-				{/* <Route path='/orders/:id' component={Restaurant} /> */}
-				{/* <Redirect to='/' /> */}
 				<Route component={Home} />
 			</Switch>
 		);

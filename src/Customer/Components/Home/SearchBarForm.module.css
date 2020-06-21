@@ -29,7 +29,7 @@
     opacity: 1;
 }
 
-.inputContainer img {
+.inputContainer img   {
     width: 6%;
     margin: 0 .3rem;
     cursor: pointer;

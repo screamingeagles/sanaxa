@@ -24,7 +24,7 @@
     color: var(--primary-red);
 }
 
-.ImageName img {
+.ImageName img   {
     margin-right: 10px;
 }
 

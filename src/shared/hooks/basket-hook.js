@@ -1,18 +1,18 @@
-import React, { useState, useEffect, useCallback, useContext } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Modal from "../components/UIElements/Modal";
 import Basket from "../../Customer/Components/Basket/Basket";
 import { useHttpClient } from "./http-hook";
-import { AuthContext } from "../context/auth-context";
+// import { AuthContext } from "../context/auth-context";
 import { useAuth } from "./auth-hook";
 
 import openSocket from "socket.io-client";
 
 export const useBasket = () => {
-	const auth = useContext(AuthContext);
+	// const auth = useContext(AuthContext);
 	const { token, userId } = useAuth();
 	const [showBasket, setShowBasket] = useState(false);
 	const [totalPrice, setTotalPrice] = useState(0);
-	const [items, setItems] = useState([]);
+	// const [items, setItems] = useState([]);
 	const [cart, setCart] = useState({ items: [] });
 	const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
@@ -21,6 +21,44 @@ export const useBasket = () => {
 	};
 
 	//  ------------------------------------------------------------------- SOCKET IMPLEMENTATION
+
+	const fetchCart = useCallback(
+		async (cart, remove) => {
+			const tempCart = JSON.parse(localStorage.getItem("cart"));
+			if (cart.items.length === 0) {
+				console.log("If");
+				localStorage.setItem("cart", JSON.stringify({ items: [] }));
+				if (token && userId) {
+					try {
+						await sendRequest(
+							`${process.env.REACT_APP_BACKEND_URL}/oldbasket`,
+							"POST",
+							{
+								"Content-Type": "application/json",
+								Authorization: "Bearer " + token,
+							},
+							JSON.stringify({
+								userId,
+								tempCart,
+							})
+						);
+						setCart(tempCart);
+					} catch (error) {}
+				}
+			} else {
+				console.log("Else");
+				setCart(cart);
+				localStorage.setItem("cart", JSON.stringify(cart));
+			}
+
+			let totPrice = 0;
+			tempCart.items.map((i) => {
+				return totPrice += parseFloat(i.quantity) * parseFloat(i.price);
+			});
+			setTotalPrice(totPrice);
+		},
+		[sendRequest, token, userId]
+	);
 
 	useEffect(() => {
 		const socket = openSocket(`${process.env.REACT_APP_BACKEND_URL}`);
@@ -36,55 +74,15 @@ export const useBasket = () => {
 				fetchCart(data.user, data.remove);
 			}
 		});
-	}, [openSocket, userId]);
-
-	const fetchCart = async (cart, remove) => {
-		const tempCart = JSON.parse(localStorage.getItem("cart"));
-		if (cart.items.length === 0) {
-			console.log("If");
-			localStorage.setItem("cart", JSON.stringify({ items: [] }));
-			if (token && userId) {
-				try {
-					const responseData = await sendRequest(
-						`${process.env.REACT_APP_BACKEND_URL}/oldbasket`,
-						"POST",
-						{
-							"Content-Type": "application/json",
-							Authorization: "Bearer " + token,
-						},
-						JSON.stringify({
-							userId,
-							tempCart,
-						})
-					);
-					setCart(tempCart);
-				} catch (error) {}
-			}
-		} else {
-			console.log("Else");
-			setCart(cart);
-			localStorage.setItem("cart", JSON.stringify(cart));
-		}
-
-		let totPrice = 0;
-		tempCart.items.map((i) => {
-			totPrice += parseFloat(i.quantity) * parseFloat(i.price);
-		});
-		setTotalPrice(totPrice);
-	};
+	}, [userId, fetchCart]);
 
 	//  ------------------------------------------------------------------- SOCKET IMPLEMENTATION
 
 	//  ------------------------------------------------------------------- FIRST CART GETTING FROM DB
 
-	useEffect(() => {
-		if (token && userId) fetchBasket();
-		if (!token && !userId) fetchOfflineBasket();
-	}, [token, userId]);
-
-	const fetchBasket = async () => {
+	const fetchBasket = useCallback(async () => {
 		let tempCart;
-		let tempCartTrue;
+		// let tempCartTrue;
 		try {
 			const responseData = await sendRequest(
 				`${process.env.REACT_APP_BACKEND_URL}/fetchbasket`,
@@ -102,13 +100,13 @@ export const useBasket = () => {
 			setCart(responseData.user);
 			let totPrice = 0;
 			tempCart.items.map((i) => {
-				totPrice += parseFloat(i.quantity) * parseFloat(i.price);
+				return (totPrice += parseFloat(i.quantity) * parseFloat(i.price));
 			});
 			setTotalPrice(totPrice);
 			// localStorage.setItem("cart", JSON.stringify(responseData.user));
 			// if (responseData.user.items.length > 0) return;
 		} catch (error) {}
-	};
+	}, [sendRequest, token, userId]);
 
 	const fetchOfflineBasket = () => {
 		const cart = JSON.parse(localStorage.getItem("cart"));
@@ -129,6 +127,11 @@ export const useBasket = () => {
 		setCart(cart);
 		// console.log("cart", cart);
 	};
+
+	useEffect(() => {
+		if (token && userId) fetchBasket();
+		if (!token && !userId) fetchOfflineBasket();
+	}, [token, userId, fetchBasket]);
 	//  ------------------------------------------------------------------- FIRST CART GETTING
 
 	const setBasketData = (
@@ -149,7 +152,7 @@ export const useBasket = () => {
 		};
 		const uploadBasket = async () => {
 			try {
-				const responseData = await sendRequest(
+				await sendRequest(
 					`${process.env.REACT_APP_BACKEND_URL}/addtobasket`,
 					"POST",
 					{
@@ -229,7 +232,7 @@ export const useBasket = () => {
 	const addQuantityToBasket = async (quantity, productId) => {
 		if (token && userId) {
 			try {
-				const responseData = await sendRequest(
+				await sendRequest(
 					`${process.env.REACT_APP_BACKEND_URL}/addquantity`,
 					"POST",
 					{
@@ -289,7 +292,7 @@ export const useBasket = () => {
 		}
 		if (token && userId) {
 			try {
-				const responseData = await sendRequest(
+				await sendRequest(
 					`${process.env.REACT_APP_BACKEND_URL}/removeproduct`,
 					"POST",
 					{
@@ -310,7 +313,7 @@ export const useBasket = () => {
 		setCart({ items: [] });
 		if (token && userId) {
 			try {
-				const responseData = await sendRequest(
+				await sendRequest(
 					`${process.env.REACT_APP_BACKEND_URL}/clearbasket`,
 					"POST",
 					{

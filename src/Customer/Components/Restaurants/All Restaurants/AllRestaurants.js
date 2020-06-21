@@ -19,7 +19,7 @@ import Categories from "./Categories";
 import StayUpToDateForm from "./StayUpToDateForm";
 
 const AllRestaurants = (props) => {
-	const { isLoading, error, sendRequest, clearError } = useHttpClient();
+	const { isLoading, sendRequest } = useHttpClient();
 	const [allRestaurants, setAllRestaurants] = useState([]);
 
 	useEffect(() => {
@@ -32,7 +32,7 @@ const AllRestaurants = (props) => {
 			} catch (error) {}
 		};
 		fetchAllRestaurants();
-	}, []);
+	}, [sendRequest]);
 
 	let content;
 

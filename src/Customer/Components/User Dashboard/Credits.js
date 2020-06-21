@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import classes from "./Credits.module.css";
-import Input from "./../../../shared/components/FormElements/Input";
+// import Input from "./../../../shared/components/FormElements/Input";
 import Button from "../../../shared/components/FormElements/Button";
 
 const Credits = (props) => {

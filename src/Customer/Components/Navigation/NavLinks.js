@@ -1,11 +1,11 @@
-import React, { useContext } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import classes from "./NavLinks.module.css";
-import { AuthContext } from "../../../shared/context/auth-context";
+// import { AuthContext } from "../../../shared/context/auth-context";
 
 const NavLinks = (props) => {
-	const auth = useContext(AuthContext);
-	const uid = auth.userId;
+	// const auth = useContext(AuthContext);
+	// const uid = auth.userId;
 	return (
 		<nav
 			className={[classes.NavLink, props.footer && classes.NavLinkFooter].join(

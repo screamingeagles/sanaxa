@@ -1,15 +1,13 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import classes from "./AddOnItems.module.css";
 import Button from "../../../shared/components/FormElements/Button";
-import { useBasket } from "./../../../shared/hooks/basket-hook";
 import { useParams } from "react-router-dom";
-import { BasketContext } from './../../../shared/context/basket-context';
 
 const AddOnItems = (props) => {
 	const [quantity, setQuantity] = useState(1);
 	const restaurantId = useParams().id;
 	const RestaurantName = useParams().name.replace("+", " ");
-	
+
 	// console.log(restaurantId, RestaurantName);
 
 	const increaseQuantity = (number) => {
@@ -24,7 +22,7 @@ const AddOnItems = (props) => {
 				<h3>Add On Items</h3>
 				<div className={classes.AddOnItems__List}>
 					<div className={classes.AddOnItems__List_ImageHeading}>
-						<img src={props.img} alt='' height='35px' />
+						<img src={props.img} height='35px' alt="" />
 						<h4>{props.name}</h4>
 					</div>
 					<div className={classes.AddOnItems__List_PriceForm}>

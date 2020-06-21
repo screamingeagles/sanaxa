@@ -2,17 +2,17 @@ import React from "react";
 
 import classes from "./NewsLetter.module.css";
 import Button from "../../../shared/components/FormElements/Button";
-import Input from "./../../../shared/components/FormElements/Input";
+// import Input from "./../../../shared/components/FormElements/Input";
 import {
 	VALIDATOR_EMAIL,
-	VALIDATOR_REQUIRE,
+	// VALIDATOR_REQUIRE,
 } from "./../../../shared/util/validators";
 import { useForm } from "../../../shared/hooks/form-hook";
 
 import newsletter from "../../../shared/assets/Images/newsletter.png";
 
 const NewsLetter = (props) => {
-	const [formState, inputHandler, setFormData] = useForm(
+	const [ inputHandler] = useForm(
 		{
 			email: {
 				value: "",

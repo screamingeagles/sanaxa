@@ -26,7 +26,7 @@
     margin: 1.2rem 0;
 }
 
-.FooterContainer_Block_Left_SocialIcons img {
+.FooterContainer_Block_Left_SocialIcons img   {
     margin-right: .3rem;
     cursor: pointer;
 }
@@ -46,7 +46,7 @@
     justify-content: space-between;
 }
 
-.FooterContainer_Block_Right_EmailIcon img {
+.FooterContainer_Block_Right_EmailIcon img   {
     height: 20px;
     margin-right: 10px;
 }

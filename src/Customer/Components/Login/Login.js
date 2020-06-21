@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { useHistory, NavLink, useParams } from "react-router-dom";
 
-import Logo from "../../../shared/assets/Images/snaxaLogo.svg";
+// import Logo from "../../../shared/assets/Images/snaxaLogo.svg";
 import google from "../../../shared/assets/Images/google.png";
 import facebook from "../../../shared/assets/Images/facebook.png";
 
@@ -9,7 +9,7 @@ import {
 	VALIDATOR_EMAIL,
 	VALIDATOR_MINLENGTH,
 	VALIDATOR_REQUIRE,
-	VALIDATOR_CONFIRMPASSWORD,
+	// VALIDATOR_CONFIRMPASSWORD,
 } from "./../../../shared/util/validators";
 
 import { useForm } from "./../../../shared/hooks/form-hook";
@@ -22,7 +22,7 @@ import Button from "./../../../shared/components/FormElements/Button";
 import LoadingSpinner from "./../../../shared/components/UIElements/LoadingSpinner";
 
 import classes from "./Login.module.css";
-import SignUp from "./SignUp";
+// import SignUp from "./SignUp";
 
 const Login = (props) => {
 	const auth = useContext(AuthContext);
@@ -30,7 +30,7 @@ const Login = (props) => {
 	const history = useHistory();
 
 	const [isLogin, setIsLogin] = useState(true);
-	const [submitting, setIsSubmitting] = useState(false);
+	// const [submitting, setIsSubmitting] = useState(false);
 
 	const params = useParams().checkout;
 
@@ -111,7 +111,7 @@ const Login = (props) => {
 			} catch (err) {}
 		} else {
 			try {
-				const responseData = await sendRequest(
+				await sendRequest(
 					`${process.env.REACT_APP_BACKEND_URL}/signup`,
 					"POST",
 					{
@@ -263,7 +263,7 @@ const Login = (props) => {
 		<div className={classes.LoginScreen}>
 			{/* <header className={classes.header}>
 				<NavLink to='/'>
-					<img src={Logo} alt='Logo Snaxa' width='90px' />
+					<img   src={Logo} alt='Logo Snaxa' width='90px' />
 				</NavLink>
 			</header> */}
 			<section className={classes.section}>

@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from "react";
+import React from "react";
 import { BasketContext } from "./shared/context/basket-context";
 import { useBasket } from "./shared/hooks/basket-hook";
 

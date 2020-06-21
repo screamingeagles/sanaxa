@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
-import { useParams, NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 import LoadingSpinner from "./../../../../shared/components/UIElements/LoadingSpinner";
 
@@ -14,16 +14,16 @@ import MostRelatedItems from "./MostRatedItems";
 
 import DescriptionReviews from "./DescriptionReviews";
 import CategoryView from "./CategoryView";
-import Modal from "./../../../../shared/components/UIElements/Modal";
+// import Modal from "./../../../../shared/components/UIElements/Modal";
 
-import classes from "./SingleRestaurant.module.css";
+// import classes from "./SingleRestaurant.module.css";
 // import AddOnItems from "./../../Bucket/AddOnItems";
 
 const SingleRestaurant = (props) => {
 	const [restaurant, setRestaurant] = useState([]);
 	const restaurantId = useParams().id;
 	const RestaurantName = useParams().name.replace("+", " ");
-	const { isLoading, error, sendRequest, clearError } = useHttpClient();
+	const { isLoading, sendRequest } = useHttpClient();
 
 	useEffect(() => {
 		const fetchAllRestaurants = async () => {
@@ -43,7 +43,7 @@ const SingleRestaurant = (props) => {
 			} catch (error) {}
 		};
 		fetchAllRestaurants();
-	}, []);
+	}, [restaurantId, sendRequest]);
 
 	let content;
 

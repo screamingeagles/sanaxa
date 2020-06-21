@@ -5,7 +5,7 @@ import { useForm } from "./../../../shared/hooks/form-hook";
 import { VALIDATOR_REQUIRE } from "./../../../shared/util/validators";
 
 const DeliveryAddressForn = (props) => {
-	const [formState, inputHandler, setFormData] = useForm(
+	const [inputHandler] = useForm(
 		{
 			address1: {
 				value: "",

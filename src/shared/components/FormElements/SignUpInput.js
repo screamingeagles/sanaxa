@@ -1,4 +1,4 @@
-import React, { useReducer, useEffect, useState } from "react";
+import React, { useReducer, useEffect, useCallback } from "react";
 
 import { validate } from "../../util/validators";
 
@@ -53,10 +53,6 @@ const SignUpInput = (props) => {
 		onInput(id, value, isValid);
 	}, [id, onInput, value, isValid]);
 
-	useEffect(() => {
-		oldInputHandler();
-	}, []);
-
 	const onChangeHandler = (event) => {
 		dispatch({
 			type: "CHANGE",
@@ -73,25 +69,32 @@ const SignUpInput = (props) => {
 		});
 	};
 
-	const oldInputHandler = (id, value, isValid) => {
-		if (props.oldInput) {
-			let v;
-			if (new Date(props.oldInput).getFullYear()) {
-				let year = new Date(props.oldInput).getFullYear();
-				let month = new Date(props.oldInput).getMonth() + 1;
-				let date = new Date(props.oldInput).getDate();
-				if (month < 10 && date < 10) v = `${year}-0${month}-0${date}`;
-				else if (month < 10) v = `${year}-0${month}-${date}`;
-				else if (date < 10) v = `${year}-${month}-0${date}`;
-			} else v = props.oldInput;
+	const oldInputHandler = useCallback(
+		(id, value, isValid) => {
+			if (props.oldInput) {
+				let v;
+				if (new Date(props.oldInput).getFullYear()) {
+					let year = new Date(props.oldInput).getFullYear();
+					let month = new Date(props.oldInput).getMonth() + 1;
+					let date = new Date(props.oldInput).getDate();
+					if (month < 10 && date < 10) v = `${year}-0${month}-0${date}`;
+					else if (month < 10) v = `${year}-0${month}-${date}`;
+					else if (date < 10) v = `${year}-${month}-0${date}`;
+				} else v = props.oldInput;
 
-			dispatch({
-				type: "OLD",
-				val: v,
-				validators: true,
-			});
-		}
-	};
+				dispatch({
+					type: "OLD",
+					val: v,
+					validators: true,
+				});
+			}
+		},
+		[props.oldInput]
+	);
+
+	useEffect(() => {
+		oldInputHandler();
+	}, [oldInputHandler]);
 
 	const onTouchHandler = () => {
 		dispatch({

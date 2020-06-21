@@ -50,7 +50,7 @@
 	opacity: 0.4;
 }
 
-.Checkout_PaymentMode_Box img {
+.Checkout_PaymentMode_Box img   {
 	margin-bottom: 10px;
 	align-self: center;
 }

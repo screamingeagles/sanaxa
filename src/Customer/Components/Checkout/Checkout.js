@@ -18,18 +18,18 @@ const Checkout = (props) => {
 	const [cod, setCOD] = useState(false);
 	const basket = useContext(BasketContext);
 	const params = useParams().id;
-	const { isLoading, error, sendRequest, clearError } = useHttpClient();
+	const { isLoading, sendRequest } = useHttpClient();
 	const { userId, token } = useContext(AuthContext);
 	const history = useHistory();
 
 	useEffect(() => {
 		if (params) basket.showBasketHandler();
-	}, []);
+	}, [params, basket]);
 
 	useEffect(() => {
 		// console.log(1);
 		basket.fetchBasket();
-	}, []);
+	}, [basket]);
 
 	const changeCOD = (bool) => {
 		setCOD(bool);
@@ -38,7 +38,7 @@ const Checkout = (props) => {
 	const orderHandler = async () => {
 		try {
 			localStorage.setItem("cart", JSON.stringify({ items: [] }));
-			const resp = await sendRequest(
+			await sendRequest(
 				`${process.env.REACT_APP_BACKEND_URL}/checkout`,
 				"POST",
 				{
@@ -69,7 +69,7 @@ const Checkout = (props) => {
 								classes.Checkout_PaymentMode_Box,
 								cod && classes.Inactive,
 							].join(" ")}>
-							<img src={masterCard} />
+							<img src={masterCard} alt='' />
 							<p>Pay With Card</p>
 						</div>
 						<div
@@ -78,7 +78,7 @@ const Checkout = (props) => {
 								classes.Checkout_PaymentMode_Box,
 								!cod && classes.Inactive,
 							].join(" ")}>
-							<img src={cashIcon} />
+							<img src={cashIcon} alt='' />
 							<p>Cash on Delivery</p>
 						</div>
 					</div>

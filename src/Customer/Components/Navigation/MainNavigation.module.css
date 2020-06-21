@@ -21,7 +21,7 @@
     margin: 0rem 1.5rem;
 }
 
-.Icons img {
+.Icons img   {
     margin: 0 0.3rem;
 }
 
@@ -138,7 +138,7 @@
     font-weight: bold;
 }
 
-.myAccount__Dropdown_Item img {
+.myAccount__Dropdown_Item img   {
     margin-left: 15px;
 }
 
@@ -165,7 +165,7 @@
         padding: 1rem;
     }
 
-    .Icons img {
+    .Icons img   {
         margin: 0 1.2rem;
     }
 

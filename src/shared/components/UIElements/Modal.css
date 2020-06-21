@@ -41,7 +41,7 @@
         width: 95%;
     }
 
-    .closeIcon img {
+    .closeIcon img   {
         height: 35px;
     }
 }
@@ -75,6 +75,6 @@
     cursor: pointer;
 }
 
-.closeIcon img {
+.closeIcon img   {
     height: 30px;
 }

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useCallback } from "react";
 import classes from "./Orders.module.css";
 
 import myordersempty from "../../../shared/assets/Images/myordersempty.svg";
@@ -8,14 +8,10 @@ import { AuthContext } from "../../../shared/context/auth-context";
 
 const Orders = (props) => {
 	const [orders, setOrders] = useState(false);
-	const { isLoading, error, sendRequest, clearError } = useHttpClient();
+	const { sendRequest } = useHttpClient();
 	const { userId, token } = useContext(AuthContext);
 
-	useEffect(() => {
-		orderHandler();
-	}, []);
-
-	const orderHandler = async () => {
+	const orderHandler = useCallback(async () => {
 		try {
 			const resp = await sendRequest(
 				`${process.env.REACT_APP_BACKEND_URL}/fetchorder`,
@@ -28,12 +24,16 @@ const Orders = (props) => {
 			);
 			setOrders(resp.order);
 		} catch (err) {}
-	};
+	}, [sendRequest, token, userId]);
+
+	useEffect(() => {
+		orderHandler();
+	}, [orderHandler]);
 
 	let content;
 	content = (
 		<React.Fragment>
-			<img src={myordersempty} width='120px' />
+			<img alt='' src={myordersempty} width='120px' />
 			<p>There are no orders to display.</p>
 		</React.Fragment>
 	);

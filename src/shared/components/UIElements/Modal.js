@@ -30,7 +30,7 @@ const ModalOverlay = (props) => {
 				)}
 			</form>
 			<div className='closeIcon'>
-				<img src={closeIcon} height='45px' onClick={props.onCancel} />
+				<img src={closeIcon} height='45px' alt="" onClick={props.onCancel} />
 			</div>
 		</div>
 	);

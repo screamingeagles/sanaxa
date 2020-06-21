@@ -40,7 +40,7 @@
     font-size: .9rem;
 }
 
-.CategoryView__Container_ImageName img {
+.CategoryView__Container_ImageName img   {
     border-radius: 6px;
 }
 

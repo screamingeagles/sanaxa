@@ -53,8 +53,8 @@
     font-size: 12px;
 }
 
-.inputContainer img,
-.inputContainer__Hotel img {
+.inputContainer img  ,
+.inputContainer__Hotel img   {
     width: 6%;
     margin: 0 .3rem;
     cursor: pointer;

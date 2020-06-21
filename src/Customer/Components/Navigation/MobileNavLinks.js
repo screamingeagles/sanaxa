@@ -5,7 +5,6 @@ import { AuthContext } from "../../../shared/context/auth-context";
 
 const MobileNavLinks = (props) => {
 	const auth = useContext(AuthContext);
-	const uid = auth.userId;
 	return (
 		<nav
 			className={[classes.NavLink, props.footer && classes.NavLinkFooter].join(
