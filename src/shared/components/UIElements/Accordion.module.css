@@ -1,0 +1,28 @@
+.Accordion {
+    display: flex;
+    flex-flow: column;
+}
+
+.Label {
+    display: flex;
+    cursor: pointer;
+}
+
+.Body {
+    /* height: 0px; */
+    overflow: hidden;
+    transform: scaleY(0);
+    height: 0;
+    /* display: none; */
+    /* display: flex; */
+    flex: 0;
+    transition: flex .3s ease-out;
+}
+
+.Body.Active {
+    flex: 1 !important;
+    /* height: auto; */
+    /* display: block;
+    height: auto;*/
+    transform: scaleY(1);
+}

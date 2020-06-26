@@ -17,7 +17,9 @@
 .SortBy__Container_Scrollable {
     /* overflow-x: scroll; */
     display: flex;
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; */
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .SortBy__Container .SortBy__Container_Scrollable>p {
@@ -34,8 +36,19 @@
     opacity: .15 !important;
 }
 
-@media (max-width:630px) {
+@media (max-width:500px) {
+    .SortBy__Container {
+        flex-flow: column;
+        align-items: center;
+        justify-content: center;
+    }
+
     .SortBy__Container_Scrollable {
-        overflow-x: scroll;
+        /* overflow-x: scroll; */
+        
+    }
+
+    .SortBy__Container .SortBy__Container_Scrollable>p {
+        margin: 0 .2rem;
     }
 }

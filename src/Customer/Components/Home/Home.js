@@ -18,14 +18,14 @@ const Home = (props) => {
 		<div className={classes.Home}>
 			<div className={classes.SliderBanner}>
 				<img src={Slider} alt='Slider Home' width='100%' />
-				<div className={classes.SliderBottomBar}>
-					<SliderBottomBar />
-				</div>
 				<div className={classes.SearchBar}>
 					<p>
 						What do you want to <span style={{ fontWeight: "500" }}>EAT?</span>
 					</p>
-					<SearchBarForm />
+					<SearchBarForm placeholder='Try any Restaurant...' button='Search' />
+				</div>
+				<div className={classes.SliderBottomBar}>
+					<SliderBottomBar />
 				</div>
 			</div>
 			<div className={classes.homeContainer}>

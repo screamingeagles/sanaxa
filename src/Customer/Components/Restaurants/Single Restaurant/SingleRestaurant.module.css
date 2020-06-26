@@ -1,57 +1,88 @@
-@import "../../../../shared/assets/CSS/colors.css";
+@import '../../../../shared/assets/CSS/colors.css';
 
-.Restaurant {
-    margin: 0 auto;
-    text-align: left;
+.RestaurantDetails {
+    display: flex;
     width: 100%;
-    padding: 1rem;
-}
-
-.SingleFoodItem {
-    /* width: calc(45% - 2rem); */
-    /* min-width: calc(45% - 2rem); */
-    /* max-width: 450px; */
-    /* width: 40%; */
-    margin: 0 auto;
-    display: flex;
     justify-content: space-between;
-    box-shadow: 2px 3px 6px -1px #ccc;
-    padding: 1.5rem;
 }
 
-.ImageName {
+.RestaurantDetails_Name {
     display: flex;
-    color: var(--primary-red);
 }
 
-.ImageName img   {
-    margin-right: 10px;
+.RestaurantDetails_Name img {
+    margin-right: 15px;
+    border: 1px solid var(--primary-red);
+    padding: 2px;
 }
 
-.priceButton {
+.RestaurantDetails_Name h3 {
+    color: var(--primary-dark-red);
+}
+
+.RestaurantDetails_Name p {
+    color: var(--primary-gray);
+    margin: 18px 0;
+}
+
+.RestaurantDetails_Details {
+    text-align: right;
+}
+
+.RestaurantDetails_Details h4 {
+    color: green;
+}
+
+.RestaurantDetails_Details p {
+    color: var(--primary-gray);
+    margin: 18px 0;
+}
+
+.RestaurantDetails_Details>div img {
+    margin-left: 10px;
+}
+
+.Tabs {
     display: flex;
-    color: var(--primary-red);
-    justify-content: space-between;
-    flex-direction: column;
+    width: 100%;
+    border-bottom: 1px solid #efefef;
 }
 
-.ImageName {
-    color: var(--primary-red);
+.Tab {
+    width: 24%;
+    padding: 10px 15px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.2rem;
+    transition: all .1s ease;
+}
+
+.Tab:hover,
+.Active {
     font-weight: bold;
+    border-bottom: 2px solid var(--primary-dark-red);
 }
 
-@media (max-width: 768px) {
-    .SingleFoodItem {
-        /* display: block; */
+.ContentContainer {
+    display: flex;
+    width: 100%;
+}
+
+.Content {
+    width: 72%;
+    margin: 0 10px;
+}
+
+.Cart {
+    width: 28%;
+}
+
+@media (max-width: 1020px) {
+    .Content {
+        width: 98%;
     }
 
-    .priceButton {
-        margin: 1.5rem 0;
-        justify-content: space-evenly;
-        flex-direction: row;
-    }
-
-    .priceButton h4 {
-        width: 100%;
+    .Cart {
+        display: none;
     }
 }

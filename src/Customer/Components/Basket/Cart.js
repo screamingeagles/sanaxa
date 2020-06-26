@@ -1,43 +1,30 @@
-// import React, { useEffect, useContext, useState } from "react";
-// import { useHttpClient } from "../../shared/hooks/http-hook";
-// import { AuthContext } from "../../shared/context/auth-context";
+import React from "react";
+import classes from "./Cart.module.css";
 
-// const Cart = (props) => {
-// 	const { isLoading, error, sendRequest, clearError } = useHttpClient();
-// 	const auth = useContext(AuthContext);
-// 	const [cart, setCart] = useState();
+import myordersempty from "../../../shared/assets/Images/myordersempty.svg";
 
-// 	useEffect(() => {
-// 		const fetchCart = async () => {
-// 			try {
-// 				const responseData = await sendRequest(
-// 					`${process.env.REACT_APP_BACKEND_URL}/${auth.userId}/cart`,
-// 					"POST",
-// 					{
-// 						"Content-Type": "application/json",
-// 					},
-// 					JSON.stringify({
-// 						uid: auth.userId,
-// 					})
-// 				);
-// 				setCart(responseData);
-// 			} catch (err) {}
-// 		};
-// 		fetchCart();
-// 	}, []);
+const Cart = (props) => {
+	return (
+		<div className={classes.Cart}>
+			<p>Your Cart</p>
+			<div
+				style={{
+					display: "flex",
+					height: "75%",
+					justifyContent: "center",
+					alignItems: "center",
+					flexFlow: "column",
+				}}>
+				<img
+					src={myordersempty}
+					alt=''
+					width='55px'
+					style={{ marginBottom: "10px" }}
+				/>
+				<p>There are no items in your cart</p>
+			</div>
+		</div>
+	);
+};
 
-// 	let content;
-// 	if (cart)
-// 		content = cart.user.map((i) => {
-// 			// return console.log(i);
-// 			return (
-// 				<div>
-// 					<p>{i.restaurantName}</p>
-// 					<p>{i.id}</p>
-// 				</div>
-// 			);
-// 		});
-// 	return <div>{content}</div>;
-// };
-
-// export default Cart;
+export default Cart;

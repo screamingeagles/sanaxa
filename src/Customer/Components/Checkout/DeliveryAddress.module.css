@@ -1,0 +1,41 @@
+@import '../../../shared/assets/CSS/colors.css';
+
+.DeliveryAddress {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.DeliveryAddress_Heading {
+    border-bottom: 1px solid #ccc;
+    padding: .8rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.DeliveryAddress_Heading p {
+    font-size: .825rem;
+    color: green;
+    cursor: pointer;
+}
+
+.DeliveryAddress_Details {
+    padding: 1.4rem .8rem .8rem .8rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    flex-flow: column;
+}
+
+.DeliveryAddress_Details_Span {
+    margin-bottom: 7px;
+    font-size: 14px;
+}
+
+
+@media (max-width : 768px) {}

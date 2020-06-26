@@ -1,0 +1,126 @@
+@import '../../../shared/assets/CSS/colors.css';
+
+.Form [type="radio"]:checked,
+.Form [type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+    padding: 1rem;
+
+
+}
+
+.Form [type="radio"]:checked+label,
+.Form [type="radio"]:not(:checked)+label {
+
+    position: relative;
+    padding: 1rem;
+    padding-left: 40px;
+    cursor: pointer;
+    line-height: 20px;
+    // display: inline-block;
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    font-weight: bold;
+    border-radius: 2px;
+    border: 1px solid black;
+
+}
+
+.Form [type="radio"]:checked+label {
+    border: 1px solid var(--primary-dark-red);
+
+}
+
+.Form [type="radio"]:checked+label:before,
+.Form [type="radio"]:not(:checked)+label:before {
+
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 18px;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #ddd;
+    border-radius: 100%;
+    background: #fff;
+
+}
+
+.Form [type="radio"]:checked+label:after,
+.Form [type="radio"]:not(:checked)+label:after {
+
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: var(--primary-dark-red);
+    position: absolute;
+    top: 22px;
+    left: 11px;
+    border-radius: 100%;
+
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+
+
+}
+
+.Form [type="radio"]:not(:checked)+label:after {
+
+    opacity: 0;
+    -Febkit-transform: scale(0);
+    tFansform: scale(0);
+}
+
+.Form [type="radio"]:checked+label:after {
+
+    opacity: 1;
+    -Febkit-transform: scale(1);
+    tFansform: scale(1);
+}
+
+.CheckoutForm {
+    border: 1px solid var(--primary-dark-red);
+    padding: 1rem
+}
+
+.CheckoutForm_Input {
+    margin-bottom: 10px;
+}
+
+.CheckoutForm_Input input {
+    padding: .4rem .5rem;
+    border-radius: 2px;
+    border: 1px solid #a8a8a8;
+}
+
+.CheckoutForm_Select select {
+    margin-right: 10px;
+    padding: .2rem .2rem;
+    border-radius: 2px;
+    border: 1px solid #a8a8a8;
+}
+
+.CheckoutForm_Input h4 {
+    margin-bottom: 10px;
+}
+
+.CheckoutForm_Select {
+    width: 20%;
+}
+
+.CheckoutForm,
+input::-webkit-outer-spin-button,
+.CheckoutForm,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+.CheckoutForm,
+input[type=number] {
+    -moz-appearance: textfield;
+}

@@ -12,9 +12,9 @@ import Address from "./Address";
 import Credits from "./Credits";
 
 import classes from "./UserDetail.module.css";
-import Account from "./Account";
+// import Account from "./Account";
 
-// const Account = React.lazy(() => import("./Account"));
+const Account = React.lazy(() => import("./Account"));
 
 const UserDetail = (props) => {
 	const [user, setUser] = useState();
@@ -33,14 +33,16 @@ const UserDetail = (props) => {
 					"POST",
 					{
 						"Content-Type": "application/json",
+						Authorization: "Bearer " + auth.token,
 					},
 					JSON.stringify({ userId: auth.userId })
 				);
+				console.log(1);
 				setUser(resp.user);
 			} catch (err) {}
 		};
 		fetchUser();
-	}, [sendRequest, auth.userId]);
+	}, [sendRequest, auth.userId, auth.token]);
 
 	useEffect(() => {
 		if (params === "account") {

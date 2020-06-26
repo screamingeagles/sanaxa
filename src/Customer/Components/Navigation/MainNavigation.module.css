@@ -21,7 +21,7 @@
     margin: 0rem 1.5rem;
 }
 
-.Icons img   {
+.Icons img {
     margin: 0 0.3rem;
 }
 
@@ -126,6 +126,7 @@
     align-items: center;
     padding: .8rem .5rem;
     text-decoration: none;
+    transition: all 0.3s ease;
 }
 
 .myAccount__Dropdown_Item:hover {
@@ -135,10 +136,10 @@
 .myAccount__Dropdown_Item p {
     margin-left: 15px;
     color: black;
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 
-.myAccount__Dropdown_Item img   {
+.myAccount__Dropdown_Item img {
     margin-left: 15px;
 }
 
@@ -165,7 +166,7 @@
         padding: 1rem;
     }
 
-    .Icons img   {
+    .Icons img {
         margin: 0 1.2rem;
     }
 

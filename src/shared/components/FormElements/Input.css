@@ -1,5 +1,5 @@
 .form-control {
-    margin: 1rem 0;
+    margin: .6rem 0;
 }
 
 .form-control label,
@@ -16,10 +16,10 @@
 .form-control input,
 .form-control textarea {
     width: 100%;
-    /* font: inherit; */
+    font: inherit;
     border: 1px solid #d3d2d2;
     /* background: ; */
-    padding: 0.35rem 0.35rem;
+    padding: 0.5rem 0.35rem;
 }
 
 .form-control input:focus,
@@ -31,14 +31,14 @@
 
 .form-control input::placeholder,
 .form-control textarea::placeholder {
-    font-size: 11px;
+    font-size: 13px;
 }
 
 .form-control--invalid label,
 .form-control--invalid p {
     color: #ed1b24;
     margin-top: 5px;
-    font-size: 13px;
+    font-size: 15px;
     text-align: left;
 }
 

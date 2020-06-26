@@ -108,11 +108,11 @@ const CategoryView = (props) => {
 										onClick={() =>
 											addToCart(j._id, j.foodList.name, j.foodList.price)
 										}>
-										Add To Cart
+										<span>Add To Cart</span>
 										<span
 											style={{
-												fontWeight: "bold",
-												height: "32px",
+												// fontWeight: "bold",
+												height: "27px",
 												fontSize: "28px",
 												alignSelf: "Center",
 												marginLeft: "12px",

@@ -49,7 +49,7 @@ const OrderItem = (props) => {
 						<div style={{ width: "35px" }}>
 							<img src={clockTick} alt='Clock Time' width='25px' />
 						</div>
-						<p>Order Complete</p>
+						<p>Order {props.order.orderStatus}</p>
 					</div>
 					<div
 						style={{

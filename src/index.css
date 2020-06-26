@@ -8,7 +8,7 @@
 .Container {
     width: 95%;
     margin: 1rem auto;
-    max-width: 1320px;
+    max-width: 1020px;
     /* background-color: wheat; */
     padding: 1rem 0;
     display: flex;
@@ -38,7 +38,7 @@
 @media (max-width:960px) {
     .Container {
         flex-flow: column;
-        width: 100%;
+        width: 98%;
     }
 
     .RightContainer,
@@ -61,6 +61,7 @@
 
 .center {
     text-align: center;
+    margin: 0 auto;
     margin-top: 2rem;
 }
 
@@ -166,6 +167,17 @@ body {
     line-height: 1;
     overflow-x: hidden;
     height: 100%
+}
+
+@media (max-width : 1000px) {
+    body {
+        font-size: 14px;
+    }
+}
+@media (max-width : 768px) {
+    body {
+        font-size: 13px;
+    }
 }
 
 /* make sure to set some focus styles for accessibility */

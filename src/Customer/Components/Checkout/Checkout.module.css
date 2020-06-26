@@ -1,120 +1,22 @@
-@import "../../../shared/assets/CSS/colors.css";
-
 .Checkout {
-	width: 95%;
-	margin: auto;
-	max-width: 1320px;
-	padding: 1rem 0;
-	display: flex;
+    flex-flow: column;
 }
 
-/* ======================================================================= */
-
-.Checkout_PaymentContainer {
-	width: 100%;
-	padding: 2.5rem;
-	box-shadow: 2px 2px 3px 2px #ccc;
-	border-radius: 5px;
-	margin-bottom: 40px;
+.OrderSummary {
+    width: 100%;
+    margin-bottom: 2rem;
 }
 
-.Checkout_PaymentContainer h2 {
-	margin-left: 10px;
+.DeliveryAddress {
+    width: 100%;
+    margin-bottom: 2rem;
 }
 
-.Checkout_PaymentContainer ul li {
-	color: var(--primary-dark-red);
-	list-style-type: disc;
+.AddSpecialRequest {
+    width: 100%;
+    margin-bottom: 2rem;
 }
-
-.Checkout__PaymentMode {
-	display: flex;
-}
-
-.Checkout_PaymentMode_Box {
-	cursor: pointer;
-	margin: 20px 10px;
-	padding: 1.5rem 4rem;
-	display: flex;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	/* box-shadow: 2px 2px 3px -1px #ccc; */
-	justify-content: space-between;
-	flex-direction: column;
-	align-items: center;
-	font-weight: bold;
-	transition: all 0.3s ease;
-}
-
-.Inactive {
-	opacity: 0.4;
-}
-
-.Checkout_PaymentMode_Box img   {
-	margin-bottom: 10px;
-	align-self: center;
-}
-
-.Checkout_PaymentMode_Box:hover {
-	opacity: 1;
-}
-
-.Checkout__Button {
-	margin: 25px auto 0;
-	text-align: center;
-}
-
-.Checkout_PaymentContainer_Form {
-	margin-left: 10px;
-}
-
-@media (max-width: 650px) {
-	.Checkout__PaymentMode {
-		flex-flow: column;
-	}
-	.Checkout_PaymentMode_Box {
-		padding: 1.5rem 0;
-		width: 95%;
-	}
-}
-
-.span {
-	color: var(--primary-golden);
-	font-weight: bold;
-	font-size: 1.2rem;
-	margin-right: 15px;
-}
-
-/* ======================================================================= */
-
-.Checkout__Sidebar_Flex {
-	display: flex;
-	justify-content: space-between;
-}
-
-.Checkout__Sidebar_Details {
-	flex: 1;
-}
-
-.Checkout__Sidebar {
-	display: flex;
-	justify-content: space-around;
-}
-
-.Checkout__Sidebar_Restaurant {
-	display: flex;
-	align-items: center;
-	margin-top: 10px;
-}
-.Checkout__Sidebar_Restaurant h5 {
-	margin-left: 10px;
-}
-
-.Checkout__Sidebar_Quantity {
-	/* flex: 2; */
-	text-align: right;
-	margin-right: 35px;
-	color: #ffb711;
-	font-size: 0.9rem;
-	font-weight: bold;
+.PaymentSummary {
+    width: 100%;
+    margin-bottom: 2rem;
 }

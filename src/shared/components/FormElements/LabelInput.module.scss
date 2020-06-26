@@ -1,0 +1,78 @@
+.Form {
+    width: 100%;
+    /* max-width: 450px; */
+    position: relative;
+    height: 50px;
+    overflow: hidden;
+}
+
+.Form input {
+    width: 100%;
+    height: 100%;
+    color: var(--primary-red);
+    padding-top: 25px;
+    border: none;
+    background-color: transparent;
+    outline: none;
+    font-size: 1.2rem;
+}
+
+.Form label {
+    position: absolute;
+    bottom: 1px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    border-bottom: 1px solid var(--color);
+    color: var(--color);
+}
+
+.Form label::after {
+    content: "";
+    position: absolute;
+    left: 0px;
+    bottom: -1px;
+    height: 100%;
+    width: 100%;
+    border-bottom: 1px solid var(--primary-red);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+}
+
+.ContentSearch {
+    position: absolute;
+    bottom: 5px;
+    left: 0px;
+    transition: all 0.3s ease;
+}
+
+.Form input:focus+.Label .ContentSearch,
+/* .Form input:not(:placeholder-shown)+.Label .ContentSearch, */
+.Form input:valid+.Label .ContentSearch {
+    transform: translateY(-150%);
+    font-size: .875rem;
+    color: var(--primary-red);
+}
+
+.Form input:focus+.Label::after,
+/* .Form input:not(:placeholder-shown)+.Label::after  */
+.Form input:valid+.Label::after {
+    transform: translateX(0%);
+}
+
+@media (max-width:1000px) {
+    .Form {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .Form label {
+        // border-bottom: 1px solid white;
+        // color: white;
+    }
+
+    .Form input {
+        font-size: 1rem;
+    }
+}

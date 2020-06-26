@@ -70,7 +70,7 @@
     padding: 18px 0px;
     height: 32px;
     border: 1px solid rgb(146, 0, 0);
-    font-weight: bold;
+    /* font-weight: bold; */
     transition: all .3s ease;
 }
 

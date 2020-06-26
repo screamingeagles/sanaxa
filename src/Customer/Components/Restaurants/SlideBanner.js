@@ -10,13 +10,14 @@ const SlideBanner = (props) => {
 				<div
 					style={props.hotel && { top: "35%" }}
 					className={classes.SlideBanner__Content}>
+					{/* <img src={props.imgRes} alt={props.alt} /> */}
 					<h1>{props.name}</h1>
 					<p style={props.hotel && { width: "100vw" }}>
 						{props.shortDescription}
 					</p>
-					{props.form && (
+					{/* {props.form && ( */}
 						<RestaurantsSearchForm placeholder='Search Restaurants' />
-					)}
+					{/* )} */}
 				</div>
 			</div>
 		</div>

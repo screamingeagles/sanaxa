@@ -1,13 +1,17 @@
 .modal {
     z-index: 100;
-    position: fixed;
-    top: 10vh;
-    /* left: 2.5%; */
-    left: calc(50% - 15rem);
+    position: absolute;
+    top: 20%;
+    /* top: 15vh; */
+    /* left: calc(50% - 15rem); */
+    transform: translate(-50%, -15%);
+    left: 50%;
+    margin: 0 auto;
     width: 30rem;
     background: white;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     border-radius: 8px;
+    overflow-y: auto;
 }
 
 .modal__header {
@@ -37,33 +41,38 @@
         /* left: calc(50% - 15rem);
 
         width: 30rem; */
-        left: 2%;
+        /* left: 2%; */
         width: 95%;
+        max-width: 95%;
     }
 
-    .closeIcon img   {
+    .closeIcon img {
         height: 35px;
     }
 }
 
 .modal-enter {
-    transform: translateY(-10rem);
+    /* transform: translateY(-10rem); */
+    /* transform: translate(-50%, -50%); */
     opacity: 0;
 }
 
 .modal-enter-active {
-    transform: translateY(0);
+    /* transform: translateY(0); */
+    /* transform: translate(0%, 0%); */
     opacity: 1;
     transition: all 200ms;
 }
 
 .modal-exit {
-    transform: translateY(0);
+    /* transform: translateY(0); */
     opacity: 1;
+    /* transform: translate(0%, 0%); */
 }
 
 .modal-exit-active {
-    transform: translateY(-10rem);
+    /* transform: translateY(-10rem); */
+    /* transform: translate(-50%, -50%); */
     opacity: 0;
     transition: all 200ms;
 }
@@ -75,6 +84,6 @@
     cursor: pointer;
 }
 
-.closeIcon img   {
+.closeIcon img {
     height: 30px;
 }

@@ -4,19 +4,19 @@ import { NavLink } from "react-router-dom";
 import LoadingSpinner from "./../../../../shared/components/UIElements/LoadingSpinner";
 import SlideBanner from "../SlideBanner";
 import SortBy from "./SortBy";
-import SideBar from "./SideBar";
 
 import ResPic from "../../../../shared/assets/Images/restaurantpic.png";
 import allRestaurant from "../../../../shared/assets/Images/allRestaurants.jpg";
-import Star from "../../../../shared/assets/Images/Star.svg";
-import myLocationIcon from "../../../../shared/assets/Images/myLocationIcon.png";
-import clockIcon from "../../../../shared/assets/Images/clockIcon.png";
+// import Star from "../../../../shared/assets/Images/Star.svg";
+// import myLocationIcon from "../../../../shared/assets/Images/myLocationIcon.png";
+// import clockIcon from "../../../../shared/assets/Images/clockIcon.png";
 
 import { useHttpClient } from "./../../../../shared/hooks/http-hook";
 
 import classes from "./AllRestaurants.module.css";
-import Categories from "./Categories";
-import StayUpToDateForm from "./StayUpToDateForm";
+// import SideBar from "./SideBar";
+// import Categories from "./Categories";
+// import StayUpToDateForm from "./StayUpToDateForm";
 
 const AllRestaurants = (props) => {
 	const { isLoading, sendRequest } = useHttpClient();
@@ -38,7 +38,7 @@ const AllRestaurants = (props) => {
 
 	if (isLoading)
 		content = (
-			<div style={{ textAlign: "center" }}>
+			<div className='center'>
 				<LoadingSpinner />
 			</div>
 		);
@@ -54,22 +54,23 @@ const AllRestaurants = (props) => {
 						<img src={ResPic} alt='Res' width='100%' height='100%' />
 					</div>
 					<div className={classes.detail}>
-						<h3>{name.name}</h3>
-						<div className={classes.Location}>
+						<h4>{name.name}</h4>
+						{/* <div className={classes.Location}>
 							<img src={myLocationIcon} alt='Location' height='12px' />
 							<p>{name.address}</p>
-						</div>
-						<span>{name.tags}</span>
-						<div className={classes.DeliveryRatings}>
+						</div> */}
+						<p>Burgers, Sandwiches, Desserts, Italian</p>
+						{/* <span>{name.tags}</span> */}
+						{/* <div className={classes.DeliveryRatings}>
 							<div className={classes.deliveryTime}>
 								<img src={clockIcon} alt='deliveryTime' height='20px' />
 								<p>Deliver within {name.deliveryTime} mins</p>
-							</div>
-							<div className={classes.ratingIcon}>
+								</div>
+								<div className={classes.ratingIcon}>
 								<img src={Star} alt='Rating' height='20px' />
 								<p>{name.rating}</p>
-							</div>
-						</div>
+								</div>
+							</div> */}
 					</div>
 				</NavLink>
 			);
@@ -85,14 +86,9 @@ const AllRestaurants = (props) => {
 				shortDescription='Here are the list and details of all restaurants. Choose your fav cusine and enjoy your meal'
 			/>
 			<div className='Container'>
-				<div className='RightContainer'>
+				<div style={{ width: "100%" }}>
 					<SortBy />
 					<div className={classes.AllRestaurants}>{content}</div>
-				</div>
-				<div className='LeftContainer'>
-					<SideBar />
-					<Categories />
-					<StayUpToDateForm />
 				</div>
 			</div>
 		</React.Fragment>
@@ -100,3 +96,11 @@ const AllRestaurants = (props) => {
 };
 
 export default AllRestaurants;
+
+//{
+/* <div className='LeftContainer'>
+	<SideBar />
+	<Categories />
+	<StayUpToDateForm />
+</div> */
+// }

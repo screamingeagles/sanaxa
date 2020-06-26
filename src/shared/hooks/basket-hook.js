@@ -24,9 +24,10 @@ export const useBasket = () => {
 
 	const fetchCart = useCallback(
 		async (cart, remove) => {
+			// console.log(cart);
 			const tempCart = JSON.parse(localStorage.getItem("cart"));
 			if (cart.items.length === 0) {
-				console.log("If");
+				// console.log("If");
 				localStorage.setItem("cart", JSON.stringify({ items: [] }));
 				if (token && userId) {
 					try {
@@ -44,24 +45,28 @@ export const useBasket = () => {
 						);
 						setCart(tempCart);
 					} catch (error) {}
+					let totPrice = 0;
+					tempCart.items.map((i) => {
+						return (totPrice += parseFloat(i.quantity) * parseFloat(i.price));
+					});
+					setTotalPrice(totPrice);
 				}
-			} else {
-				console.log("Else");
+			} else if (cart.items.length > 0) {
+				// console.log("Else");
 				setCart(cart);
 				localStorage.setItem("cart", JSON.stringify(cart));
+				let totPrice = 0;
+				cart.items.map((i) => {
+					return (totPrice += parseFloat(i.quantity) * parseFloat(i.price));
+				});
+				setTotalPrice(totPrice);
 			}
-
-			let totPrice = 0;
-			tempCart.items.map((i) => {
-				return totPrice += parseFloat(i.quantity) * parseFloat(i.price);
-			});
-			setTotalPrice(totPrice);
 		},
 		[sendRequest, token, userId]
 	);
 
 	useEffect(() => {
-		const socket = openSocket(`${process.env.REACT_APP_BACKEND_URL}`);
+		const socket = openSocket(`${process.env.REACT_APP_BACKEND_BASE_URL}`);
 		socket.on("add", (data) => {
 			if (data.userId === userId && data.action === "add") {
 				fetchCart(data.user);
@@ -113,19 +118,18 @@ export const useBasket = () => {
 		if (cart) {
 			// console.log("Updating cart", cart);
 			setCart(cart);
+			let totPrice = 0;
+			// console.log(cart);
+			cart.items.map((i) => (totPrice += i.totalPrice));
+			setTotalPrice(totPrice);
+			// console.log(totPrice);
+			setCart(cart);
 		}
 		if (!cart) {
 			setCart({ items: [] });
 			localStorage.setItem("cart", JSON.stringify({ items: [] }));
 			return;
 		}
-		let totPrice = 0;
-		// console.log(cart);
-		cart.items.map((i) => (totPrice += i.totalPrice));
-		setTotalPrice(totPrice);
-		// console.log(totPrice);
-		setCart(cart);
-		// console.log("cart", cart);
 	};
 
 	useEffect(() => {
@@ -170,7 +174,6 @@ export const useBasket = () => {
 						userId,
 					})
 				);
-				console.log("WTF", userId, token);
 			} catch (error) {}
 		};
 
@@ -183,7 +186,6 @@ export const useBasket = () => {
 
 		if (cart.restaurantId === restaurantId)
 			if (itemExisted) {
-				console.log("Item exist");
 				const updatedItem = itemExisted;
 				updatedItem.quantity = updatedItem.quantity + quantity;
 				updatedItem.totalPrice = updatedItem.quantity * price;
@@ -195,10 +197,10 @@ export const useBasket = () => {
 				tempCart.items = updatedList;
 				setCart(tempCart);
 				localStorage.setItem("cart", JSON.stringify(tempCart));
-				fetchBasket();
+				fetchOfflineBasket();
+				// fetchBasket();
 				return;
 			} else {
-				console.log("!Item exist");
 				const tempCart = cart;
 				tempCart.items.push(cartData);
 				setCart(tempCart);
@@ -208,7 +210,7 @@ export const useBasket = () => {
 			}
 
 		if (!cart.restaurantId && cart.restaurantId !== restaurantId) {
-			console.log("!restaurant");
+			// console.log("!restaurant");
 			const tempCart = {
 				restaurantId,
 				RestaurantName,
@@ -225,14 +227,17 @@ export const useBasket = () => {
 			cart.items.push(cartData);
 			setCart(tempCart);
 			localStorage.setItem("cart", JSON.stringify(tempCart));
+			fetchOfflineBasket();
 			return;
 		}
 	};
 
 	const addQuantityToBasket = async (quantity, productId) => {
-		if (token && userId) {
+		// if (token && userId) {
+		let ress;
+		if (token) {
 			try {
-				await sendRequest(
+				ress = await sendRequest(
 					`${process.env.REACT_APP_BACKEND_URL}/addquantity`,
 					"POST",
 					{
@@ -245,6 +250,7 @@ export const useBasket = () => {
 						quantity,
 					})
 				);
+				fetchCart(ress.cart);
 			} catch (error) {}
 		}
 		const itemExisted = cart.items.find((i) => i.productId === productId);

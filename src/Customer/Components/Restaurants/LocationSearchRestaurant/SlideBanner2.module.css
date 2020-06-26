@@ -1,0 +1,327 @@
+@import "../../../../shared/assets/CSS/colors.css";
+
+.SlideBanner {
+    width: 100%;
+    background-color: #ccc;
+    /* filter: blur(10px); */
+    position: relative;
+}
+
+/* .SlideBanner>img {
+    filter: blur(10px);
+} */
+
+.SlideBanner__Image {
+    padding: 1rem;
+}
+
+.SlideBanner__Content {
+    top: 10%;
+    background-color: rgba(0, 0, 0, 0.575);
+    border-radius: 10px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 80%;
+    padding: 2rem;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    /* align-items: center; */
+    text-align: center;
+    color: white;
+}
+
+.SlideBanner__Content h2 {
+    font-size: 2.5vw;
+    color: var(--primary-dark-red);
+    margin: 15px auto;
+}
+
+.img {
+    width: 150px;
+    height: 150px;
+    border-radius: 14px;
+    background-color: rgba(255, 0, 0, 0.39);
+    padding: 0.5rem;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.SlideBanner__Content p {
+    font-size: 1vw;
+    margin: 0 auto 20px;
+    width: 25vw;
+    line-height: 1.5;
+    text-align: center;
+    font-weight: bold;
+}
+
+.ReviewsTag {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 1rem 0 0 0;
+}
+
+.Rating {
+    display: flex;
+    align-items: center;
+    margin: 0 1rem;
+}
+
+.ratingTag {
+    color: white;
+    font-weight: bold;
+    background-color: rgba(204, 204, 204, 0.363);
+    padding: 8px;
+    border-radius: 4px;
+    margin-right: 5px;
+}
+
+.ReviewsCount {
+    display: flex;
+    margin: 0 1rem;
+}
+
+.Features {
+    display: flex;
+    margin: 0 1rem;
+}
+
+.Features img {
+    margin-right: 10px;
+}
+
+.SlideBannerBottomBar {
+    max-width: 1120px;
+    position: absolute;
+    top: 94%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    padding: 1.5rem 2rem;
+    background-color: white;
+    border-top: 8px solid var(--primary-dark-red);
+    display: flex;
+    flex-flow: column;
+    box-shadow: 0px -1px 18px 2px #efefef
+}
+
+
+.SlideBannerBottomBar h3 {
+    color: var(--primary-dark-red);
+    margin-bottom: .5rem;
+}
+
+.SlideBannerBottomBar p {
+    margin: .8rem 0;
+}
+
+.MainReviewsSection {
+    margin-top: 11rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.MainReviewsSection p {
+    font-weight: bold;
+}
+
+.MainReviewsSection__Rating {
+    display: flex;
+    align-items: center;
+}
+
+.MainReviewsSection__Rating p {
+    margin-right: 10px;
+}
+
+.RatingFeatures {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.RatingFeatures_Section {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    text-align: center;
+    width: 25%;
+}
+
+.RatingFeatures_Section_Single {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.RatingFeatures_Section_Single p {
+    margin-right: 10px;
+}
+
+.ReviewContainer {
+    display: flex;
+    padding: 1rem;
+    width: 100%;
+    background-color: rgb(246, 246, 246);
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    flex-flow: column;
+    margin-bottom: 15px;
+}
+
+.ReviewContainer>p {
+    font-weight: bold;
+}
+
+.ReviewContainer_Text {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: .5rem;
+    align-items: center;
+}
+
+.ReviewName {
+    display: flex;
+    align-items: center;
+}
+
+.ReviewName p {
+    margin-left: 10px;
+}
+
+.ReadMoreButton {
+    color: var(--primary-dark-red);
+    background-color: rgb(246, 246, 246);
+    border: 1px solid #ccc;
+    border-bottom: 3px solid #ccc;
+    cursor: pointer;
+}
+
+.ReadMoreButton:hover {
+    border-bottom: 3px solid transparent;
+}
+
+.ReadMoreButton p {
+    margin: 0 auto;
+    text-align: center;
+    font-weight: bold;
+}
+
+@media (max-width: 1030px) {
+    .SlideBanner__Content h1 {}
+
+    .SlideBanner__Content p {
+        font-size: 1.5vw;
+        /* width: vw; */
+    }
+
+    .MainReviewsSection {
+        margin-top: 14rem;
+    }
+}
+
+@media (max-width: 790px) {
+    .SlideBanner__Content {
+        top: 15%;
+    }
+
+    .SlideBanner__Content h1 {
+        font-size: 3.5vw;
+    }
+
+    .SlideBanner__Content h2 {
+        font-size: 3.5vw;
+    }
+
+    .SlideBanner__Content p {
+        font-size: 1.7vw;
+        width: 60vw;
+        margin-bottom: 15px;
+    }
+
+    .SlideBannerBottomBar {
+        top: 100%;
+    }
+}
+
+@media (max-width: 674px) {
+    .SlideBanner__Image {
+        padding: 2px;
+    }
+
+    .SlideBanner__Content {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .RatingFeatures_Section {
+        width: 50% !important;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 550px) {
+    .ReviewsTag {
+        flex-flow: column-reverse;
+    }
+
+    .Features {
+        margin-bottom: 10px;
+    }
+
+    .SlideBanner__Content {
+        top: 10%;
+    }
+
+    .SlideBanner__Content h1 {
+        /* font-size: 4.5vw; */
+    }
+
+    .SlideBanner__Content h2 {
+        font-size: 4.5vw;
+    }
+
+    .SlideBanner__Content p {
+        font-size: 3vw;
+        /* width: 70vw;/ */
+        /* margin: 3px; */
+        margin-bottom: 5px;
+    }
+
+    .MainReviewsSection {
+        margin-top: 19rem;
+    }
+}
+
+@media (max-width: 330px) {
+
+    .MainReviewsSection {
+        margin-top: 23rem;
+    }
+
+    .SlideBanner__Content {
+        top: 2%;
+    }
+
+    .SlideBanner__Content h1 {
+        /* font-size: 4.5vw; */
+    }
+
+    .SlideBanner__Content h2 {
+        font-size: 5vw;
+    }
+
+    .SlideBanner__Content p {
+        font-size: 3.2vw;
+        /* width: 100vw; */
+        /* margin: 3px; */
+        margin-bottom: 5px;
+    }
+}

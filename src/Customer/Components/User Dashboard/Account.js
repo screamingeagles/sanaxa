@@ -91,6 +91,7 @@ const Account = (props) => {
 
 	useEffect(() => {
 		if (props.u) {
+			console.log(props.u);
 			setNewsletter(props.u && props.u.newsletter);
 			setSMS(props.u && props.u.SMS);
 

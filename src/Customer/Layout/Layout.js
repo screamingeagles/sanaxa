@@ -23,6 +23,11 @@ const UserDetail = React.lazy(() =>
 const AllRestaurants = React.lazy(() =>
 	import("../Components/Restaurants/All Restaurants/AllRestaurants")
 );
+const LocationSearchRestaurant = React.lazy(() =>
+	import(
+		"./../Components/Restaurants/LocationSearchRestaurant/LocationSearchRestaurant"
+	)
+);
 const SignUp = React.lazy(() => import("../Components/Login/SignUp"));
 // import Checkout from "./../Components/Checkout/Checkout";
 // import SingleRestaurant from "./../Components/Restaurants/Single Restaurant/SingleRestaurant";
@@ -30,6 +35,7 @@ const SignUp = React.lazy(() => import("../Components/Login/SignUp"));
 // import AllRestaurants from "../Components/Restaurants/All Restaurants/AllRestaurants";
 // import SignUp from "../Components/Login/SignUp";
 // import Home from "./../Components/Home/Home";
+// import LocationSearchRestaurant from "./../Components/Restaurants/LocationSearchRestaurant/LocationSearchRestaurant";
 
 const Layout = (props) => {
 	const { login, logout, userId, token } = useAuth();
@@ -42,11 +48,18 @@ const Layout = (props) => {
 				<Route path='/authentication'>
 					<Login onCancel={() => {}} />
 				</Route>
-				<Route path='/authentication/:checkout'>
-					<Login onCancel={() => {}} />
-				</Route>
 				<Route path='/restaurants' component={AllRestaurants} />
-				<Route path='/restaurant/:id/:name' component={SingleRestaurant} />
+				<Route
+					path='/restaurant/:id/:name/menu'
+					exact
+					component={SingleRestaurant}
+				/>
+				<Route
+					path='/restaurant/:id/:name'
+					component={LocationSearchRestaurant}
+				/>
+
+				<Route path='/checkout' exact component={Checkout} />
 				<Route component={Home} />
 			</Switch>
 		);
@@ -55,11 +68,19 @@ const Layout = (props) => {
 			<Switch>
 				<Route path='/' exact component={Home} />
 				<Route path='/restaurants' component={AllRestaurants} />
-				<Route path='/restaurant/:id/:name' component={SingleRestaurant} />
-				<Route path='/checkout/:id' component={Checkout} />
 				<Route path='/checkout' exact component={Checkout} />
 				<Route path='/user-detail/:id' component={UserDetail} />
 				<Route path='/user-detail' component={UserDetail} />
+				<Route
+					path='/restaurant/:id/:name/menu'
+					exact
+					component={SingleRestaurant}
+				/>
+				<Route
+					path='/restaurant/:id/:name'
+					component={LocationSearchRestaurant}
+				/>
+
 				<Route component={Home} />
 			</Switch>
 		);

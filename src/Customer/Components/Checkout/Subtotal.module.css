@@ -1,0 +1,24 @@
+.Subtotal {
+    margin: 0 5rem;
+}
+
+.Subtotal_Details_List {
+    display: flex;
+    justify-content: space-between;
+    padding: .6rem 0;
+}
+
+.Subtotal_Button {
+    margin-top: 10px;
+}
+
+@media (max-width: 1000px) {
+    .Subtotal {
+        margin: 0 2rem;
+    }
+}
+@media (max-width: 500px) {
+    .Subtotal {
+        margin: 0 .5rem;
+    }
+}

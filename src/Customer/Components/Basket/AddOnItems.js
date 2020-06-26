@@ -22,7 +22,7 @@ const AddOnItems = (props) => {
 				<h3>Add On Items</h3>
 				<div className={classes.AddOnItems__List}>
 					<div className={classes.AddOnItems__List_ImageHeading}>
-						<img src={props.img} height='35px' alt="" />
+						<img src={props.img} height='35px' alt='' />
 						<h4>{props.name}</h4>
 					</div>
 					<div className={classes.AddOnItems__List_PriceForm}>
@@ -45,7 +45,9 @@ const AddOnItems = (props) => {
 								<label onClick={() => increaseQuantity(-1)}>+</label>
 							</form>
 						</div>
-						<h4>${quantity * props.price}</h4>
+						<h4 style={{ width: "45px", textAlign: "right" }}>
+							${quantity * props.price}
+						</h4>
 					</div>
 				</div>
 			</div>
