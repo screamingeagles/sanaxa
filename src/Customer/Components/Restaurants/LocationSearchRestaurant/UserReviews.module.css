@@ -1,0 +1,101 @@
+.MainReviewsSection {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.MainReviewsSection p {
+	font-weight: bold;
+}
+
+.MainReviewsSection__Rating {
+	display: flex;
+	align-items: center;
+}
+
+.MainReviewsSection__Rating p {
+	margin-right: 10px;
+}
+
+.RatingFeatures {
+	display: flex;
+	width: 100%;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+
+.RatingFeatures_Section {
+	display: flex;
+	flex-flow: column;
+	justify-content: center;
+	text-align: center;
+	width: 25%;
+}
+
+.RatingFeatures_Section_Single {
+	align-items: center;
+	display: flex;
+	justify-content: center;
+}
+
+.RatingFeatures_Section_Single p {
+	margin-right: 10px;
+}
+
+.ReviewContainer {
+	display: flex;
+	padding: 1rem;
+	width: 100%;
+	background-color: rgb(246, 246, 246);
+	border: 1px solid #ccc;
+	border-radius: 2px;
+	flex-flow: column;
+	margin-bottom: 15px;
+}
+
+.ReviewContainer > p {
+	font-weight: bold;
+}
+
+.ReviewContainer_Text {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	margin-bottom: 0.5rem;
+	align-items: center;
+}
+
+.ReviewName {
+	display: flex;
+	align-items: center;
+}
+
+.ReviewName p {
+	margin-left: 10px;
+}
+
+.ReadMoreButton {
+	color: var(--primary-dark-red);
+	background-color: rgb(246, 246, 246);
+	border: 1px solid #ccc;
+	border-bottom: 3px solid #ccc;
+	cursor: pointer;
+}
+
+.ReadMoreButton:hover {
+	border-bottom: 3px solid transparent;
+}
+
+.ReadMoreButton p {
+	margin: 0 auto;
+	text-align: center;
+	font-weight: bold;
+}
+
+@media (max-width: 674px) {
+	.RatingFeatures_Section {
+		width: 50% !important;
+		margin-bottom: 20px;
+	}
+}

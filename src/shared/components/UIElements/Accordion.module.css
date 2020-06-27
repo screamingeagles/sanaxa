@@ -1,28 +1,69 @@
 .Accordion {
-    display: flex;
-    flex-flow: column;
+	display: flex;
+	width: 100%;
+	flex-flow: column;
+	max-height: auto;
 }
 
 .Label {
-    display: flex;
-    cursor: pointer;
+	display: flex;
+	cursor: pointer;
+	padding: 0.8rem 0;
+	justify-content: space-between;
+	border-top: 1px solid #ccc;
+	transition: all 0.3s ease;
+}
+.Label h4 {
+	width: 50%;
+	transition: all 0.3s ease;
+}
+.Label div {
+	width: 50%;
+	display: flex;
+	justify-content: space-between;
+}
+.Label div h4{
+	width: 90%;
+	display: flex;
+	justify-content: space-between;
+}
+.Label div img {
+	margin-right: 15px;
+	transition: all 0.3s ease;
 }
 
 .Body {
-    /* height: 0px; */
-    overflow: hidden;
-    transform: scaleY(0);
-    height: 0;
-    /* display: none; */
-    /* display: flex; */
-    flex: 0;
-    transition: flex .3s ease-out;
+	overflow: hidden;
+	transform-origin: top;
+	transform: rotateX(-90deg);
+	height: 0px;
+	/* max-height: 0; */
+	/* display: none; */
+	/* display: none; */
+	display: flex;
+	flex-flow: column;
+	transition: all 0.3s ease-out;
 }
 
 .Body.Active {
-    flex: 1 !important;
-    /* height: auto; */
-    /* display: block;
-    height: auto;*/
-    transform: scaleY(1);
+	transition: all 0.3s ease-out;
+	/* height: auto; */
+	height: 100%;
+	/* flex: 1; */
+	transform: rotateX(0deg);
+	/* transform: scaleX(1); */
+}
+
+.Label.Active {
+	background-color: #ccc;
+}
+.Label.Active h4:nth-child(1) {
+	padding-left: 20px;
+}
+
+.Label.Active div:nth-child(2) h4 {
+	opacity: 0;
+}
+.Label.Active div:nth-child(2) img {
+	transform: rotate(180deg);
 }

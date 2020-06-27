@@ -1,65 +1,65 @@
 @import "../../../shared/assets/CSS/colors.css";
 
 .NavLink {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 16px;
 }
 
 .NavLink a {
-    font-size: 16px;
-    color: var(--primary-red);
-    text-decoration: none;
-    padding: 0.5rem 0.15rem;
-    font-weight: 500;
-    margin: 0 0.5rem;
+	font-size: 16px;
+	color: var(--primary-red);
+	text-decoration: none;
+	padding: 0.5rem 0.15rem;
+	/* font-weight: 500; */
+	margin: 0 0.5rem;
 }
 
 @media (max-width: 810px) {
-    .NavLink {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        width: 100%;
-        margin-left: 1rem;
-    }
+	.NavLink {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		width: 100%;
+		margin-left: 1rem;
+	}
 
-    .LoginContainer,
-    .NavLink a {
-        margin: 0 0.5rem;
-        color: var(--primary-red);
-        text-align: left;
-        padding: 1.2rem 0;
-        width: 90%;
-        border-bottom: 1px solid #dddddd;
-        font-weight: 500;
-    }
-    
-    .LoginContainer p {
-        cursor: pointer;
-        font-weight: 500;
+	.LoginContainer,
+	.NavLink a {
+		margin: 0 0.5rem;
+		color: var(--primary-red);
+		text-align: left;
+		padding: 1.2rem 0;
+		width: 90%;
+		border-bottom: 1px solid #dddddd;
+		/* font-weight: 500; */
+	}
 
-    }
+	.LoginContainer p {
+		cursor: pointer;
+		/* font-weight: 500; */
+	}
 }
 
 .NavLinkFooter {
-    justify-content: space-around;
-    padding: 0 1.5rem;
+	justify-content: space-around;
+	padding: 0 1.5rem;
 }
 
 .NavLinkFooter a {
-    color: white;
+	color: white;
 }
 
 @media (max-width: 1000px) {
-    .NavLinkFooter {
-        display: flex;
-        flex-direction: row;
-    }
+	.NavLinkFooter {
+		display: flex;
+		flex-direction: row;
+	}
 }
 
 @media (max-width: 490px) {
-    .NavLinkFooter {
-        flex-direction: column;
-    }
+	.NavLinkFooter {
+		flex-direction: column;
+	}
 }

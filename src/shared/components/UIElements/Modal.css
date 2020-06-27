@@ -1,6 +1,6 @@
 .modal {
     z-index: 100;
-    position: absolute;
+    position: fixed;
     top: 20%;
     /* top: 15vh; */
     /* left: calc(50% - 15rem); */

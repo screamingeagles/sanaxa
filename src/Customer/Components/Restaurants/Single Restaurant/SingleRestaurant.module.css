@@ -1,88 +1,29 @@
-@import '../../../../shared/assets/CSS/colors.css';
-
-.RestaurantDetails {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-}
-
-.RestaurantDetails_Name {
-    display: flex;
-}
-
-.RestaurantDetails_Name img {
-    margin-right: 15px;
-    border: 1px solid var(--primary-red);
-    padding: 2px;
-}
-
-.RestaurantDetails_Name h3 {
-    color: var(--primary-dark-red);
-}
-
-.RestaurantDetails_Name p {
-    color: var(--primary-gray);
-    margin: 18px 0;
-}
-
-.RestaurantDetails_Details {
-    text-align: right;
-}
-
-.RestaurantDetails_Details h4 {
-    color: green;
-}
-
-.RestaurantDetails_Details p {
-    color: var(--primary-gray);
-    margin: 18px 0;
-}
-
-.RestaurantDetails_Details>div img {
-    margin-left: 10px;
-}
-
-.Tabs {
-    display: flex;
-    width: 100%;
-    border-bottom: 1px solid #efefef;
-}
-
-.Tab {
-    width: 24%;
-    padding: 10px 15px;
-    cursor: pointer;
-    text-align: center;
-    font-size: 1.2rem;
-    transition: all .1s ease;
-}
-
-.Tab:hover,
-.Active {
-    font-weight: bold;
-    border-bottom: 2px solid var(--primary-dark-red);
-}
+@import "../../../../shared/assets/CSS/colors.css";
 
 .ContentContainer {
-    display: flex;
-    width: 100%;
+	display: flex;
+	width: 100%;
+	align-items: flex-start;
 }
 
 .Content {
-    width: 72%;
-    margin: 0 10px;
+	width: 72%;
+	margin: 0 10px;
 }
 
 .Cart {
-    width: 28%;
+	margin: 0 10px;
+	width: 28%;
+	position: sticky;
+	top: 15px;
 }
 
 @media (max-width: 1020px) {
-    .Content {
-        width: 98%;
-    }
+	.Content {
+		width: 98%;
+	}
 
-    .Cart {
-        display: none;
-    }
+	.Cart {
+		display: none;
+	}
 }

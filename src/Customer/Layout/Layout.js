@@ -45,7 +45,10 @@ const Layout = (props) => {
 			<Switch>
 				<Route path='/' exact component={Home} />
 				<Route path='/signup' component={SignUp} />
-				<Route path='/authentication'>
+				<Route path='/authentication' exact>
+					<Login onCancel={() => {}} />
+				</Route>
+				<Route path='/authentication/:checkout/:id'>
 					<Login onCancel={() => {}} />
 				</Route>
 				<Route path='/restaurants' component={AllRestaurants} />
@@ -60,6 +63,7 @@ const Layout = (props) => {
 				/>
 
 				<Route path='/checkout' exact component={Checkout} />
+				<Route path='/checkout/:id' exact component={Checkout} />
 				<Route component={Home} />
 			</Switch>
 		);
@@ -69,6 +73,7 @@ const Layout = (props) => {
 				<Route path='/' exact component={Home} />
 				<Route path='/restaurants' component={AllRestaurants} />
 				<Route path='/checkout' exact component={Checkout} />
+				<Route path='/checkout/:id' exact component={Checkout} />
 				<Route path='/user-detail/:id' component={UserDetail} />
 				<Route path='/user-detail' component={UserDetail} />
 				<Route

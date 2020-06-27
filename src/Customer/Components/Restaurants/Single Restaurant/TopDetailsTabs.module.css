@@ -1,0 +1,79 @@
+.RestaurantDetails {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+}
+
+.RestaurantDetails_Name {
+	display: flex;
+}
+
+.RestaurantDetails_Name img {
+	margin-right: 15px;
+	border: 1px solid var(--primary-red);
+	padding: 2px;
+}
+
+.RestaurantDetails_Name h3 {
+	color: var(--primary-dark-red);
+}
+
+.RestaurantDetails_Name p {
+	color: var(--primary-gray);
+	margin: 18px 0;
+}
+
+.RestaurantDetails_Details {
+	text-align: right;
+}
+
+.RestaurantDetails_Details h4 {
+	color: green;
+}
+
+.RestaurantDetails_Details p {
+	color: var(--primary-gray);
+	margin: 18px 0;
+}
+
+.RestaurantDetails_Details > div img {
+	margin-left: 10px;
+}
+
+.Tabs {
+	display: flex;
+	width: 100%;
+	border-bottom: 1px solid #efefef;
+}
+
+.Tab {
+	width: 24%;
+	padding: 10px 15px;
+	cursor: pointer;
+	text-align: center;
+	font-size: 1.2rem;
+	transition: all 0.1s ease;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-bottom: 2px solid transparent;
+}
+.Tab img {
+	margin-right: 10px;
+}
+
+.Tab p {
+	transition: all 0.3s ease;
+}
+
+.Tab:hover,
+.Active {
+	/* font-weight: bold; */
+	border-bottom: 2px solid var(--primary-dark-red);
+}
+
+@media (max-width: 800px) {
+	.Tab {
+		width: 33.3%;
+	}
+}

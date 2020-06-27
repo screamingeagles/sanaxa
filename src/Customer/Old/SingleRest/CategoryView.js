@@ -1,10 +1,10 @@
-import React, { useState, useContext } from "react";
-import classes from "./CategoryView.module.css";
-import Button from "../../../../shared/components/FormElements/Button";
-import Modal from "./../../../../shared/components/UIElements/Modal";
-import AddOnItems from "./../../Basket/AddOnItems";
-// import { useBasket } from "./../../../../shared/hooks/basket-hook";
-import { BasketContext } from "../../../../shared/context/basket-context";
+// import React, { useState, useContext } from "react";
+// import classes from "./CategoryView.module.css";
+// import Button from "../../../../shared/components/FormElements/Button";
+// import Modal from "./../../../../shared/components/UIElements/Modal";
+// import AddOnItems from "./../../Basket/AddOnItems";
+// // import { useBasket } from "./../../../../shared/hooks/basket-hook";
+// import { BasketContext } from "../../../../shared/context/basket-context";
 
 const CategoryView = (props) => {
 	const [addingToCart, setAddingToCart] = useState(false);

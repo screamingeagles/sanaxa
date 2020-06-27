@@ -67,17 +67,46 @@ const MainNavigation = (props) => {
 						<img src={Logo} alt='Logo Snaxa' width='100px' />
 					</NavLink>
 				</div>
-				<div onClick={() => pushHeight()} className={classes.Burger}>
-					<div
-						className={[show && classes.topDiv, classes.Line].join(" ")}></div>
-					<div
-						className={[show && classes.middleDiv, classes.Line].join(
-							" "
-						)}></div>
-					<div
-						className={[show && classes.bottomDiv, classes.Line].join(
-							" "
-						)}></div>
+				<div className={classes.mobileCartIcon}>
+					{!auth.token && basket.cart.items && basket.cart.items.length > 0 && (
+						<img
+							src={ShoppingCart}
+							width='18px'
+							alt='cart'
+							style={{ cursor: "pointer", marginRight: "2rem" }}
+							onClick={() => {
+								basket.showBasketHandler();
+							}}
+							id='showBasket'
+						/>
+					)}
+					{auth.token && (
+						<img
+							src={ShoppingCart}
+							width='18px'
+							alt='cart'
+							style={{ cursor: "pointer", marginRight: "2rem" }}
+							onClick={() => {
+								basket.showBasketHandler();
+							}}
+							id='showBasket'
+						/>
+					)}
+
+					<div onClick={() => pushHeight()} className={classes.Burger}>
+						<div
+							className={[show && classes.topDiv, classes.Line].join(
+								" "
+							)}></div>
+						<div
+							className={[show && classes.middleDiv, classes.Line].join(
+								" "
+							)}></div>
+						<div
+							className={[show && classes.bottomDiv, classes.Line].join(
+								" "
+							)}></div>
+					</div>
 				</div>
 				<div className={classes.NavLinks}>
 					<NavLinks />
@@ -91,13 +120,14 @@ const MainNavigation = (props) => {
 								pushHeight();
 								basket.showBasketHandler();
 							}}
+							id='showBasket'
 						/>
 					)}
 					{!auth.token && (
 						<div
 							className={classes.LoginContainer}
 							onClick={() => loginShowHandler()}>
-							Login
+							<p>Login</p>
 						</div>
 					)}
 					{auth.token && (
@@ -110,6 +140,7 @@ const MainNavigation = (props) => {
 								pushHeight();
 								basket.showBasketHandler();
 							}}
+							id='showBasket'
 						/>
 					)}
 
@@ -120,31 +151,31 @@ const MainNavigation = (props) => {
 								<NavLink
 									to='/user-detail/credits'
 									className={classes.myAccount__Dropdown_Item}>
-									<img src={iconcredit} width='20px' alt="" />
+									<img src={iconcredit} width='20px' alt='' />
 									<p>Snaxa Credit: AED 0.00</p>
 								</NavLink>
 								<NavLink
 									to='/user-detail/orders'
 									className={classes.myAccount__Dropdown_Item}>
-									<img src={icon_myorders} width='20px' alt="" />
+									<img src={icon_myorders} width='20px' alt='' />
 									<p>My Orders</p>
 								</NavLink>
 								<NavLink
 									to='/user-detail/account'
 									className={classes.myAccount__Dropdown_Item}>
-									<img src={icon_account} width='20px' alt=""/>
+									<img src={icon_account} width='20px' alt='' />
 									<p>Account Info</p>
 								</NavLink>
 								<NavLink
 									to='/user-detail/addresses'
 									className={classes.myAccount__Dropdown_Item}>
-									<img src={icon_address2} width='20px' alt=""/>
+									<img src={icon_address2} width='20px' alt='' />
 									<p>Saved Adresses</p>
 								</NavLink>
 								<div
 									className={classes.myAccount__Dropdown_Item}
 									onClick={() => logoutHandler()}>
-									<img src={icon_logout2} width='20px' alt=""/>
+									<img src={icon_logout2} width='20px' alt='' />
 									<p>Logout</p>
 								</div>
 							</div>
@@ -169,6 +200,7 @@ const MainNavigation = (props) => {
 								pushHeight();
 								basket.showBasketHandler();
 							}}
+							id ="showBasket"
 						/>
 					</div> */}
 				</div>
@@ -204,6 +236,7 @@ const MainNavigation = (props) => {
 							pushHeight();
 							basket.showBasketHandler();
 						}}
+						id ="showBasket"
 					/>
 				</div> */}
 			</div>

@@ -1,4 +1,4 @@
-import React, {  useContext } from "react";
+import React, { useContext } from "react";
 import classes from "./Basket.module.css";
 import basketIcon from "../../../shared/assets/Images/basketIcon.png";
 import restaurantIconSmall from "../../../shared/assets/Images/restaurantIconSmall.png";

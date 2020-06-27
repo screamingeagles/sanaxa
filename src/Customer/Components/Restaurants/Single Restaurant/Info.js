@@ -3,6 +3,7 @@ import classes from "./Info.module.css";
 
 import masterCard from "../../../../shared/assets/Images/masterCard.png";
 import cashIcon from "../../../../shared/assets/Images/cashIcon.png";
+import downarrow from "../../../../shared/assets/Images/downarrow.svg";
 import Accordion from "../../../../shared/components/UIElements/Accordion";
 
 const Info = (props) => {
@@ -14,7 +15,59 @@ const Info = (props) => {
 				<h4 className={classes.InfoTable_2}>AED 0.00</h4>
 			</div>
 			<div style={{ cursor: "pointer" }} className={classes.InfoTable}>
-				<Accordion title='Working Hours (Today)' title2='Open 24 Hours' />
+				<Accordion
+					title='Working Hours (Today)'
+					title2='Open 24 Hours'
+					dropIcon={downarrow}>
+					<div className={classes.InfoTable}>
+						<h4
+							style={{ marginLeft: "20px", borderTop: "1px solid transparent" }}
+							className={classes.InfoTable_1}>
+							Sunday
+						</h4>
+						<h4
+							style={{ borderTop: "1px solid transparent" }}
+							className={classes.InfoTable_2}>
+							Open 24 Hours
+						</h4>
+					</div>
+					<div className={classes.InfoTable}>
+						<h4 style={{ marginLeft: "20px" }} className={classes.InfoTable_1}>
+							Monday
+						</h4>
+						<h4 className={classes.InfoTable_2}>Open 24 Hours</h4>
+					</div>
+					<div className={classes.InfoTable}>
+						<h4 style={{ marginLeft: "20px" }} className={classes.InfoTable_1}>
+							Tuesday
+						</h4>
+						<h4 className={classes.InfoTable_2}>Open 24 Hours</h4>
+					</div>
+					<div className={classes.InfoTable}>
+						<h4 style={{ marginLeft: "20px" }} className={classes.InfoTable_1}>
+							Wednesday
+						</h4>
+						<h4 className={classes.InfoTable_2}>Open 24 Hours</h4>
+					</div>
+					<div className={classes.InfoTable}>
+						<h4 style={{ marginLeft: "20px" }} className={classes.InfoTable_1}>
+							Thursday
+						</h4>
+						<h4 className={classes.InfoTable_2}>Open 24 Hours</h4>
+					</div>
+					<div className={classes.InfoTable}>
+						<h4 style={{ marginLeft: "20px" }} className={classes.InfoTable_1}>
+							Friday
+						</h4>
+						<h4 className={classes.InfoTable_2}>Open 24 Hours</h4>
+					</div>
+					<div className={classes.InfoTable}>
+						<h4 style={{ marginLeft: "20px" }} className={classes.InfoTable_1}>
+							Saturday
+						</h4>
+						<h4 className={classes.InfoTable_2}>Open 24 Hours</h4>
+					</div>
+				</Accordion>
 				{/* <h4 className={classes.InfoTable_1}>Working Hours (Today)</h4>
 				<h4 className={classes.InfoTable_2}>Open 24 Hours</h4> */}
 			</div>

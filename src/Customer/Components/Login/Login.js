@@ -33,6 +33,7 @@ const Login = (props) => {
 	// const [submitting, setIsSubmitting] = useState(false);
 
 	const params = useParams().checkout;
+	console.log(params);
 
 	let heading = "Log In";
 
@@ -102,6 +103,7 @@ const Login = (props) => {
 				);
 				auth.login(responseData.userId, responseData.token);
 				if (params === "checkout") {
+					console.log("Checkout");
 					history.push(
 						`/checkout/${Math.floor(Math.random() * 1000 * 1000 * 1000)}`
 					);

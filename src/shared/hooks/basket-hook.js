@@ -339,6 +339,7 @@ export const useBasket = () => {
 		<Modal
 			className='basketContainer'
 			show={showBasket}
+			style={{ width: "40rem" }}
 			onCancel={showBasketHandler}>
 			<Basket onCancel={showBasketHandler} cart={cart} />
 		</Modal>
