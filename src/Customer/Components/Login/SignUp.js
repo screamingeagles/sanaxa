@@ -1,7 +1,7 @@
-import React, { useState, useContext } from "react";
-import { useHistory, NavLink, useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
-import Logo from "../../../shared/assets/Images/snaxaLogo.svg";
+// import Logo from "../../../shared/assets/Images/snaxaLogo.svg";
 import google from "../../../shared/assets/Images/google.png";
 import facebook from "../../../shared/assets/Images/facebook.png";
 
@@ -9,15 +9,15 @@ import {
 	VALIDATOR_EMAIL,
 	VALIDATOR_MINLENGTH,
 	VALIDATOR_REQUIRE,
-	VALIDATOR_CONFIRMPASSWORD,
+	// VALIDATOR_CONFIRMPASSWORD,
 } from "./../../../shared/util/validators";
 
 import { useForm } from "./../../../shared/hooks/form-hook";
 import { useHttpClient } from "./../../../shared/hooks/http-hook";
-import { AuthContext } from "../../../shared/context/auth-context";
-import { BasketContext } from "./../../../shared/context/basket-context";
+// import { AuthContext } from "../../../shared/context/auth-context";
+// import { BasketContext } from "./../../../shared/context/basket-context";
 
-import Input from "./../../../shared/components/FormElements/Input";
+// import Input from "./../../../shared/components/FormElements/Input";
 import Button from "./../../../shared/components/FormElements/Button";
 import LoadingSpinner from "./../../../shared/components/UIElements/LoadingSpinner";
 
@@ -26,8 +26,8 @@ import SignUpInput from "../../../shared/components/FormElements/SignUpInput";
 import Checbox from "./Checbox";
 
 const SignUp = (props) => {
-	const auth = useContext(AuthContext);
-	const basket = useContext(BasketContext);
+	// const auth = useContex?t(AuthContext);
+	// const basket = useContext(BasketContext);
 	const history = useHistory();
 
 	const [newsletter, setNewsletter] = useState(false);
@@ -37,7 +37,7 @@ const SignUp = (props) => {
 
 	const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
-	const [formState, inputHandler, setFormData] = useForm(
+	const [formState, inputHandler] = useForm(
 		{
 			email: {
 				value: "",
@@ -74,7 +74,7 @@ const SignUp = (props) => {
 	const isSubmitHandler = async (e) => {
 		e.preventDefault();
 		try {
-			const responseData = await sendRequest(
+			await sendRequest(
 				`${process.env.REACT_APP_BACKEND_URL}/signup`,
 				"POST",
 				{

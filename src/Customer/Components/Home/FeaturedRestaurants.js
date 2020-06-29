@@ -15,7 +15,7 @@ const FeaturedRestaurants = (props) => {
 				<NavLink
 					to='/restaurant/5ee3da23ae39d61ee8605795/Alaska+Hotel'
 					className={classes.FeaturedRestaurants__Features_Block}>
-					<div className={classes.FeaturedRestaurants__Features_Img}>
+					<div className={classes.FeaturedRestaurants__Features_img}>
 						<img src={featuredRestaurants} alt='Customer' width='100%' />
 					</div>
 					<div className={classes.FeaturedRestaurants__Features_Text}>
@@ -29,7 +29,7 @@ const FeaturedRestaurants = (props) => {
 				<NavLink
 					to='/restaurant/5ee3da23ae39d61ee8605795/Alaska+Hotel'
 					className={classes.FeaturedRestaurants__Features_Block}>
-					<div className={classes.FeaturedRestaurants__Features_Img}>
+					<div className={classes.FeaturedRestaurants__Features_img}>
 						<img src={featuredRestaurants} alt='Restaurant' width='100%' />
 					</div>
 					<div className={classes.FeaturedRestaurants__Features_Text}>
@@ -43,7 +43,7 @@ const FeaturedRestaurants = (props) => {
 				<NavLink
 					to='/restaurant/5ee3da23ae39d61ee8605795/Alaska+Hotel'
 					className={classes.FeaturedRestaurants__Features_Block}>
-					<div className={classes.FeaturedRestaurants__Features_Img}>
+					<div className={classes.FeaturedRestaurants__Features_img}>
 						<img src={featuredRestaurants} alt='Driver' width='100%' />
 					</div>
 					<div className={classes.FeaturedRestaurants__Features_Text}>

@@ -1,176 +1,187 @@
 @import "../../../shared/assets/CSS/colors.css";
 
 .MainNavigation {
-    width: 95%;
-    height: 100%;
-    max-width: 1320px;
-    /* height: 100%; */
-    display: flex;
-    justify-content: space-between;
-    margin: auto;
-    align-items: center;
-    padding: 1rem 0rem;
+	width: 95%;
+	height: 100%;
+	max-width: 1320px;
+	/* height: 100%; */
+	display: flex;
+	justify-content: space-between;
+	margin: auto;
+	align-items: center;
+	padding: 1rem 0rem;
 }
 
 .NavLinks {
-    display: flex;
-    align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 .Icons {
-    margin: 0rem 1.5rem;
+	margin: 0rem 1.5rem;
 }
 
 .Icons img {
-    margin: 0 0.3rem;
+	margin: 0 0.3rem;
 }
 
 .span {
-    color: red;
+	color: red;
 }
 
 .userIcon {
-    cursor: pointer;
+	cursor: pointer;
 }
 
 .Burger {
-    display: none;
-    cursor: pointer;
+	display: none;
+	cursor: pointer;
 }
 
 .Line {
-    height: 2px;
-    width: 20px;
-    margin: 3px auto;
-    background-color: var(--primary-red);
-    transition: all 0.2s ease;
+	height: 2px;
+	width: 20px;
+	margin: 3px auto;
+	background-color: var(--primary-red);
+	transition: all 0.2s ease;
 }
 
 .middleDiv,
 .topDiv,
 .bottomDiv {
-    transition: all 0.2s ease;
+	transition: all 0.2s ease;
 }
 
 .middleDiv {
-    display: none;
+	display: none;
 }
 
 .topDiv {
-    transform: rotate(45deg) translate(0px, 6px);
+	transform: rotate(45deg) translate(0px, 6px);
 }
 
 .bottomDiv {
-    transform: rotate(-45deg) translate(-2px, -4px);
+	transform: rotate(-45deg) translate(-2px, -4px);
 }
 
 .MobileNavigation {
-    display: none;
-    padding: 1rem;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 0px;
-    transition: all 0.3s ease;
-    background-color: var(--primary-red-light);
+	display: none;
+	padding: 1rem;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	height: 0px;
+	transition: all 0.3s ease;
+	background-color: var(--primary-red-light);
 }
 
 .LoginContainer {
-    font-size: 16px;
-    color: var(--primary-red);
-    text-decoration: none;
-    padding: 12px 15px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 500;
-    margin: 0 0.5rem 0rem 1.5rem;
-    border: 1px solid var(--primary-red);
-    transition: all .3s ease;
+	color: var(--primary-red);
+	text-decoration: none;
+	padding: 12px 15px;
+	border-radius: 8px;
+	cursor: pointer;
+	margin: 0 0.5rem 0rem 1.5rem;
+	border: 1px solid var(--primary-red);
+	transition: all 0.3s ease;
+}
+
+.LoginContainer p {
+	font-size: 16px !important;
 }
 
 .LoginContainer:hover {
-    background-color: var(--primary-red);
-    color: white;
+	background-color: var(--primary-red);
+	color: white;
 }
 
 .myAccount {
-    font-size: 16px;
-    color: var(--primary-red);
-    text-decoration: none;
-    border-radius: 8px;
-    cursor: pointer;
-    padding: 12px 15px;
-    font-weight: 500;
-    margin: 0 0.5rem 0rem 0.5rem;
-    transition: all .3s ease;
-    position: relative;
+	font-size: 16px;
+	color: var(--primary-red);
+	text-decoration: none;
+	border-radius: 8px;
+	cursor: pointer;
+	padding: 12px 15px;
+	font-weight: 500;
+	margin: 0 0.5rem 0rem 0.5rem;
+	transition: all 0.3s ease;
+	position: relative;
 }
 
 .myAccount__Dropdown {
-    opacity: 0;
-    position: absolute;
-    background-color: white;
-    border-bottom: 3px solid var(--primary-red);
-    transition: opacity .3s ease;
-    padding: 1rem 0rem;
-    z-index: 10;
-    width: 260px;
-    top: 100%;
-    display: none;
-    right: 0;
+	opacity: 0;
+	position: absolute;
+	background-color: white;
+	border-bottom: 3px solid var(--primary-red);
+	transition: opacity 0.3s ease;
+	padding: 1rem 0rem;
+	z-index: 10;
+	width: 260px;
+	top: 100%;
+	display: none;
+	right: 0;
 }
 
 .myAccount__Dropdown_Item {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: .8rem .5rem;
-    text-decoration: none;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 0.8rem 0.5rem;
+	text-decoration: none;
+	transition: all 0.3s ease;
 }
 
 .myAccount__Dropdown_Item:hover {
-    background-color: rgb(233, 233, 233);
+	background-color: rgb(233, 233, 233);
 }
 
 .myAccount__Dropdown_Item p {
-    margin-left: 15px;
-    color: black;
-    font-weight: bold;
+	margin-left: 15px;
+	color: black;
+	/* font-weight: bold; */
 }
 
 .myAccount__Dropdown_Item img {
-    margin-left: 15px;
+	margin-left: 15px;
 }
 
-.myAccount__UpArrow {}
+.myAccount__UpArrow {
+}
 
 .myAccount:hover .myAccount__Dropdown,
 .myAccount__Dropdown:hover .myAccount__Dropdown {
-    opacity: 1;
-    display: block;
+	opacity: 1;
+	display: block;
+}
+.mobileCartIcon {
+	display: none;
 }
 
-@media (max-width: 1000px) {
-    .Burger {
-        display: block;
-    }
+@media (max-width: 810px) {
+	.mobileCartIcon {
+		display: flex;
+	}
+	.Burger {
+		display: block;
+	}
 
-    .NavLinks {
-        display: none;
-    }
+	.NavLinks {
+		display: none;
+	}
 
-    .MobileNavigation {}
+	.MobileNavigation {
+	}
 
-    .Icons {
-        padding: 1rem;
-    }
+	.Icons {
+		padding: 1rem;
+	}
 
-    .Icons img {
-        margin: 0 1.2rem;
-    }
+	.Icons img {
+		margin: 0 1.2rem;
+	}
 
-    .height {
-        display: flex;
-        height: 227px;
-    }
+	.height {
+		display: flex;
+		height: 400px;
+	}
 }

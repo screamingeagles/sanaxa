@@ -1,0 +1,75 @@
+@import '../../../shared/assets/CSS/colors.css';
+
+.AddSpecialRequest {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.AddSpecialRequest_Heading {
+    border-bottom: 1px solid #ccc;
+    padding: .8rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.AddSpecialRequest_Heading img {
+    transform: rotate(90deg);
+    margin-right: 15px;
+}
+
+.AddSpecialRequest_Heading p {
+    font-size: .825rem;
+    cursor: pointer;
+}
+
+.AddSpecialRequest_Heading p:hover {
+    color: var(--primary-dark-red);
+}
+
+.AddSpecialRequest_Details {
+    margin: 0px;
+    width: 100%;
+    justify-content: space-between;
+    flex-flow: column;
+    overflow: hidden;
+    height: auto;
+    max-height: 0;
+    transition: max-height 0s ease-out;
+}
+
+.AddSpecialRequest_Details textarea {
+    max-width: 450px;
+    width: 85%;
+    max-height: 150px;
+    font-family: inherit;
+    margin-bottom: 15px;
+    padding: .5rem;
+    border: 1px solid var(--primary-dark-red);
+}
+
+.AddSpecialRequest_Details textarea:focus {}
+
+.AddSpecialRequest_Details p {
+    margin-bottom: 5px;
+}
+
+.Active {
+    /* padding: 1.4rem .8rem .8rem .8rem; */
+    margin: 1.4rem .8rem .8rem .8rem;
+    max-height: 220px;
+}
+
+.AddSpecialRequest_Details_Span {
+    margin-bottom: 7px;
+    font-size: 14px;
+}
+
+
+
+
+@media (max-width : 768px) {}

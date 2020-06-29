@@ -11,5 +11,9 @@ export const BasketContext = createContext({
 	addQuantityToBasket: () => {},
 	removeProduct: () => {},
 	fetchBasket: () => {},
-	items: [],
+	clearBasket: () => {},
+	cart: { items: [] },
+	// totalPrice: 0,
+	error: false,
+	isLoading: false,
 });

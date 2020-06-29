@@ -45,7 +45,48 @@
 }
 
 .CreditsDetail_Table th {
+    border-bottom: 3px solid #ccc;
+    padding: .8rem .5rem;
+    background-color: #fdfdfd;
+}
+
+.CreditsDetail_Table td {
+    background-color: #fafafa;
     border-bottom: 2px solid #ccc;
     padding: .8rem .5rem;
+}
 
+.RedeemCode {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+}
+
+.RedeemCode_Enter {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    font-weight: bold;
+}
+
+.RedeemCode_Enter input {
+    margin: 2rem 0 2rem 1.5rem;
+    padding: .4rem .6rem;
+    border: 1px solid #ccc;
+    width: 30%;
+    border-radius: 5px;
+    color: rgb(109, 109, 109);
+}
+
+@media (max-width : 700px) {
+    .RedeemCode_Enter {
+        flex-flow: column;
+        align-items: flex-start;
+        margin: 1rem 0;
+    }
+
+    .RedeemCode_Enter input {
+        margin: 1rem 0;
+        width: 100%;
+    }
 }

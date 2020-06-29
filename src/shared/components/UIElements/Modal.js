@@ -11,9 +11,11 @@ import "./Modal.css";
 const ModalOverlay = (props) => {
 	const content = (
 		<div style={props.style} className={`modal ${props.className}`}>
-			{/* <header className={`modal__header ${props.headerClass}`}>
-				<h2>{props.header}</h2>
-			</header> */}
+			{props.header && (
+				<header className={`modal__header ${props.headerClass}`}>
+					<h2>{props.header}</h2>
+				</header>
+			)}
 			<form
 				onSubmit={
 					props.onSubmit ? props.onSubmit : (event) => event.preventDefault()
@@ -21,12 +23,14 @@ const ModalOverlay = (props) => {
 				<div className={`modal__content ${props.contentClass}`}>
 					{props.children}
 				</div>
-				{/* <footer className={`modal__footer ${props.footerClass}`}>
-					{props.footer}
-				</footer> */}
+				{props.footer && (
+					<footer className={`modal__footer ${props.footerClass}`}>
+						{props.footer}
+					</footer>
+				)}
 			</form>
 			<div className='closeIcon'>
-				<img src={closeIcon} height='45px' onClick={props.onCancel} />
+				<img src={closeIcon} height='45px' alt="" onClick={props.onCancel} />
 			</div>
 		</div>
 	);

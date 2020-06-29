@@ -1,119 +1,122 @@
 .AddOnItems {
-	width: 88%;
-	margin: 0 auto;
+    width: 88%;
+    margin: 0 auto;
 }
 
 .AddOnItems__Addons {
-	border-radius: 0 0 5px 5px;
-	overflow: hidden;
-	margin-bottom: 32px;
+    border-radius: 0 0 5px 5px;
+    overflow: hidden;
+    margin-bottom: 32px;
 }
 
 .AddOnItems__Addons h3 {
-	background-color: #efefef;
-	padding: 10px 15px;
-	border-radius: 5px 5px 0 0;
+    background-color: #efefef;
+    padding: 10px 15px;
+    border-radius: 5px 5px 0 0;
 }
 
 .AddOnItems__List {
-	font-style: italic;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 15px;
-	border: 2px solid #dadada;
-	border-top: 0px solid transparent;
+    font-style: italic;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border: 2px solid #dadada;
+    border-top: 0px solid transparent;
 }
 
 .AddOnItems__List_ImageHeading {
-	color: var(--primary-dark-red);
-	font-weight: bold;
-	display: flex;
-	align-items: center;
+    color: var(--primary-dark-red);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
 }
+
 .AddOnItems__List_ImageHeading h4 {
-	margin-left: 10px;
+    margin-left: 10px;
 }
 
 .AddOnItems__List_PriceForm {
-	display: flex;
-	align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .AddOnItems__List_Form {
-	display: flex;
-	margin-right: 15px;
-	justify-content: center;
-	align-items: center;
+    display: flex;
+    margin-right: 15px;
+    justify-content: center;
+    align-items: center;
 }
 
 .AddOnItems__List_Form label {
-	color: #ffb711;
-	font-size: 22px;
-	width: 13px;
-	height: 15px;
-	/* margin: 2px; */
-	cursor: pointer;
-	/* border: 1px solid #ccc; */
-	border-radius: 2px;
-	line-height: 10px;
+    color: #ffb711;
+    font-size: 22px;
+    width: 13px;
+    height: 12px;
+    /* margin: 2px; */
+    cursor: pointer;
+    /* border: 1px solid #ccc; */
+    border-radius: 2px;
+    line-height: 10px;
 }
 
 .AddOnItems__List_Form input {
-	width: 20px;
-	border: none;
-	margin: 0 3px 0 7px;
-	text-align: center;
+    width: 20px;
+    border: none;
+    margin: 0 3px 0 7px;
+    text-align: center;
 }
 
 .AddOnItems__List_Form input::-webkit-outer-spin-button,
 .AddOnItems__List_Form input::-webkit-inner-spin-button {
-	-webkit-appearance: none;
-	margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 /* Firefox */
 .AddOnItems__List_Form input[type="number"] {
-	-moz-appearance: textfield;
+    -moz-appearance: textfield;
 }
 
 .AddOnItems__Extras h4 {
-	background-color: #f0f0f0;
-	padding: 10px 15px;
-	border-radius: 5px 5px 0 0;
+    background-color: #f0f0f0;
+    padding: 10px 15px;
+    border-radius: 5px 5px 0 0;
 }
 
 .AddOnItems__Extras_List {
-	display: flex;
-	margin: 20px 10px 0;
+    display: flex;
+    margin: 20px 10px 0;
 }
 
 .AddOnItems__Extras_List p {
-	margin-left: 15px;
-	margin-bottom: 10px;
+    margin-left: 15px;
+    margin-bottom: 10px;
 }
 
 .AddOnItems__Extras_Notes {
-	width: 100%;
-	margin: 20px auto;
+    width: 100%;
+    margin: 20px auto;
 }
+
 .AddOnItems__Extras_Notes textarea {
-	width: 100%;
-	border: 1px solid #c7c7c7;
-	padding: 10px;
-	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    width: 100%;
+    border: 1px solid #c7c7c7;
+    padding: 10px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
 .AddOnItems__Extras_Notes textarea::placeholder {
-	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .AddOnItems__Button {
-	margin: 0 auto;
-	text-align: center;
+    margin: 0 auto;
+    text-align: center;
 }
 
 @media (max-width: 500px) {
-	.AddOnItems__Extras_List {
-		flex-flow: column;
-	}
+    .AddOnItems__Extras_List {
+        flex-flow: column;
+    }
 }

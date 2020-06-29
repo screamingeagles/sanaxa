@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from "react";
+import React from "react";
 import { BasketContext } from "./shared/context/basket-context";
 import { useBasket } from "./shared/hooks/basket-hook";
 
@@ -15,7 +15,10 @@ function App() {
 		removeProduct,
 		totalPrice,
 		fetchBasket,
-		items,
+		cart,
+		error,
+		clearBasket,
+		isLoading,
 	} = useBasket();
 
 	return (
@@ -29,7 +32,10 @@ function App() {
 				removeProduct,
 				totalPrice,
 				fetchBasket,
-				items,
+				cart,
+				error,
+				clearBasket,
+				isLoading,
 			}}>
 			<div className={classes.App}>
 				<Layout />

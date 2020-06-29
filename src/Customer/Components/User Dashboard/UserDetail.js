@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useCallback, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 
 import { AuthContext } from "../../../shared/context/auth-context";
@@ -12,15 +12,15 @@ import Address from "./Address";
 import Credits from "./Credits";
 
 import classes from "./UserDetail.module.css";
-import Account from "./Account";
+// import Account from "./Account";
 
-// const Account = React.lazy(() => import("./Account"));
+const Account = React.lazy(() => import("./Account"));
 
 const UserDetail = (props) => {
 	const [user, setUser] = useState();
 	const [heading, setHeading] = useState();
 
-	const { isLoading, error, sendRequest, clearError } = useHttpClient();
+	const { isLoading, sendRequest } = useHttpClient();
 	const auth = useContext(AuthContext);
 	const params = useParams().id;
 	const history = useHistory();
@@ -33,14 +33,16 @@ const UserDetail = (props) => {
 					"POST",
 					{
 						"Content-Type": "application/json",
+						Authorization: "Bearer " + auth.token,
 					},
 					JSON.stringify({ userId: auth.userId })
 				);
+				console.log(1);
 				setUser(resp.user);
 			} catch (err) {}
 		};
 		fetchUser();
-	}, [sendRequest]);
+	}, [sendRequest, auth.userId, auth.token]);
 
 	useEffect(() => {
 		if (params === "account") {
@@ -83,7 +85,7 @@ const UserDetail = (props) => {
 	}
 
 	return (
-		<div className={classes.UserDetail}>
+		<div className={[classes.UserDetail, "Container"].join(" ")}>
 			<h2 className={classes.UserDetail__Heading}>My Account</h2>
 			<div className={classes.UserDetail__SubHeadings}>
 				<div className={classes.UserDetail__Sidebar}>

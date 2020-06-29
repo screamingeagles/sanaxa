@@ -1,21 +1,21 @@
-import React, { useState, useContext, useEffect } from "react";
-import { useHistory, NavLink, useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
-import Logo from "../../../shared/assets/Images/snaxaLogo.svg";
-import google from "../../../shared/assets/Images/google.png";
-import facebook from "../../../shared/assets/Images/facebook.png";
+// import Logo from "../../../shared/assets/Images/snaxaLogo.svg";
+// import google from "../../../shared/assets/Images/google.png";
+// import facebook from "../../../shared/assets/Images/facebook.png";
 
 import {
 	VALIDATOR_EMAIL,
-	VALIDATOR_MINLENGTH,
+	// VALIDATOR_MINLENGTH,
 	VALIDATOR_REQUIRE,
-	VALIDATOR_CONFIRMPASSWORD,
+	// VALIDATOR_CONFIRMPASSWORD,
 } from "./../../../shared/util/validators";
 
 import { useForm } from "./../../../shared/hooks/form-hook";
 import { useHttpClient } from "./../../../shared/hooks/http-hook";
-import { AuthContext } from "../../../shared/context/auth-context";
-import { BasketContext } from "./../../../shared/context/basket-context";
+// import { AuthContext } from "../../../shared/context/auth-context";
+// import { BasketContext } from "./../../../shared/context/basket-context";
 
 import Button from "./../../../shared/components/FormElements/Button";
 import LoadingSpinner from "./../../../shared/components/UIElements/LoadingSpinner";
@@ -25,20 +25,20 @@ import Checbox from "./../Login/Checbox";
 import classes from "./Account.module.css";
 
 const Account = (props) => {
-	const auth = useContext(AuthContext);
-	const basket = useContext(BasketContext);
+	// const auth = useContext(AuthContext);
+	// const basket = useContext(BasketContext);
 	const history = useHistory();
 
 	const [newsletter, setNewsletter] = useState(false);
-	const [count, setCount] = useState(0);
+	// const [count, setCount] = useState(0);
 	const [SMS, setSMS] = useState(false);
-	const [year, setYear] = useState();
-	const [month, setMonth] = useState();
-	const [date, setDate] = useState();
+	// const [year, setYear] = useState();
+	// const [month, setMonth] = useState();
+	// const [date, setDate] = useState();
 
 	const { isLoading, error, sendRequest, clearError } = useHttpClient();
 
-	const [formState, inputHandler, setFormData] = useForm(
+	const [formState, inputHandler] = useForm(
 		{
 			email: {
 				value: "",
@@ -67,7 +67,7 @@ const Account = (props) => {
 	const isSubmitHandler = async (e) => {
 		e.preventDefault();
 		try {
-			const responseData = await sendRequest(
+			await sendRequest(
 				`${process.env.REACT_APP_BACKEND_URL}/signup`,
 				"POST",
 				{
@@ -91,6 +91,7 @@ const Account = (props) => {
 
 	useEffect(() => {
 		if (props.u) {
+			console.log(props.u);
 			setNewsletter(props.u && props.u.newsletter);
 			setSMS(props.u && props.u.SMS);
 

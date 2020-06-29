@@ -89,6 +89,12 @@
     }
 }
 
+@media (max-width: 450px) {
+    .SearchBar {
+        top: 6%;
+    }
+}
+
 @media (max-width: 830px) {
     .SliderBottomBar {
         top: 80%;

@@ -8,7 +8,7 @@
 }
 
 .formContainer__Hotel {
-    margin: 2rem auto;
+    margin: 0 auto 2rem;
     width: 100%;
     display: flex;
     justify-content: center;

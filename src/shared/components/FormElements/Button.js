@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import "./Button.css";
 
@@ -17,7 +17,7 @@ const Button = (props) => {
 	}
 	if (props.to) {
 		return (
-			<Link
+			<NavLink
 				to={props.to}
 				exact={props.exact}
 				style={{
@@ -26,12 +26,13 @@ const Button = (props) => {
 					border: props.backgroundColor,
 					padding: props.padding,
 					borderRadius: props.borderRadius,
+					width: props.width,
 				}}
 				className={`button button--${props.size || "default"} ${
 					props.inverse && "button--inverse"
 				} ${props.danger && "button--danger"}`}>
 				{props.children}
-			</Link>
+			</NavLink>
 		);
 	}
 	return (
@@ -42,6 +43,7 @@ const Button = (props) => {
 				border: props.backgroundColor,
 				padding: props.padding,
 				borderRadius: props.borderRadius,
+				width: props.width,
 			}}
 			className={`button button--${props.size || "default"} ${
 				props.inverse && "button--inverse"

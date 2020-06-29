@@ -1,20 +1,24 @@
 .modal {
     z-index: 100;
     position: fixed;
-    top: 10vh;
-    /* left: 2.5%; */
-    left: calc(50% - 15rem);
+    top: 20%;
+    /* top: 15vh; */
+    /* left: calc(50% - 15rem); */
+    transform: translate(-50%, -15%);
+    left: 50%;
+    margin: 0 auto;
     width: 30rem;
     background: white;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     border-radius: 8px;
+    overflow-y: auto;
 }
 
 .modal__header {
     width: 100%;
-    padding: 1rem 0.5rem;
-    background: #2a006e;
-    color: white;
+    padding: .2rem 0.5rem;
+    background: #ffebeb;
+    color: #ed1b24;
 }
 
 .modal__header h2 {
@@ -27,6 +31,9 @@
 
 .modal__footer {
     padding: 1rem 0.5rem;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
 }
 
 @media (max-width: 768px) {
@@ -34,8 +41,9 @@
         /* left: calc(50% - 15rem);
 
         width: 30rem; */
-        left: 2%;
+        /* left: 2%; */
         width: 95%;
+        max-width: 95%;
     }
 
     .closeIcon img {
@@ -44,23 +52,27 @@
 }
 
 .modal-enter {
-    transform: translateY(-10rem);
+    /* transform: translateY(-10rem); */
+    /* transform: translate(-50%, -50%); */
     opacity: 0;
 }
 
 .modal-enter-active {
-    transform: translateY(0);
+    /* transform: translateY(0); */
+    /* transform: translate(0%, 0%); */
     opacity: 1;
     transition: all 200ms;
 }
 
 .modal-exit {
-    transform: translateY(0);
+    /* transform: translateY(0); */
     opacity: 1;
+    /* transform: translate(0%, 0%); */
 }
 
 .modal-exit-active {
-    transform: translateY(-10rem);
+    /* transform: translateY(-10rem); */
+    /* transform: translate(-50%, -50%); */
     opacity: 0;
     transition: all 200ms;
 }

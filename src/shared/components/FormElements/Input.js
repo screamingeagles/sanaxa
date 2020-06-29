@@ -54,9 +54,7 @@ const Input = (props) => {
 
 	const element =
 		props.element === "select" ? (
-			<div >
-				
-			</div>
+			<div></div>
 		) : props.element === "input" ? (
 			<input
 				id={props.id}
@@ -68,8 +66,9 @@ const Input = (props) => {
 			/>
 		) : (
 			<textarea
+				placeholder={props.placeholder}
 				id={props.id}
-				rows={props.rows || 3}
+				rows={props.rows || 1}
 				value={inputState.value}
 				onChange={onChangeHandler}
 				onBlur={onTouchHandler}

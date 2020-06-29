@@ -1,0 +1,78 @@
+.OrderList {
+    display: flex;
+    width: 100;
+    justify-content: space-between;
+    border: 1px solid #ccc;
+    padding: 2rem 2.2rem;
+    margin-bottom: 10px;
+    /* flex-flow: column; */
+}
+
+.OrdersLists_Items {
+    display: flex;
+    justify-content: space-between;
+    flex-flow: column;
+    width: 100%;
+}
+
+.OrderItem {
+    display: flex;
+    width: 100%;
+    text-align: left;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.OrderItem__Names {
+    margin-left: 20px;
+    font-style: italic;
+}
+
+.OrderItem__Names h4 {
+    color: #b40008;
+    margin: 0;
+}
+
+.OrderItem__NamesRestaurant {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.OrderItem__NamesRestaurant h5 {
+    margin-left: 10px;
+}
+
+.SideDetails {
+    text-align: left;
+    width: 250px;
+    display: flex;
+    flex-flow: row;
+    align-items: flex-start;
+    color: rgb(160, 160, 160);
+}
+
+.SideDetails p {
+    margin: 0px;
+}
+
+.Line {
+    background-color: rgb(219, 219, 219);
+    margin-right: 20px;
+    height: 90px;
+    width: 1px;
+    margin-top: 10px;
+}
+
+@media (max-width: 720px) {
+    .OrderList {
+        flex-flow: column;
+    }
+
+    .SideDetails {
+        width: 100%;
+        margin-top: 20px;
+        display: flex;
+        justify-content: flex-end;
+    }
+}

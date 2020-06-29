@@ -11,15 +11,19 @@ const SearchBarForm = (props) => {
 			<form className={classes.formContainer}>
 				<div className={classes.inputContainer}>
 					<img src={searchIcon} alt='searchIcon' />
-					<input type='search' placeholder='Try any Restaurant...' />
+					{/* {!props.hotel && <img src={searchIcon} alt='searchIcon' />} */}
+					<input type='search' placeholder={props.placeholder} />
+					{/* <input type='search' placeholder='Try any Restaurant...' /> */}
 					<img src={myLocationIcon} alt='myLocationIcon' />
 				</div>
 				<div className={classes.searchButton}>
 					<Button
+						to={`/restaurant/${props.restaurantId}/${props.RestaurantName}/menu`}
+						width='100%'
 						padding='12px 30px'
 						borderRadius='40px'
 						backgroundColor='#ed1b24'>
-						Search
+						{props.button}
 					</Button>
 				</div>
 			</form>

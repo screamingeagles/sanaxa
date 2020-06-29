@@ -1,0 +1,91 @@
+@import '../../../shared/assets/CSS/colors.css';
+
+.PaymentSummary {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.PaymentSummary_Heading {
+    border-bottom: 1px solid #ccc;
+    padding: .8rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.PaymentSummary_Heading p {
+    font-size: .825rem;
+    color: green;
+    cursor: pointer;
+}
+
+.PaymentSummary_Details {
+    padding: .8rem .8rem 1.4rem;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    border-bottom: 1px solid #ccc;
+}
+
+.PaymentSummary_Details h4 {
+    margin-bottom: 1.4rem;
+    text-align: left;
+}
+
+
+.LabelInput {
+    max-width: 250px;
+    margin-right: 15px;
+    width: 90%;
+}
+
+.PaymentSummary_Method {
+    padding: 1.4rem .8rem 1.4rem;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    border-bottom: 1px solid #ccc;
+}
+
+.PaymentSummary_Method_Div {
+    width: 50%;
+}
+
+.PaymentSummary_Discount {
+    width: 80%;
+    display: flex;
+    margin: 10px 0;
+    background-color: rgb(235, 235, 235);
+    padding: .7rem;
+    align-items: center;
+    border-radius: 4px;
+}
+
+.PaymentSummary_Discount span {
+    color: green;
+    margin-left: 12px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+
+
+@media (max-width : 768px) {
+    .PaymentSummary_Method {
+        flex-flow: column;
+    }
+
+
+    .PaymentSummary_Method_Div {
+        width: 100% !important;
+        margin-bottom: 15px;
+    }
+
+    .PaymentSummary_Discount {
+        width: 100%;
+    }
+}

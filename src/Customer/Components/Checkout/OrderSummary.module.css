@@ -1,0 +1,95 @@
+@import '../../../shared/assets/CSS/colors.css';
+
+.OrderSummary {
+    display: flex;
+    flex-flow: column;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.OrderSummary_Heading {
+    border-bottom: 1px solid #ccc;
+    padding: .8rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.OrderSummary_Heading p {
+    font-size: .825rem;
+    color: green;
+    cursor: pointer;
+}
+
+.OrderSummary_Details {
+    padding: 1.4rem .8rem .8rem .8rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    flex-flow: column;
+}
+
+.OrderSummary_Details h4 {
+    margin-bottom: 1.4rem;
+    text-align: left;
+}
+
+.OrderSummary_Details_Table {
+    width: 100%;
+    text-align: center;
+}
+
+.OrderSummary_Details_Table th {
+    padding: .6rem .2rem;
+    background-color: rgb(245, 245, 245);
+}
+
+.OrderSummary_Details_Table th:first-child,
+.OrderSummary_Details_Table td:first-child {
+    padding-left: 10px;
+    text-align: left;
+    width: 25%;
+}
+
+.OrderSummary_Details_Table tr {
+    border-bottom: 1px solid rgb(240, 240, 240);
+}
+
+.OrderSummary_Details_Table td {
+    padding: .8rem .2rem;
+}
+
+.SpecialRequest {
+    cursor: pointer;
+}
+
+.SpecialRequest:hover {
+    color: var(--primary-dark-red);
+}
+
+.speicalReqHidden {
+    display: none;
+}
+
+@media (max-width : 768px) {
+
+    .OrderSummary_Details_Table th:first-child,
+    .OrderSummary_Details_Table td:first-child {
+        width: 55%;
+    }
+
+    .OrderSummary_Details_Table th:nth-child(2),
+    .OrderSummary_Details_Table td:nth-child(2) {
+        display: none;
+    }
+
+    .speicalReqHidden {
+        display: block;
+        margin-top: 8px;
+        font-size: 12px;
+    }
+
+}

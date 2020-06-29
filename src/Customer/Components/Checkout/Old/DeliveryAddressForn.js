@@ -1,27 +1,27 @@
 import React from "react";
 import classes from "./DeliveryAddressForn.module.css";
 import Input from "../../../shared/components/FormElements/Input";
-import { useForm } from "./../../../shared/hooks/form-hook";
+// import { useForm } from "./../../../shared/hooks/form-hook";
 import { VALIDATOR_REQUIRE } from "./../../../shared/util/validators";
 
 const DeliveryAddressForn = (props) => {
-	const [formState, inputHandler, setFormData] = useForm(
-		{
-			address1: {
-				value: "",
-				isValid: false,
-			},
-			address2: {
-				value: "",
-				isValid: false,
-			},
-			mobileNumber: {
-				value: "",
-				isValid: false,
-			},
-		},
-		false
-	);
+	// const [formState, inputHandler] = useForm(
+	// 	{
+	// 		address1: {
+	// 			value: "",
+	// 			isValid: false,
+	// 		},
+	// 		address2: {
+	// 			value: "",
+	// 			isValid: false,
+	// 		},
+	// 		mobileNumber: {
+	// 			value: "",
+	// 			isValid: false,
+	// 		},
+	// 	},
+	// 	false
+	// );
 
 	return (
 		<div className={classes.DeliveryAddressForn}>
@@ -30,7 +30,8 @@ const DeliveryAddressForn = (props) => {
 					id='address1'
 					element='input'
 					placeholder='Address 1'
-					onInput={inputHandler}
+					onInput={() => {}}
+					// onInput={inputHandler}
 					validators={[VALIDATOR_REQUIRE()]}
 					errorText='Please enter a valid data'
 					type='text'
@@ -39,7 +40,8 @@ const DeliveryAddressForn = (props) => {
 					id='address2'
 					element='input'
 					placeholder='Address 2'
-					onInput={inputHandler}
+					onInput={() => {}}
+					// onInput={inputHandler}
 					validators={[VALIDATOR_REQUIRE()]}
 					errorText='Please enter a valid data'
 					type='text'
@@ -48,7 +50,8 @@ const DeliveryAddressForn = (props) => {
 					id='mobileNumber'
 					element='input'
 					placeholder='Mobile Number'
-					onInput={inputHandler}
+					onInput={() => {}}
+					// onInput={inputHandler}
 					validators={[VALIDATOR_REQUIRE()]}
 					errorText='Please enter a valid data'
 					type='text'
