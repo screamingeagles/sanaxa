@@ -13,7 +13,7 @@ export const BasketContext = createContext({
 	fetchBasket: () => {},
 	clearBasket: () => {},
 	cart: { items: [] },
-	// totalPrice: 0,
+	totalPrice: 0,
 	error: false,
 	isLoading: false,
 });

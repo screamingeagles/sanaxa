@@ -2,9 +2,12 @@ import React from "react";
 
 import "./Checkbox.css";
 
-const Checbox = (props) => {
+const Checkbox = (props) => {
 	return (
-		<label class='control control-checkbox' onClick={props.onClick}>
+		<label
+			style={props.style}
+			class='control control-checkbox'
+			onClick={props.onClick}>
 			<p style={{ textAlign: "left", fontWeight: "bold", fontSize: "14px" }}>
 				{props.children}
 			</p>
@@ -14,4 +17,4 @@ const Checbox = (props) => {
 	);
 };
 
-export default Checbox;
+export default Checkbox;

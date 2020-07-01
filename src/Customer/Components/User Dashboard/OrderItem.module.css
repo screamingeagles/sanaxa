@@ -1,54 +1,30 @@
 .OrderList {
     display: flex;
-    width: 100;
-    justify-content: space-between;
+    width: 100%;
+    justify-content: flex-end;
     border: 1px solid #ccc;
-    padding: 2rem 2.2rem;
+    padding: 1rem 1rem;
     margin-bottom: 10px;
-    /* flex-flow: column; */
-}
-
-.OrdersLists_Items {
-    display: flex;
-    justify-content: space-between;
     flex-flow: column;
-    width: 100%;
 }
 
-.OrderItem {
+.orderDetails {
     display: flex;
+}
+
+.orderDetails div {
     width: 100%;
-    text-align: left;
-    align-items: flex-start;
-    margin-bottom: 10px;
-}
+    /* align-self: flex-end; */
 
-.OrderItem__Names {
-    margin-left: 20px;
-    font-style: italic;
-}
-
-.OrderItem__Names h4 {
-    color: #b40008;
-    margin: 0;
-}
-
-.OrderItem__NamesRestaurant {
-    margin: 10px 0;
-    display: flex;
-    align-items: center;
-}
-
-.OrderItem__NamesRestaurant h5 {
-    margin-left: 10px;
 }
 
 .SideDetails {
+    margin-top: 1rem;
     text-align: left;
-    width: 250px;
+    /* width: 250px; */
     display: flex;
     flex-flow: row;
-    align-items: flex-start;
+    /* align-items: flex-start; */
     color: rgb(160, 160, 160);
 }
 
@@ -56,23 +32,19 @@
     margin: 0px;
 }
 
-.Line {
-    background-color: rgb(219, 219, 219);
-    margin-right: 20px;
-    height: 90px;
-    width: 1px;
-    margin-top: 10px;
+
+.Subtotal {
+    display: flex;
+    flex-flow: column;
 }
 
-@media (max-width: 720px) {
-    .OrderList {
-        flex-flow: column;
-    }
+.Subtotal_Items {
+    display: flex;
+    justify-content: space-between;
+}
 
-    .SideDetails {
-        width: 100%;
-        margin-top: 20px;
-        display: flex;
-        justify-content: flex-end;
-    }
+.Subtotal_Items p {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
 }

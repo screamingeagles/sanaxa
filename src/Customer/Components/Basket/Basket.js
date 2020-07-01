@@ -43,7 +43,9 @@ const Basket = (props) => {
 									</div>
 								</div>
 								<div className={classes.Basket__Content_Price}>
-									<h4>${i.price * i.quantity}</h4>
+									<h4>
+										AED {parseFloat(`${i.quantity}` * `${i.price}`).toFixed(2)}
+									</h4>
 								</div>
 							</div>
 						</div>
@@ -53,9 +55,9 @@ const Basket = (props) => {
 									onSubmit={(e) => e.preventDefault()}
 									className={classes.Bucket__Content_List_Form}>
 									<label
-										onClick={() =>
-											increaseQuantity(i.quantity, -1, i.productId)
-										}
+										onClick={() => {
+											increaseQuantity(i.quantity, -1, i.productId);
+										}}
 										style={{ paddingLeft: "2px" }}>
 										-
 									</label>
@@ -107,17 +109,19 @@ const Basket = (props) => {
 							style={{ marginTop: "2rem" }}
 							className={classes.Basket__Content_Flex_Total}>
 							<h4>Subtotal</h4>
-							<h4>${basket.totalPrice}</h4>
+							<h4>AED {basket.totalPrice}</h4>
 						</div>
 						<div className={classes.Basket__Content_Flex_Total}>
 							<h4>Delivery Fee</h4>
-							<h4>$20</h4>
+							<h4>AED 20</h4>
 						</div>
 						<div
 							style={{ marginBottom: "1rem", marginTop: "1rem" }}
 							className={classes.Basket__Content_Flex_Total}>
 							<h4 style={{ color: "#ed1b24" }}>Total</h4>
-							<h4 style={{ color: "#ed1b24" }}>${basket.totalPrice + 20}</h4>
+							<h4 style={{ color: "#ed1b24" }}>
+								AED {parseInt(`${basket.totalPrice}`) + 20}
+							</h4>
 						</div>
 					</div>
 				)}

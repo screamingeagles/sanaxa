@@ -8,7 +8,7 @@ import { AuthContext } from "../../../shared/context/auth-context";
 
 const Orders = (props) => {
 	const [orders, setOrders] = useState(false);
-	const { sendRequest } = useHttpClient();
+	const { isLoading, sendRequest } = useHttpClient();
 	const { userId, token } = useContext(AuthContext);
 
 	useEffect(() => {
@@ -27,12 +27,11 @@ const Orders = (props) => {
 			} catch (err) {}
 		};
 		orderHandler();
-		// , [sendRequest, token, userId]);
 	}, [sendRequest, token, userId]);
 
 	let content;
 
-	if (orders.length === 0)
+	if (!isLoading && orders.length === 0)
 		content = (
 			<React.Fragment>
 				<img alt='' src={myordersempty} width='120px' />
@@ -40,7 +39,7 @@ const Orders = (props) => {
 			</React.Fragment>
 		);
 
-	if (orders.length > 0) {
+	if (!isLoading && orders.length > 0) {
 		let activeOrders, completedOrders;
 		if (orders) {
 			activeOrders = orders.filter(
@@ -52,7 +51,7 @@ const Orders = (props) => {
 			completedOrders = orders.filter(
 				(i) => i.orderStatus === "Cancelled" || i.orderStatus === "Delivered"
 			);
-			console.log(activeOrders);
+			// console.log(activeOrders);
 		}
 		content = (
 			<div className={classes.OrdersList}>

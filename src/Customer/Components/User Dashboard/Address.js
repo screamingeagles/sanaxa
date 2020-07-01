@@ -7,7 +7,7 @@ import Modal from "../../../shared/components/UIElements/Modal";
 import AddAddressForm from "./AddAddressForm";
 
 const Address = (props) => {
-	const [newAddress, setNewAddress] = useState(true);
+	const [newAddress, setNewAddress] = useState(false);
 	const newAddressHandler = () => {
 		setNewAddress((s) => !s);
 	};

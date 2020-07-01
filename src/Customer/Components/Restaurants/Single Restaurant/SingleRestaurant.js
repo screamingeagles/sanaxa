@@ -23,15 +23,17 @@ import Info from "./Info";
 import TopDetailsTabs from "./TopDetailsTabs";
 import Menu from "./Menu";
 import Reviews from "./Reviews";
+import { useAuth } from "../../../../shared/hooks/auth-hook";
 
 const SingleRestaurant = (props) => {
 	const [restaurant, setRestaurant] = useState([]);
+	const { token } = useAuth();
 	const restaurantId = useParams().id;
 	const RestaurantName = useParams().name.replace("+", " ");
 	const [menu, setMenu] = useState(true);
 	const [reviews, setReviews] = useState(false);
 	const [info, setInfo] = useState(false);
-	console.log(restaurantId);
+	// console.log(restaurantId);
 	const { isLoading, sendRequest } = useHttpClient();
 
 	useEffect(() => {
@@ -42,17 +44,17 @@ const SingleRestaurant = (props) => {
 					"POST",
 					{
 						"Content-Type": "application/json",
+						Authorization: "Bearer " + token,
 					},
 					JSON.stringify({
 						restaurantId,
 					})
 				);
-				// console.log(responseData);
 				setRestaurant(responseData);
 			} catch (error) {}
 		};
 		fetchAllRestaurants();
-	}, [restaurantId, sendRequest]);
+	}, [restaurantId, sendRequest, token]);
 
 	let mainContent;
 	let content;
@@ -78,7 +80,14 @@ const SingleRestaurant = (props) => {
 		}
 	};
 
-	if (menu && !isLoading) content = <Menu restaurant={restaurant.dish} />;
+	if (menu && !isLoading)
+		content = (
+			<Menu
+				restaurant={restaurant.dish}
+				restaurantId={restaurantId}
+				RestaurantName={RestaurantName}
+			/>
+		);
 	if (reviews && !isLoading) content = <Reviews />;
 	if (info && !isLoading) content = <Info RestaurantName={RestaurantName} />;
 

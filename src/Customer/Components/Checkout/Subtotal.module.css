@@ -1,5 +1,5 @@
 .Subtotal {
-    margin: 0 5rem;
+    margin: 0 .1rem
 }
 
 .Subtotal_Details_List {
@@ -14,7 +14,7 @@
 
 @media (max-width: 1000px) {
     .Subtotal {
-        margin: 0 2rem;
+        /* margin: 0 2rem; */
     }
 }
 @media (max-width: 500px) {

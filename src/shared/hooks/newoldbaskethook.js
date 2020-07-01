@@ -153,173 +153,178 @@ export const useBasket = () => {
 		price,
 		totalPrice
 	) => {
-		// const cartData = {
-		// 	quantity,
-		// 	productId,
-		// 	name,
-		// 	price,
-		// 	totalPrice,
-		// };
-		// const uploadBasket = async () => {
-		// 	try {
-		// 		await sendRequest(
-		// 			`${process.env.REACT_APP_BACKEND_URL}/addtobasket`,
-		// 			"POST",
-		// 			{
-		// 				"Content-Type": "application/json",
-		// 				Authorization: "Bearer " + token,
-		// 			},
-		// 			JSON.stringify({
-		// 				restaurantId,
-		// 				RestaurantName,
-		// 				quantity,
-		// 				productId,
-		// 				name,
-		// 				price,
-		// 				totalPrice,
-		// 				userId,
-		// 			})
-		// 		);
-		// 	} catch (error) {}
-		// };
-		// if (token && userId) uploadBasket();
-		// const itemExisted = cart.items.find((i) => i.productId === productId);
-		// const itemExistedIndex = cart.items.findIndex(
-		// 	(i) => i.productId === productId
-		// );
-		// if (cart.restaurantId === restaurantId)
-		// 	if (itemExisted) {
-		// 		const updatedItem = itemExisted;
-		// 		updatedItem.quantity = updatedItem.quantity + quantity;
-		// 		updatedItem.totalPrice = updatedItem.quantity * price;
-		// 		const updatedList = [...cart.items];
-		// 		updatedList[itemExistedIndex] = updatedItem;
-		// 		// items.push(upda);
-		// 		// setItems(updatedList);
-		// 		const tempCart = cart;
-		// 		tempCart.items = updatedList;
-		// 		setCart(tempCart);
-		// 		localStorage.setItem("cart", JSON.stringify(tempCart));
-		// 		fetchOfflineBasket();
-		// 		fetchBasket();
-		// 		return;
-		// 	} else {
-		// 		const tempCart = cart;
-		// 		tempCart.items.push(cartData);
-		// 		setCart(tempCart);
-		// 		localStorage.setItem("cart", JSON.stringify(tempCart));
-		// 		fetchOfflineBasket();
-		// 		return;
-		// 	}
-		// if (!cart.restaurantId && cart.restaurantId !== restaurantId) {
-		// 	// console.log("!restaurant");
-		// 	const tempCart = {
-		// 		restaurantId,
-		// 		RestaurantName,
-		// 		items: [
-		// 			{
-		// 				quantity,
-		// 				productId,
-		// 				name,
-		// 				price,
-		// 				totalPrice,
-		// 			},
-		// 		],
-		// 	};
-		// 	cart.items.push(cartData);
-		// 	setCart(tempCart);
-		// 	localStorage.setItem("cart", JSON.stringify(tempCart));
-		// 	fetchOfflineBasket();
-		// 	return;
-		// }
+		const cartData = {
+			quantity,
+			productId,
+			name,
+			price,
+			totalPrice,
+		};
+		const uploadBasket = async () => {
+			try {
+				await sendRequest(
+					`${process.env.REACT_APP_BACKEND_URL}/addtobasket`,
+					"POST",
+					{
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + token,
+					},
+					JSON.stringify({
+						restaurantId,
+						RestaurantName,
+						quantity,
+						productId,
+						name,
+						price,
+						totalPrice,
+						userId,
+					})
+				);
+			} catch (error) {}
+		};
+
+		if (token && userId) uploadBasket();
+
+		const itemExisted = cart.items.find((i) => i.productId === productId);
+		const itemExistedIndex = cart.items.findIndex(
+			(i) => i.productId === productId
+		);
+
+		if (cart.restaurantId === restaurantId)
+			if (itemExisted) {
+				const updatedItem = itemExisted;
+				updatedItem.quantity = updatedItem.quantity + quantity;
+				updatedItem.totalPrice = updatedItem.quantity * price;
+				const updatedList = [...cart.items];
+				updatedList[itemExistedIndex] = updatedItem;
+				// items.push(upda);
+				// setItems(updatedList);
+				const tempCart = cart;
+				tempCart.items = updatedList;
+				setCart(tempCart);
+				localStorage.setItem("cart", JSON.stringify(tempCart));
+				fetchOfflineBasket();
+				fetchBasket();
+				return;
+			} else {
+				const tempCart = cart;
+				tempCart.items.push(cartData);
+				setCart(tempCart);
+				localStorage.setItem("cart", JSON.stringify(tempCart));
+				fetchOfflineBasket();
+				return;
+			}
+
+		if (!cart.restaurantId && cart.restaurantId !== restaurantId) {
+			// console.log("!restaurant");
+			const tempCart = {
+				restaurantId,
+				RestaurantName,
+				items: [
+					{
+						quantity,
+						productId,
+						name,
+						price,
+						totalPrice,
+					},
+				],
+			};
+			cart.items.push(cartData);
+			setCart(tempCart);
+			localStorage.setItem("cart", JSON.stringify(tempCart));
+			fetchOfflineBasket();
+			return;
+		}
 	};
 
 	const addQuantityToBasket = async (q, productId) => {
-		// const quantity = parseInt(q);
-		// // if (token && userId) {
-		// let ress;
-		// if (token) {
-		// 	try {
-		// 		ress = await sendRequest(
-		// 			`${process.env.REACT_APP_BACKEND_URL}/addquantity`,
-		// 			"POST",
-		// 			{
-		// 				"Content-Type": "application/json",
-		// 				Authorization: "Bearer " + token,
-		// 			},
-		// 			JSON.stringify({
-		// 				userId,
-		// 				productId,
-		// 				quantity,
-		// 			})
-		// 		);
-		// 		let totPrice = 0;
-		// 		ress.cart.items.map(
-		// 			(i) => (totPrice += parseFloat(i.quantity) * parseFloat(i.price))
-		// 		);
-		// 		setTotalPrice(totPrice);
-		// 		fetchCart(ress.cart);
-		// 		// return;
-		// 	} catch (error) {}
-		// }
-		// const itemExisted = cart.items.find((i) => i.productId === productId);
-		// const itemExistedIndex = cart.items.findIndex(
-		// 	(i) => i.productId === productId
-		// );
-		// if (itemExisted) {
-		// 	// console.log(itemExisted);
-		// 	const updatedItem = itemExisted;
-		// 	updatedItem.quantity = updatedItem.quantity + quantity;
-		// 	updatedItem.totalPrice = updatedItem.quantity * updatedItem.price;
-		// 	const updatedList = [...cart.items];
-		// 	updatedList[itemExistedIndex] = updatedItem;
-		// 	const tempCart = cart;
-		// 	tempCart.items = updatedList;
-		// 	setCart(tempCart);
-		// 	// // items.push(upda);
-		// 	// setItems(updatedList);
-		// 	localStorage.setItem("cart", JSON.stringify(tempCart));
-		// 	fetchOfflineBasket();
-		// 	return;
-		// }
+		const quantity = parseInt(q);
+		// if (token && userId) {
+		let ress;
+		if (token) {
+			try {
+				ress = await sendRequest(
+					`${process.env.REACT_APP_BACKEND_URL}/addquantity`,
+					"POST",
+					{
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + token,
+					},
+					JSON.stringify({
+						userId,
+						productId,
+						quantity,
+					})
+				);
+				let totPrice = 0;
+				ress.cart.items.map(
+					(i) => (totPrice += parseFloat(i.quantity) * parseFloat(i.price))
+				);
+				setTotalPrice(totPrice);
+				fetchCart(ress.cart);
+				// return;
+			} catch (error) {}
+		}
+		const itemExisted = cart.items.find((i) => i.productId === productId);
+		const itemExistedIndex = cart.items.findIndex(
+			(i) => i.productId === productId
+		);
+		if (itemExisted) {
+			// console.log(itemExisted);
+			const updatedItem = itemExisted;
+			updatedItem.quantity = updatedItem.quantity + quantity;
+			updatedItem.totalPrice = updatedItem.quantity * updatedItem.price;
+			const updatedList = [...cart.items];
+			updatedList[itemExistedIndex] = updatedItem;
+			const tempCart = cart;
+			tempCart.items = updatedList;
+			setCart(tempCart);
+			// // items.push(upda);
+			// setItems(updatedList);
+			localStorage.setItem("cart", JSON.stringify(tempCart));
+			fetchOfflineBasket();
+			return;
+		}
 	};
 
 	const removeProduct = async (productId) => {
-		// let itemExisted;
-		// if (cart.items) {
-		// 	itemExisted = cart.items.filter((i) => i.productId === productId);
-		// }
-		// if (itemExisted) {
-		// 	const updatedList = [...cart.items];
-		// 	const updatedListItems = updatedList.filter((j) => {
-		// 		return j.productId.toString() !== itemExisted[0].productId.toString();
-		// 	});
-		// 	cart.items = updatedListItems;
-		// 	if (cart.items.length === 0) {
-		// 		const Tempcart = { items: [] };
-		// 		setCart({ items: [] });
-		// 		localStorage.setItem("cart", JSON.stringify(Tempcart));
-		// 	} else localStorage.setItem("cart", JSON.stringify(cart));
-		// 	if (!token && !userId) {
-		// 		fetchOfflineBasket();
-		// 	}
-		// }
-		// if (token && userId) {
-		// 	try {
-		// 		await sendRequest(
-		// 			`${process.env.REACT_APP_BACKEND_URL}/removeproduct`,
-		// 			"POST",
-		// 			{
-		// 				"Content-Type": "application/json",
-		// 				Authorization: "Bearer " + token,
-		// 			},
-		// 			JSON.stringify({
-		// 				userId,
-		// 				productId,
-		// 			})
-		// 		);
-		// 	} catch (error) {}
-		// }
+		let itemExisted;
+		if (cart.items) {
+			itemExisted = cart.items.filter((i) => i.productId === productId);
+		}
+		if (itemExisted) {
+			const updatedList = [...cart.items];
+
+			const updatedListItems = updatedList.filter((j) => {
+				return j.productId.toString() !== itemExisted[0].productId.toString();
+			});
+			cart.items = updatedListItems;
+			if (cart.items.length === 0) {
+				const Tempcart = { items: [] };
+				setCart({ items: [] });
+				localStorage.setItem("cart", JSON.stringify(Tempcart));
+			} else localStorage.setItem("cart", JSON.stringify(cart));
+			if (!token && !userId) {
+				fetchOfflineBasket();
+			}
+		}
+		if (token && userId) {
+			try {
+				await sendRequest(
+					`${process.env.REACT_APP_BACKEND_URL}/removeproduct`,
+					"POST",
+					{
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + token,
+					},
+					JSON.stringify({
+						userId,
+						productId,
+					})
+				);
+			} catch (error) {}
+		}
 	};
 
 	const clearBasket = async () => {
@@ -347,7 +352,7 @@ export const useBasket = () => {
 		<Modal
 			className='basketContainer'
 			show={showBasket}
-			// style={{ width: "40rem" }}
+			style={{ width: "40rem" }}
 			onCancel={showBasketHandler}>
 			<Basket onCancel={showBasketHandler} cart={cart} />
 		</Modal>

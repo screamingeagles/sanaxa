@@ -1,5 +1,5 @@
 .AddOnItems {
-    width: 88%;
+    width: 96%;
     margin: 0 auto;
 }
 
@@ -16,7 +16,6 @@
 }
 
 .AddOnItems__List {
-    font-style: italic;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,11 +28,18 @@
     color: var(--primary-dark-red);
     font-weight: bold;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    flex-flow: column;
+}
+
+.AddOnItems__List_ImageHeading p {
+    font-size: .825rem;
+    color: rgb(82, 82, 82);
+    margin-top: 5px;
 }
 
 .AddOnItems__List_ImageHeading h4 {
-    margin-left: 10px;
+    /* margin-left: 10px; */
 }
 
 .AddOnItems__List_PriceForm {
@@ -78,20 +84,44 @@
     -moz-appearance: textfield;
 }
 
+.AddOnItems__Extras {
+    margin-bottom: 32px;
+}
+
 .AddOnItems__Extras h4 {
     background-color: #f0f0f0;
+    margin-bottom: 12px;
     padding: 10px 15px;
     border-radius: 5px 5px 0 0;
 }
 
-.AddOnItems__Extras_List {
+.AddOnItems__Extras__Checkboxes {
     display: flex;
-    margin: 20px 10px 0;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
-.AddOnItems__Extras_List p {
-    margin-left: 15px;
-    margin-bottom: 10px;
+.AddOnItems__Extras__Checkboxes>div {
+    width: 33.3%;
+    font-weight: 400;
+}
+
+.AddOnItems__Extras__Checkboxes>div>label>p {
+    font-weight: 500 !important;
+}
+
+.AddOnItems__Extras__Checkboxes>div>div>label>p {
+    font-weight: 500 !important;
+}
+
+.AddOnItems__Extras_List {
+    display: flex;
+    flex-flow: column;
+    /* margin: 20px 10px 0; */
+}
+
+.AddOnItems__Extras_List label {
+    width: 33.3%;
 }
 
 .AddOnItems__Extras_Notes {

@@ -11,8 +11,8 @@
 }
 
 .Basket__Content_Height {
-    height: 55vh;
-    overflow-y: scroll;
+    /* height: 55vh; */
+    /* overflow-y: scroll; */
 }
 
 .Basket__Content {
@@ -41,7 +41,7 @@
 
 .Basket__Content_Name h4 {
     color: var(--primary-red);
-    font-style: italic;
+    /* font-style: italic; */
 }
 
 .Basket__Content_Name_Restaurant {
@@ -55,7 +55,7 @@
 }
 
 .Basket__Content_Price {
-    font-style: italic;
+    /* font-style: italic; */
 }
 
 .Basket__Content_AddItem {

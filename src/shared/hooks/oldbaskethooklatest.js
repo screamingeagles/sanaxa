@@ -90,7 +90,7 @@ export const useBasket = () => {
 		};
 
 		const uploadBasket = async () => {
-			console.log(token);
+			// console.log(token);
 			try {
 				const responseData = await sendRequest(
 					`${process.env.REACT_APP_BACKEND_URL}/addtobasket`,
@@ -124,9 +124,9 @@ export const useBasket = () => {
 
 		if (cart.restaurantId === restaurantId)
 			if (itemExisted) {
-				console.log("Item exist");
+				// console.log("Item exist");
 				const updatedItem = itemExisted;
-				console.log(updatedItem);
+				// console.log(updatedItem);
 				updatedItem.quantity = updatedItem.quantity + quantity;
 				updatedItem.totalPrice = updatedItem.quantity * price;
 				const updatedList = [...cart.items];
@@ -140,7 +140,7 @@ export const useBasket = () => {
 				fetchBasket();
 				return;
 			} else {
-				console.log("!Item exist");
+				// console.log("!Item exist");
 				const tempCart = cart;
 				tempCart.items.push(cartData);
 				setCart(tempCart);
@@ -150,7 +150,7 @@ export const useBasket = () => {
 			}
 
 		if (!cart.restaurantId && cart.restaurantId !== restaurantId) {
-			console.log("!restaurant");
+			// console.log("!restaurant");
 			const tempCart = {
 				restaurantId,
 				RestaurantName,
@@ -234,7 +234,7 @@ export const useBasket = () => {
 		localStorage.setItem("cart", JSON.stringify({ items: [] }));
 		setCart({ items: [] });	
 		if (token && userId) {
-			console.log("Clear Basket");
+			// console.log("Clear Basket");
 			try {
 				const responseData = await sendRequest(
 					`${process.env.REACT_APP_BACKEND_URL}/clearbasket`,

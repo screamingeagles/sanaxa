@@ -19,6 +19,7 @@ function App() {
 		error,
 		clearBasket,
 		isLoading,
+		restaurant,
 	} = useBasket();
 
 	return (
@@ -36,6 +37,7 @@ function App() {
 				error,
 				clearBasket,
 				isLoading,
+				restaurant,
 			}}>
 			<div className={classes.App}>
 				<Layout />

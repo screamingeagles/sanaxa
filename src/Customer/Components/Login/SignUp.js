@@ -23,7 +23,7 @@ import LoadingSpinner from "./../../../shared/components/UIElements/LoadingSpinn
 
 import classes from "./Login.module.css";
 import SignUpInput from "../../../shared/components/FormElements/SignUpInput";
-import Checbox from "./Checbox";
+import Checkbox from "./Checkbox";
 
 const SignUp = (props) => {
 	// const auth = useContex?t(AuthContext);
@@ -165,10 +165,10 @@ const SignUp = (props) => {
 
 	let checkboxForm = (
 		<div className={classes.checkboxForm}>
-			<Checbox onClick={() => setNewsletter(true)}>
+			<Checkbox onClick={() => setNewsletter(true)}>
 				Subscribe to our Newsletter
-			</Checbox>
-			<Checbox onClick={() => setSMS(true)}>Subscribe to SMS</Checbox>
+			</Checkbox>
+			<Checkbox onClick={() => setSMS(true)}>Subscribe to SMS</Checkbox>
 			<p style={{ marginBottom: "20px", fontSize: "11px" }}>
 				By creating an account you agree to the{" "}
 				<span style={{ color: "#ed1b24", cursor: "pointer" }}>

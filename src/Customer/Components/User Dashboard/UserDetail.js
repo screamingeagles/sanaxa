@@ -37,7 +37,7 @@ const UserDetail = (props) => {
 					},
 					JSON.stringify({ userId: auth.userId })
 				);
-				console.log(1);
+				// console.log(1);
 				setUser(resp.user);
 			} catch (err) {}
 		};

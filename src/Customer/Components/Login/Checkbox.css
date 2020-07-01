@@ -3,7 +3,7 @@
     display: block;
     position: relative;
     padding-left: 30px;
-    margin: 20px 0;
+    /* margin: 20px 0; */
     padding-top: 3px;
     cursor: pointer;
     font-size: 16px;
@@ -35,11 +35,13 @@
 
 .control input:checked~.control_indicator {
     background: #ed1b24;
+    transition: all .1s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 .control:hover input:not([disabled]):checked~.control_indicator,
 .control input:checked:focus~.control_indicator {
     background: #ed1b24;
+    transition: all .1s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
 .control input:disabled~.control_indicator {

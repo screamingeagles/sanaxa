@@ -1,0 +1,90 @@
+.radiocontrol {
+    font-family: arial;
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    /* margin: 20px 0; */
+    padding-top: 3px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flexs;
+    align-items: center;
+}
+
+.radiocontrol input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+}
+
+.radiocontrol_indicator {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    height: 17px;
+    width: 17px;
+    background: #ececec;
+    border-radius: 100%;
+    /* top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white; */
+}
+
+.radiocontrol:hover input~.radiocontrol_indicator,
+.radiocontrol input:focus~.radiocontrol_indicator {
+    background: #ececec;
+    border-radius: 100%;
+}
+
+.radiocontrol input:checked~.radiocontrol_indicator {
+    border-radius: 100%;
+    /* border: 1px solid #ed1b24; */
+    /* background: #ed1b24; */
+    /* background: white; */
+    border: 5px solid #ed1b24;
+    transition: all .1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.radiocontrol:hover input:not([disabled]):checked~.radiocontrol_indicator,
+.radiocontrol input:checked:focus~.radiocontrol_indicator {
+    /* background: #ed1b24; */
+    background: white;
+    border-radius: 100%;
+    border: 5px solid #ed1b24;
+    transition: all .1s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.radiocontrol input:disabled~.radiocontrol_indicator {
+    background: #e6e6e6;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.radiocontrol_indicator:after {
+    box-sizing: unset;
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.radiocontrol input:checked~.radiocontrol_indicator:after {
+    display: block;
+}
+
+.radiocontrol-checkbox .radiocontrol_indicator:after {
+    /* left: 5.2px;
+    top: 5.6px;
+    width: 2px;
+    height: 2px;
+    background-color: white;
+    border: 2px solid white;
+    border-radius: 100%;
+    transform: rotate(45deg); */
+}
+
+.radiocontrol-checkbox input:disabled~.radiocontrol_indicator:after {
+    /* border-color: #7b7b7b; */
+}
