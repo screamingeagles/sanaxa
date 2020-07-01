@@ -164,13 +164,10 @@ const AddOnItems = (props) => {
 																// 		`${j.name}`.replace(/\s/g, "")
 																// 	)
 																// }
-																onChange={() => {
-																	inputHandler(
-																		`${i.addOnName}`.replace(/\s/g, ""),
-																		`${j.name}`.replace(/\s/g, "")
-																	);
-																	// `${i.addOnName}`.replace(/\s/g, ""))
-																}}
+																onChange={inputHandler(
+																	`${i.addOnName}`.replace(/\s/g, ""),
+																	`${j.name}`.replace(/\s/g, "")
+																)}
 																value={`${j.name}`.replace(/\s/g, "")}
 																validators={true}
 																name={`${i.addOnName}`.replace(/\s/g, "")}>

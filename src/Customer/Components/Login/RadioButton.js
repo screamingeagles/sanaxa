@@ -52,7 +52,7 @@ const RadioButton = (props) => {
 	return (
 		<label
 			style={props.style}
-			htmlFor={props.name}
+			// htmlFor={props.name}
 			class='radiocontrol radiocontrol-checkbox'
 			onClick={props.onClick}>
 			<p style={{ textAlign: "left", fontWeight: "bold", fontSize: "14px" }}>
@@ -63,9 +63,9 @@ const RadioButton = (props) => {
 				checked={props.value === inputState.value}
 				type='radio'
 				value={props.value}
-				id={props.name}
-				name={props.name}
-				onChange={() => props.onChange()}
+				// id={props.name}
+				// name={props.name}
+				onChange={(e) => console.log(e.target.value)}
 			/>
 			<div class='radiocontrol_indicator'></div>
 		</label>
