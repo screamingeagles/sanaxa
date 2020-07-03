@@ -1,5 +1,5 @@
 .AddOnItems {
-    width: 96%;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -88,14 +88,27 @@
     margin-bottom: 32px;
 }
 
-.AddOnItems__Extras h4 {
+.AddOnItems__Extras>div>div {
     background-color: #f0f0f0;
     margin-bottom: 12px;
     padding: 10px 15px;
     border-radius: 5px 5px 0 0;
+    font-weight: bold;
+}
+
+.AddOnItems__Extras_Span {
+    display: flex;
+}
+
+.AddOnItems__Extras_Span span {
+    color: green;
+    margin-right: 6px;
+    margin-top: 6px;
+    font-size: .7rem;
 }
 
 .AddOnItems__Extras__Checkboxes {
+    padding: 0 15px;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -149,4 +162,15 @@
     .AddOnItems__Extras_List {
         flex-flow: column;
     }
+
+    .AddOnItems__Extras__Checkboxes {
+        flex-wrap: wrap;
+    }
+
+    .AddOnItems__Extras__Checkboxes>div {
+        width: 50% !important;
+        font-weight: 400;
+        margin-top: 10px;
+    }
+
 }

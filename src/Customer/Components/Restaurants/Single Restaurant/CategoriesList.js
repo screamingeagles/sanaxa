@@ -109,7 +109,7 @@ const CategoriesList = (props) => {
 				show={!error && addingToCart}
 				onCancel={closeCart}
 				style={{
-					width: "45rem",
+					width: "50rem",
 					padding: "10px",
 					display: addOnList.length === 0 ? `none` : "block",
 				}}>

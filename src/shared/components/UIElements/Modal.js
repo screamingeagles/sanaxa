@@ -9,36 +9,6 @@ import { CSSTransition } from "react-transition-group";
 import "./Modal.css";
 
 const ModalOverlay = (props) => {
-	// const content = (
-	// 	<div
-	// 		id='modalScroll'
-	// 		style={props.style}
-	// 		className={`modal ${props.className}`}>
-	// 		{props.header && (
-	// 			<header className={`modal__header ${props.headerClass}`}>
-	// 				<h2>{props.header}</h2>
-	// 			</header>
-	// 		)}
-	// 		<form
-	// 			onSubmit={
-	// 				props.onSubmit ? props.onSubmit : (event) => event.preventDefault()
-	// 			}>
-	// 			<div className={`modal__content ${props.contentClass}`}>
-	// 				{props.children}
-	// 			</div>
-	// 			{props.footer && (
-	// 				<footer className={`modal__footer ${props.footerClass}`}>
-	// 					{props.footer}
-	// 				</footer>
-	// 			)}
-	// 		</form>
-	// 		<div className='closeIcon'>
-	// 			<img src={closeIcon} height='45px' alt='' onClick={props.onCancel} />
-	// 		</div>
-	// 	</div>
-	// );
-	// return ReactDOM.createPortal(content, document.getElementById("root"));
-	// // return ReactDOM.createPortal(content, document.getElementById("modal-hook"));
 	const content = (
 		// onClick={props.onCancel}
 		<div className='modalBack'>
@@ -75,6 +45,11 @@ const ModalOverlay = (props) => {
 };
 
 const Modal = (props) => {
+	document.addEventListener("keyup", (e) => {
+		if (e.key === "Escape" && props.show) {
+			props.onCancel();
+		}
+	});
 	// const el = document.getElementById("root");
 	// props.show && (el.style.overflowX = "hidden");
 	// !props.show && (el.style.overflowX = "hidden");

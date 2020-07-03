@@ -10,6 +10,7 @@ import { useForm } from "../../../shared/hooks/form-hook";
 
 const AddOnItems = (props) => {
 	const [quantity, setQuantity] = useState(1);
+	const [totalPrice, setTotalPrice] = useState(1);
 	const [addOnItems, setAddOnItems] = useState([]);
 	const restaurantId = useParams().id;
 	const RestaurantName = useParams().name.replace("+", " ");
@@ -21,22 +22,7 @@ const AddOnItems = (props) => {
 		setQuantity((prevQuantity) => prevQuantity + -number);
 	};
 
-	// const [formState, inputHandler, setFormData] = useForm(
-	// 	{
-	// 		YourChoiceofSoup: {
-	// 			value: "",
-	// 			isVaild: true,
-	// 		},
-	// 	},
-	// 	true
-	// );
-
-	const [tempState, setTempState] = useState("");
-
-	const inputHandler = (id, value) => {
-		console.log(id, value);
-	};
-
+	const [formState, inputHandler, setFormData] = useForm({}, true);
 	const { addOnList, productId, name, price, onCancel, setBasketData } = props;
 	useEffect(() => {
 		if (addOnList.length < 1) {
@@ -76,11 +62,58 @@ const AddOnItems = (props) => {
 						addOnList: props.addOnList,
 					})
 				);
+				const arr = [];
+				responseData.addOns.map((i) => {
+					const object = {
+						[`${i.addOnName}`.replace(/\s/g, "")]: {
+							id: i._id,
+							value: i.multiSelection ? [] : {},
+							isValid: i.requiredStatus ? false : true,
+							multiSelection: i.howMany,
+							howManyMaximum: i.howManyMaximum,
+							selectAll: i.selectAll,
+						},
+					};
+					return arr.push(object);
+				});
+				let arr2 = {};
+				arr.map((i) => {
+					// console.log(i);
+					return (arr2 = { ...arr2, ...i });
+				});
+				setFormData(arr2, false);
 				setAddOnItems(responseData.addOns);
 			} catch (error) {}
 		};
 		fetchAllAddOns();
-	}, [restaurantId, sendRequest, props.addOnList]);
+	}, [restaurantId, sendRequest, props.addOnList, setFormData]);
+
+	if (addOnItems.length > 1) {
+		// console.log(formState.inputs["YourChoiceofSoup"], formState.isValid);
+		// console.log(formState.inputs, "Valid", formState.isValid);
+	}
+
+	useEffect(() => {
+		let addOnsPrice = 0;
+		let inputs = Object.values(formState.inputs);
+		inputs.map((i) => {
+			if (i.value.length > 0)
+				return i.value.map((j) => {
+					if (j.price) {
+						return (addOnsPrice += parseFloat(j.price));
+					}
+					return addOnsPrice;
+				});
+			else if (i.value.item) {
+				if (i.value.price) return (addOnsPrice += parseFloat(i.value.price));
+			}
+			return addOnsPrice;
+		});
+		setTotalPrice(
+			parseFloat(quantity) *
+				(parseFloat(addOnsPrice.toFixed(2)) + props.price).toFixed(2)
+		);
+	}, [formState.inputs, quantity, props.price]);
 
 	return (
 		<div className={classes.AddOnItems}>
@@ -88,7 +121,6 @@ const AddOnItems = (props) => {
 				<h3>Add Item Choices</h3>
 				<div className={classes.AddOnItems__List}>
 					<div className={classes.AddOnItems__List_ImageHeading}>
-						{/* <img src={props.img} height='35px' alt='' /> */}
 						<h4>{props.name}</h4>
 						<p>{props.description}</p>
 					</div>
@@ -112,8 +144,8 @@ const AddOnItems = (props) => {
 								<label onClick={() => increaseQuantity(-1)}>+</label>
 							</form>
 						</div>
-						<h4 style={{ width: "45px", textAlign: "right" }}>
-							${quantity * props.price}
+						<h4 style={{ width: "85px", textAlign: "right" }}>
+							AED {totalPrice}
 						</h4>
 					</div>
 				</div>
@@ -125,58 +157,145 @@ const AddOnItems = (props) => {
 			) : (
 				<div>
 					<div>
-						{/* {console.log(addOnItems)} */}
-						{/* {console.log(
-							"ChickenSoup" === formState.inputs.YourChoiceofSoup.value
-						)} */}
-						{addOnItems.length > 0 &&
+						{Object.keys(formState.inputs).length > 0 &&
+							addOnItems.length > 0 &&
 							addOnItems.map((i) => {
 								return (
 									<div className={classes.AddOnItems__Extras}>
 										<div>
-											<h4>
+											<div>
+												{i.requiredStatus &&
+													formState.inputs[`${i.addOnName}`.replace(/\s/g, "")]
+														.isTouched && (
+														<React.Fragment>
+															<Checkbox
+																isValid={
+																	formState.inputs[
+																		`${i.addOnName}`.replace(/\s/g, "")
+																	].isError ||
+																	!formState.inputs[
+																		`${i.addOnName}`.replace(/\s/g, "")
+																	].isValid
+																}
+																backgroundColor={
+																	formState.inputs[
+																		`${i.addOnName}`.replace(/\s/g, "")
+																	].isError
+																		? "#8e8e8e	"
+																		: formState.inputs[
+																				`${i.addOnName}`.replace(/\s/g, "")
+																		  ].isValid &&
+																		  formState.inputs[
+																				`${i.addOnName}`.replace(/\s/g, "")
+																		  ].isTouched
+																		? "green"
+																		: "#8e8e8e	"
+																}
+																prevState={[]}
+																checked={
+																	formState.inputs[
+																		`${i.addOnName}`.replace(/\s/g, "")
+																	].isTouched
+																}></Checkbox>
+															<span style={{ marginLeft: "30px" }}></span>
+														</React.Fragment>
+													)}
 												{i.addOnName}:{" "}
 												<span style={{ fontSize: ".825rem" }}>
-													(Choose {i.howMany})
+													(Choose{" "}
+													{!i.requiredStatus
+														? "items from the list"
+														: i.howManyMaximum
+														? `min-of ${i.howMany} & max-of ${i.howManyMaximum}`
+														: `${i.howMany}`}
+													)
 												</span>
-											</h4>
-											{/* <p>{"Error"}</p> */}
+												<div className={classes.AddOnItems__Extras_Span}>
+													{formState.inputs[`${i.addOnName}`.replace(/\s/g, "")]
+														.value.length > 0
+														? formState.inputs[
+																`${i.addOnName}`.replace(/\s/g, "")
+														  ].value
+																.map((k) =>
+																	i.items
+																		.filter(
+																			(j) =>
+																				`${j.name}`.replace(/\s/g, "") ===
+																				k.item
+																		)
+																		.map((k) => {
+																			return (
+																				<span>
+																					{k.name}
+																					{formState.inputs[
+																						`${i.addOnName}`.replace(/\s/g, "")
+																					].value.length -
+																						1 >
+																						0 && ", "}{" "}
+																				</span>
+																			);
+																		})
+																)
+																.slice(
+																	0,
+																	i.howManyMaximum
+																		? i.howManyMaximum
+																		: i.howMany
+																)
+														: i.items
+																.filter(
+																	(k) =>
+																		formState.inputs[
+																			`${i.addOnName}`.replace(/\s/g, "")
+																		].value.item ===
+																		`${k.name}`.replace(/\s/g, "")
+																)
+																.map((j) => <span>{j.name}</span>)}
+												</div>
+												{/* <p>{"Error"}</p> */}
+											</div>
 										</div>
-										{/* <div>{console.log(i.items)}</div> */}
 										<div>
 											<form className={classes.AddOnItems__Extras__Checkboxes}>
-												{i.items.map((j) => (
-													<div
-													// onChange={(event) =>
-													// 	inputHandler(j._id, event.target.value, true)
-													// }
-													>
-														{i.howMany > 1 ? (
-															<Checkbox>
-																{j.name}
-																{j.price && ` (${j.price})`}
-															</Checkbox>
-														) : (
-															<RadioButton
-																// onInput={() =>
-																// 	inputHandler(
-																// 		`${i.addOnName}`.replace(/\s/g, ""),
-																// 		`${j.name}`.replace(/\s/g, "")
-																// 	)
-																// }
-																onChange={inputHandler(
-																	`${i.addOnName}`.replace(/\s/g, ""),
-																	`${j.name}`.replace(/\s/g, "")
-																)}
-																value={`${j.name}`.replace(/\s/g, "")}
-																validators={true}
-																name={`${i.addOnName}`.replace(/\s/g, "")}>
-																{j.name}
-																{j.price && ` (${j.price})`}
-															</RadioButton>
-														)}
-													</div>
-												))}
+												{i.items.map((j) => {
+													return (
+														<div>
+															{(i.requiredStatus && !i.multiSelection) ||
+															(!i.requiredStatus && !i.multiSelection) ? (
+																<RadioButton
+																	addOnId={i._id}
+																	onInput={inputHandler}
+																	value={`${j.name}`.replace(/\s/g, "")}
+																	validators={true}
+																	name={`${i.addOnName}`.replace(/\s/g, "")}
+																	price={`${j.price}`}>
+																	{j.name}
+																	{j.price && ` (${j.price})`}
+																</RadioButton>
+															) : (
+																<Checkbox
+																	addOnId={i._id}
+																	onInput={inputHandler}
+																	value={`${j.name}`.replace(/\s/g, "")}
+																	validators={true}
+																	name={`${i.addOnName}`.replace(/\s/g, "")}
+																	price={`${j.price}`}
+																	howMany={i.howMany}
+																	howManyMaximum={i.howManyMaximum}
+																	selectAll={i.selectAll}
+																	requiredStatus={i.requiredStatus}
+																	prevState={
+																		formState.inputs[
+																			`${i.addOnName}`.replace(/\s/g, "")
+																		].value
+																	}>
+																	{j.name}
+																	{j.price && ` (${j.price})`}
+																</Checkbox>
+															)}
+														</div>
+													);
+												})}
 											</form>
 										</div>
 									</div>
@@ -187,22 +306,27 @@ const AddOnItems = (props) => {
 							<textarea rows='3' placeholder='Additional Notes...'></textarea>
 						</div>
 					</div>
-					<div
-						className={classes.AddOnItems__Button}
-						onClick={() => {
-							props.onCancel(false);
-							// props.basketHandler();
-							props.setBasketData(
-								restaurantId,
-								RestaurantName,
-								quantity,
-								props.productId,
-								props.name,
-								props.price,
-								quantity * props.price
-							);
-						}}>
-						<Button backgroundColor='#0dd6ff' color='white' padding='10px 20%'>
+					<div className={classes.AddOnItems__Button}>
+						<Button
+							onClick={() => {
+								props.onCancel(false);
+								// props.basketHandler();
+								props.setBasketData(
+									restaurantId,
+									RestaurantName,
+									quantity,
+									props.productId,
+									props.name,
+									props.price,
+									totalPrice,
+									formState.inputs
+								);
+								// quantity * props.price,
+							}}
+							disabled={!formState.isValid}
+							backgroundColor='#0dd6ff'
+							color='white'
+							padding='10px 20%'>
 							Next
 						</Button>
 					</div>
@@ -213,33 +337,3 @@ const AddOnItems = (props) => {
 };
 
 export default AddOnItems;
-
-// <div style={{ display: "flex" }}>
-// 						<Checkbox>Add Bacon Slice (2.00)</Checkbox>
-// 						<Checkbox>Add Melted Cheese (2.00)</Checkbox>
-// 						<Checkbox>Add Chicken Royal Patty (1.00)</Checkbox>
-// 					</div>
-// 					<div style={{ display: "flex" }}>
-// 						<Checkbox>Add Mayo (2.00)</Checkbox>
-// 						<Checkbox>Add Ketchup (2.00)</Checkbox>
-// 						<Checkbox>Add Mustard (1.00)</Checkbox>
-// 					</div>
-
-// {/* <h4>Have it your way (Choose up to 2 items)</h4>
-// 				<div className={classes.AddOnItems__Extras_List}>
-// 					<div style={{ display: "flex" }}>
-// 						<Checkbox>Add Cheese (2.00)</Checkbox>
-// 						<Checkbox>Add Fiery Sauce (2.00)</Checkbox>
-// 						<Checkbox>Add Swiss Cheese (1.00)</Checkbox>
-// 					</div>
-// 					<div style={{ display: "flex" }}>
-// 						<Checkbox>Add Bacon Slice (2.00)</Checkbox>
-// 						<Checkbox>Add Melted Cheese (2.00)</Checkbox>
-// 						<Checkbox>Add Chicken Royal Patty (1.00)</Checkbox>
-// 					</div>
-// 					<div style={{ display: "flex" }}>
-// 						<Checkbox>Add Mayo (2.00)</Checkbox>
-// 						<Checkbox>Add Ketchup (2.00)</Checkbox>
-// 						<RadioButton>Add Mustard (1.00)</RadioButton>
-// 					</div>
-// 				</div> */}

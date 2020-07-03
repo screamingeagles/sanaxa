@@ -4,8 +4,8 @@ import Basket from "../../Customer/Components/Basket/Basket";
 import { useHttpClient } from "./http-hook";
 // import { AuthContext } from "../context/auth-context";
 import { useAuth } from "./auth-hook";
-
 import openSocket from "socket.io-client";
+import { isEqual } from "lodash/fp";
 
 export const useBasket = () => {
 	// const auth = useContext(AuthContext);
@@ -89,46 +89,48 @@ export const useBasket = () => {
 
 	//  ------------------------------------------------------------------- FIRST CART GETTING FROM DB
 
-	const fetchBasket = useCallback(async () => {
-		let tempCart;
-		// let tempCartTrue;
-		try {
-			const responseData = await sendRequest(
-				`${process.env.REACT_APP_BACKEND_URL}/fetchbasket`,
-				"POST",
-				{
-					"Content-Type": "application/json",
-					Authorization: "Bearer " + token,
-				},
-				JSON.stringify({
-					userId,
-				})
-			);
-			tempCart = responseData.user;
-			// tempCartTrue = responseData.user.items.length > 0;
-			setCart(responseData.user);
-			let totPrice = 0;
-			tempCart.items.map((i) => {
-				return (totPrice += parseFloat(i.quantity) * parseFloat(i.price));
-			});
-			setTotalPrice(totPrice);
-			// localStorage.setItem("cart", JSON.stringify(responseData.user));
-			// if (responseData.user.items.length > 0) return;
-		} catch (error) {}
-	}, [sendRequest, token, userId]);
+	const fetchBasket = useCallback(
+		async () => {
+			// let tempCart;
+			// // let tempCartTrue;
+			// try {
+			// 	const responseData = await sendRequest(
+			// 		`${process.env.REACT_APP_BACKEND_URL}/fetchbasket`,
+			// 		"POST",
+			// 		{
+			// 			"Content-Type": "application/json",
+			// 			Authorization: "Bearer " + token,
+			// 		},
+			// 		JSON.stringify({
+			// 			userId,
+			// 		})
+			// 	);
+			// 	tempCart = responseData.user;
+			// 	// tempCartTrue = responseData.user.items.length > 0;
+			// 	setCart(responseData.user);
+			// 	let totPrice = 0;
+			// 	tempCart.items.map((i) => {
+			// 		return (totPrice += parseFloat(i.quantity) * parseFloat(i.price));
+			// 	});
+			// 	setTotalPrice(totPrice);
+			// 	// localStorage.setItem("cart", JSON.stringify(responseData.user));
+			// 	// if (responseData.user.items.length > 0) return;
+			// } catch (error) {}
+		},
+		[
+			//  sendRequest, token, userId
+		]
+	);
 
 	const fetchOfflineBasket = () => {
 		const cart = JSON.parse(localStorage.getItem("cart"));
 		if (cart) {
-			// console.log("Updating cart", cart);
 			setCart(cart);
 			let totPrice = 0;
-			// console.log(cart);
 			cart.items.map((i) => {
 				return (totPrice += parseFloat(i.quantity) * parseFloat(i.price));
 			});
 			setTotalPrice(totPrice);
-			// console.log(totPrice);
 			setCart(cart);
 		}
 		if (!cart) {
@@ -151,15 +153,18 @@ export const useBasket = () => {
 		productId,
 		name,
 		price,
-		totalPrice
+		totalPrice,
+		addOns
 	) => {
-		// const cartData = {
-		// 	quantity,
-		// 	productId,
-		// 	name,
-		// 	price,
-		// 	totalPrice,
-		// };
+		const cartData = {
+			quantity,
+			productId,
+			name,
+			price,
+			totalPrice,
+			addOns,
+		};
+		// console.log(cartData);
 		// const uploadBasket = async () => {
 		// 	try {
 		// 		await sendRequest(
@@ -183,10 +188,13 @@ export const useBasket = () => {
 		// 	} catch (error) {}
 		// };
 		// if (token && userId) uploadBasket();
-		// const itemExisted = cart.items.find((i) => i.productId === productId);
-		// const itemExistedIndex = cart.items.findIndex(
-		// 	(i) => i.productId === productId
-		// );
+		const itemExisted = cart.items.find((i) => i.productId === productId);
+		const itemExistedIndex = cart.items.findIndex(
+			(i) => i.productId === productId
+		);
+		console.log("itemExisted", itemExisted.addOns);
+		console.log("itemExistedMatch", itemExisted.addOns == addOns);
+		console.log(isEqual(itemExisted.addOns, addOns));
 		// if (cart.restaurantId === restaurantId)
 		// 	if (itemExisted) {
 		// 		const updatedItem = itemExisted;
@@ -211,27 +219,28 @@ export const useBasket = () => {
 		// 		fetchOfflineBasket();
 		// 		return;
 		// 	}
-		// if (!cart.restaurantId && cart.restaurantId !== restaurantId) {
-		// 	// console.log("!restaurant");
-		// 	const tempCart = {
-		// 		restaurantId,
-		// 		RestaurantName,
-		// 		items: [
-		// 			{
-		// 				quantity,
-		// 				productId,
-		// 				name,
-		// 				price,
-		// 				totalPrice,
-		// 			},
-		// 		],
-		// 	};
-		// 	cart.items.push(cartData);
-		// 	setCart(tempCart);
-		// 	localStorage.setItem("cart", JSON.stringify(tempCart));
-		// 	fetchOfflineBasket();
-		// 	return;
-		// }
+		if (!cart.restaurantId && cart.restaurantId !== restaurantId) {
+			console.log("!restaurant");
+			const tempCart = {
+				restaurantId,
+				RestaurantName,
+				items: [
+					{
+						quantity,
+						productId,
+						name,
+						price,
+						totalPrice,
+						addOns,
+					},
+				],
+			};
+			cart.items.push(cartData);
+			setCart(tempCart);
+			localStorage.setItem("cart", JSON.stringify(tempCart));
+			fetchOfflineBasket();
+			return;
+		}
 	};
 
 	const addQuantityToBasket = async (q, productId) => {
@@ -323,23 +332,23 @@ export const useBasket = () => {
 	};
 
 	const clearBasket = async () => {
-		localStorage.setItem("cart", JSON.stringify({ items: [] }));
-		setCart({ items: [] });
-		if (token && userId) {
-			try {
-				await sendRequest(
-					`${process.env.REACT_APP_BACKEND_URL}/clearbasket`,
-					"POST",
-					{
-						"Content-Type": "application/json",
-						Authorization: "Bearer " + token,
-					},
-					JSON.stringify({
-						userId,
-					})
-				);
-			} catch (error) {}
-		}
+		// localStorage.setItem("cart", JSON.stringify({ items: [] }));
+		// setCart({ items: [] });
+		// if (token && userId) {
+		// 	try {
+		// 		await sendRequest(
+		// 			`${process.env.REACT_APP_BACKEND_URL}/clearbasket`,
+		// 			"POST",
+		// 			{
+		// 				"Content-Type": "application/json",
+		// 				Authorization: "Bearer " + token,
+		// 			},
+		// 			JSON.stringify({
+		// 				userId,
+		// 			})
+		// 		);
+		// 	} catch (error) {}
+		// }
 	};
 
 	let basketContent;

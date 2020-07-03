@@ -21,8 +21,9 @@
     position: absolute;
     top: 2px;
     left: 0;
-    height: 17px;
-    width: 17px;
+    height: var(--height-width);
+    width: var(--height-width);
+    // width: 20px;
     background: #e7e7e7;
     border: 1px solid #e6e6e6;
     border-radius: 0px;
@@ -34,20 +35,24 @@
 }
 
 .control input:checked~.control_indicator {
-    background: #ed1b24;
+    background: var(--background-color-checkbox);
     transition: all .1s cubic-bezier(0.645, 0.045, 0.355, 1);
+    border-radius: var(--radius-check);
 }
 
 .control:hover input:not([disabled]):checked~.control_indicator,
 .control input:checked:focus~.control_indicator {
-    background: #ed1b24;
+    background: var(--background-color-checkbox);
+    // background: #ed1b24;
     transition: all .1s cubic-bezier(0.645, 0.045, 0.355, 1);
+    border-radius: var(--radius-check);
 }
 
 .control input:disabled~.control_indicator {
     background: #e6e6e6;
     opacity: 0.6;
     pointer-events: none;
+    border-radius: var(--radius-check);
 }
 
 .control_indicator:after {
@@ -62,13 +67,19 @@
 }
 
 .control-checkbox .control_indicator:after {
-    left: 5px;
-    top: 2px;
-    width: 3px;
-    height: 8px;
+    // left: 5px;
+    left: var(--tick-left);
+    top: var(--tick-top);
+    // top: 2px;
+    // width: 3px;
+    height: var(--tick-height);
+    // height: 8px;
+    width: var(--tick-width);
     border: solid #ffffff;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
+    border-width: 0 2px var(--tick-box) 0;
+    // transform: rotate(45deg);
+    transform: rotate(var(--tick-degree));
+    // 2 11 180
 }
 
 .control-checkbox input:disabled~.control_indicator:after {
