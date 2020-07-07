@@ -13,7 +13,7 @@ const AddOnItems = (props) => {
 	const [totalPrice, setTotalPrice] = useState(1);
 	const [addOnItems, setAddOnItems] = useState([]);
 	const restaurantId = useParams().id;
-	const RestaurantName = useParams().name.replace("+", " ");
+	const RestaurantName = useParams().name.replace(/\+/g, " ");
 	const { isLoading, sendRequest } = useHttpClient();
 
 	const increaseQuantity = (number) => {
@@ -24,30 +24,33 @@ const AddOnItems = (props) => {
 
 	const [formState, inputHandler, setFormData] = useForm({}, true);
 	const { addOnList, productId, name, price, onCancel, setBasketData } = props;
-	useEffect(() => {
-		if (addOnList.length < 1) {
-			onCancel(false);
-			setBasketData(
-				restaurantId,
-				RestaurantName,
-				quantity,
-				productId,
-				name,
-				price,
-				quantity * price
-			);
-		}
-	}, [
-		restaurantId,
-		RestaurantName,
-		quantity,
-		productId,
-		name,
-		price,
-		addOnList,
-		onCancel,
-		setBasketData,
-	]);
+	useEffect(
+		() => {
+			if (addOnList.length < 1) {
+				onCancel(false);
+				setBasketData(
+					restaurantId,
+					RestaurantName,
+					quantity,
+					productId,
+					name,
+					price,
+					quantity * price
+				);
+			}
+		},
+		[
+			// restaurantId,
+			// RestaurantName,
+			// quantity,
+			// productId,
+			// name,
+			// price,
+			// addOnList,
+			// onCancel,
+			// setBasketData,
+		]
+	);
 
 	useEffect(() => {
 		const fetchAllAddOns = async () => {
@@ -64,14 +67,18 @@ const AddOnItems = (props) => {
 				);
 				const arr = [];
 				responseData.addOns.map((i) => {
+					// console.log(i);
 					const object = {
 						[`${i.addOnName}`.replace(/\s/g, "")]: {
 							id: i._id,
-							value: i.multiSelection ? [] : {},
+							value: !i.requiredStatus
+								? []
+								: i.requiredStatus && !i.multiSelection
+								? {}
+								: [],
 							isValid: i.requiredStatus ? false : true,
 							multiSelection: i.howMany,
 							howManyMaximum: i.howManyMaximum,
-							selectAll: i.selectAll,
 						},
 					};
 					return arr.push(object);
@@ -89,7 +96,7 @@ const AddOnItems = (props) => {
 	}, [restaurantId, sendRequest, props.addOnList, setFormData]);
 
 	if (addOnItems.length > 1) {
-		// console.log(formState.inputs["YourChoiceofSoup"], formState.isValid);
+		// console.log(formState.inputs["YourChoiceofDrink"], formState.isValid);
 		// console.log(formState.inputs, "Valid", formState.isValid);
 	}
 
@@ -110,8 +117,9 @@ const AddOnItems = (props) => {
 			return addOnsPrice;
 		});
 		setTotalPrice(
-			parseFloat(quantity) *
-				(parseFloat(addOnsPrice.toFixed(2)) + props.price).toFixed(2)
+			(parseFloat(quantity) * (parseFloat(addOnsPrice) + props.price)).toFixed(
+				2
+			)
 		);
 	}, [formState.inputs, quantity, props.price]);
 
@@ -164,7 +172,10 @@ const AddOnItems = (props) => {
 									<div className={classes.AddOnItems__Extras}>
 										<div>
 											<div>
-												{i.requiredStatus &&
+												{
+													// i.requiredStatus ||
+													// 	formState.inputs[`${i.addOnName}`.replace(/\s/g, "")]
+													// 		.isError ||
 													formState.inputs[`${i.addOnName}`.replace(/\s/g, "")]
 														.isTouched && (
 														<React.Fragment>
@@ -199,12 +210,25 @@ const AddOnItems = (props) => {
 																}></Checkbox>
 															<span style={{ marginLeft: "30px" }}></span>
 														</React.Fragment>
-													)}
+													)
+												}
 												{i.addOnName}:{" "}
-												<span style={{ fontSize: ".825rem" }}>
+												<span
+													style={{
+														fontSize: ".825rem",
+														color: formState.inputs[
+															`${i.addOnName}`.replace(/\s/g, "")
+														].isError
+															? "red"
+															: "black",
+													}}>
 													(Choose{" "}
 													{!i.requiredStatus
-														? "items from the list"
+														? `upto ${
+																i.howManyMaximum ? i.howManyMaximum : i.howMany
+														  } ${
+																i.howMany > 1 ? "items" : "item"
+														  } from the list`
 														: i.howManyMaximum
 														? `min-of ${i.howMany} & max-of ${i.howManyMaximum}`
 														: `${i.howMany}`}
@@ -260,12 +284,14 @@ const AddOnItems = (props) => {
 												{i.items.map((j) => {
 													return (
 														<div>
-															{(i.requiredStatus && !i.multiSelection) ||
-															(!i.requiredStatus && !i.multiSelection) ? (
+															{i.requiredStatus && !i.multiSelection ? (
+																// || (!i.requiredStatus && !i.multiSelection) ?
 																<RadioButton
+																	addOnItemId={j._id}
 																	addOnId={i._id}
 																	onInput={inputHandler}
-																	value={`${j.name}`.replace(/\s/g, "")}
+																	// value={`${j.name}`.replace(/\s/g, "")}
+																	value={`${j.name}`}
 																	validators={true}
 																	name={`${i.addOnName}`.replace(/\s/g, "")}
 																	price={`${j.price}`}>
@@ -274,9 +300,11 @@ const AddOnItems = (props) => {
 																</RadioButton>
 															) : (
 																<Checkbox
+																	addOnItemId={j._id}
 																	addOnId={i._id}
 																	onInput={inputHandler}
-																	value={`${j.name}`.replace(/\s/g, "")}
+																	// value={`${j.name}`.replace(/\s/g, "")}
+																	value={`${j.name}`}
 																	validators={true}
 																	name={`${i.addOnName}`.replace(/\s/g, "")}
 																	price={`${j.price}`}

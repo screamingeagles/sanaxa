@@ -43,7 +43,7 @@ const Checkbox = (props) => {
 			onInput(
 				id,
 				tempArray,
-				!requiredStatus
+				!requiredStatus && tempArray.length <= howMany
 					? true
 					: tempArray.length !== 0
 					? howManyMaximum
@@ -59,19 +59,22 @@ const Checkbox = (props) => {
 				howManyMaximum
 					? tempArray.length > howManyMaximum
 					: tempArray.length > howMany,
-				true,
+				tempArray.length === 0 ? false : true,
 				addOnId
 			);
 			return;
 		}
 		if (!itemExisted) {
-			tempArray = [...arr, { item: event.target.value, price }];
+			tempArray = [
+				...arr,
+				{ _id: props.addOnItemId, item: event.target.value, price },
+			];
 			newArray = tempArray.slice(0, howManyMaximum ? howManyMaximum : howMany);
 			if (newArray.length <= howMany || howManyMaximum >= newArray.length) {
 				onInput(
 					id,
 					tempArray,
-					!requiredStatus
+					!requiredStatus && tempArray.length <= howMany
 						? true
 						: tempArray.length !== 0
 						? howManyMaximum
@@ -87,7 +90,7 @@ const Checkbox = (props) => {
 					howManyMaximum
 						? tempArray.length > howManyMaximum
 						: tempArray.length > howMany,
-					true,
+					tempArray.length === 0 ? false : true,
 					addOnId
 				);
 			}

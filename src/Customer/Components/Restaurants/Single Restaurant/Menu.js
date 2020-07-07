@@ -39,9 +39,9 @@ const Menu = (props) => {
 					props.restaurant.map((i) => (
 						<AnchorLink
 							offset='100'
-							href={`#${i.categoryName}`.replace(" ", "")}
+							href={`#${i.categoryName}`.replace(/\s/g, "")}
 							onClick={() => {
-								changeCategoryActive(`${i.categoryName}`.replace(" ", ""));
+								changeCategoryActive(`${i.categoryName}`.replace(/\s/g, ""));
 							}}
 							className={["CategoriesList"].join(" ")}>
 							{i.categoryName}

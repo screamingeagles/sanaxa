@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import classes from "./Cart.module.css";
 
 import myordersempty from "../../../shared/assets/Images/myordersempty.svg";
+import informationButton from "../../../shared/assets/Images/information-button.png";
 import Subtotal from "./../Checkout/Subtotal";
 import { BasketContext } from "../../../shared/context/basket-context";
 import LoadingSpinner from "./../../../shared/components/UIElements/LoadingSpinner";
@@ -35,17 +36,21 @@ const Cart = (props) => {
 		</div>
 	);
 	if (basket.cart.items.length > 0) {
+		// console.log("basket", basket.cart.items);
 		content = (
 			<React.Fragment>
-				<h3 style={{ margin: "0 0 15px 15px" }}>{basket.restaurant}</h3>
+				<h3 style={{ margin: "0 0 15px 15px" }}>
+					{basket.cart.RestaurantName}
+				</h3>
 				{basket.cart.items.map((i) => {
+					// console.log("i", i);
 					return (
 						<div className={classes.CartListItems}>
 							<form
 								onSubmit={(e) => e.preventDefault()}
 								className={classes.Bucket__Content_List_Form}>
 								<label
-									onClick={() => increaseQuantity(i.quantity, -1, i.productId)}
+									onClick={() => increaseQuantity(i.quantity, -1, i._id)}
 									style={{ paddingLeft: "2px" }}>
 									-
 								</label>
@@ -56,15 +61,26 @@ const Cart = (props) => {
 									value={i.quantity}
 									// onChange={(e) => basket.addQuantityToBasket()}
 								/>
-								<label
-									onClick={() => increaseQuantity(i.quantity, 1, i.productId)}>
+								<label onClick={() => increaseQuantity(i.quantity, 1, i._id)}>
 									+
 								</label>
 							</form>
-							<p>{i.name}</p>
+							<div className={classes.CartListItems_Name}>
+								<p>{i.name}</p>
+								{i.addOns && i.addOns.length > 0 && (
+									<div className={classes.toolTip}>
+										<img src={informationButton} alt='' width='11px' />
+										<span className={classes.toolTipText}>
+											{i.addOnList.map((j) => (
+												<span>{j}</span>
+											))}
+										</span>
+									</div>
+								)}
+							</div>
 							<div className={classes.CartListItems_PriceRemoveButton}>
 								<p>{parseFloat(`${i.quantity}` * `${i.price}`).toFixed(2)}</p>
-								<p onClick={() => basket.removeProduct(i.productId)}>-</p>
+								<p onClick={() => basket.removeProduct(i._id)}>-</p>
 							</div>
 						</div>
 					);

@@ -78,7 +78,7 @@ const Basket = (props) => {
 							</div>
 							<div>
 								<Button
-									onClick={() => basket.removeProduct(i.productId)}
+									onClick={() => basket.removeProduct(i._id)}
 									backgroundColor='#b40008'
 									borderRadius='1px'
 									color='white'

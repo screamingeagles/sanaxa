@@ -24,7 +24,7 @@ const RadioButton = (props) => {
 	const onChangeHandler = (id, price, event, addOnId) => {
 		onInput(
 			id,
-			{ item: event.target.value, price },
+			{ _id: props.addOnItemId, item: event.target.value, price },
 			true,
 			"",
 			"",

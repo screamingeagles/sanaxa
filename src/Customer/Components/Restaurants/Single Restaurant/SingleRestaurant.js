@@ -29,7 +29,7 @@ const SingleRestaurant = (props) => {
 	const [restaurant, setRestaurant] = useState([]);
 	const { token } = useAuth();
 	const restaurantId = useParams().id;
-	const RestaurantName = useParams().name.replace("+", " ");
+	const RestaurantName = useParams().name.replace(/\+/g, " ");
 	const [menu, setMenu] = useState(true);
 	const [reviews, setReviews] = useState(false);
 	const [info, setInfo] = useState(false);

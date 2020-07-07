@@ -80,7 +80,7 @@ const CategoriesList = (props) => {
 				header='Alert'
 				show={error}
 				onCancel={() => setError(false)}
-				// style={{ position: "fixed", top: "25vh" }}
+				style={{}}
 				footer={
 					<div style={{ display: "flex", justifyContent: "flex-end" }}>
 						<div style={{ margin: "0 1rem" }}>
@@ -99,7 +99,7 @@ const CategoriesList = (props) => {
 						</div>
 					</div>
 				}>
-				<p style={{ fontWeight: "bold" }}>
+				<p style={{ fontWeight: "bold", padding: "0 1rem" }}>
 					There are items in your cart from{" "}
 					<span style={{ color: "#ed1b24" }}>{basket.cart.RestaurantName}</span>
 					. Do you want to clear your cart?
@@ -126,13 +126,27 @@ const CategoriesList = (props) => {
 					addOnList={addOnList}
 				/>
 			</Modal>
-			<Element id={`${props.category}`.replace(" ", "")}>
+			<Element id={`${props.category}`.replace(/\s/g, "")}>
 				<p>{props.category}</p>
 			</Element>
 			{props.dishes.map((j) => {
+				// console.log("foodList", j);
 				return (
 					<React.Fragment>
-						<div className={classes.CategoryView__Container}>
+						<div
+							className={classes.CategoryView__Container}
+							onClick={() => {
+								return (
+									!basket.isLoading &&
+									addToCart(
+										j._id,
+										j.foodList.name,
+										j.foodList.price,
+										j.foodList.description,
+										j.addOnList
+									)
+								);
+							}}>
 							<div className={classes.CategoryView__Container_ImageName}>
 								<img src={props.img} alt={props.alt} height='60px' />
 
@@ -143,7 +157,11 @@ const CategoriesList = (props) => {
 							</div>
 							<div className={classes.CategoryView__Container_ButtonPrice}>
 								{/* {basket.isLoading && <LoadingSpinner asOverlay />} */}
-								<p style={{ fontWeight: "bold" }}>AED {j.foodList.price}</p>
+								<p style={{ fontWeight: "bold" }}>
+									{j.priceOnSelection
+										? `Price On Select`
+										: `AED ${j.foodList.price}`}
+								</p>
 								<div
 									className={classes.AddToCart__Button}
 									onMouseEnter={(e) => {
