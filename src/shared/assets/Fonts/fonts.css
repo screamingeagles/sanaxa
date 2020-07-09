@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'Open-Sans-Regular';
+    font-style: normal;
+    src: url('./Open\ Sans\ Regular.ttf');
+}
+
+
+:root {
+    --opensans-regular: 'Open-Sans-Regular';
+}

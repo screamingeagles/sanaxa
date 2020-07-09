@@ -55,6 +55,10 @@
     width: 50%;
 }
 
+.PaymentSummary_Method_Div:nth-child(2) {
+    padding: 0 5rem;
+}
+
 .PaymentSummary_Discount {
     width: 80%;
     display: flex;
@@ -88,4 +92,9 @@
     .PaymentSummary_Discount {
         width: 100%;
     }
+
+    .PaymentSummary_Method_Div:nth-child(2) {
+        padding: 0 .2rem;
+    }
+
 }

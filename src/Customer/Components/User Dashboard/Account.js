@@ -20,7 +20,7 @@ import { useHttpClient } from "./../../../shared/hooks/http-hook";
 import Button from "./../../../shared/components/FormElements/Button";
 import LoadingSpinner from "./../../../shared/components/UIElements/LoadingSpinner";
 import SignUpInput from "../../../shared/components/FormElements/SignUpInput";
-import Checbox from "./../Login/Checbox";
+import Checkbox from "./../Login/Checkbox";
 
 import classes from "./Account.module.css";
 
@@ -91,7 +91,7 @@ const Account = (props) => {
 
 	useEffect(() => {
 		if (props.u) {
-			console.log(props.u);
+			// console.log(props.u);
 			setNewsletter(props.u && props.u.newsletter);
 			setSMS(props.u && props.u.SMS);
 
@@ -187,18 +187,18 @@ const Account = (props) => {
 	let checkboxForm = (
 		<div className={classes.checkboxForm_Container}>
 			<div className={classes.checkboxForm}>
-				<Checbox
+				<Checkbox
 					// checked={newsletter ? true : false}
 					onClick={() => setNewsletter((prevState) => !prevState)}>
 					Subscribe to our Newsletter
-				</Checbox>
-				<Checbox
+				</Checkbox>
+				<Checkbox
 					// checked={SMS}
 					onClick={() => {
 						setSMS((prevState) => !prevState);
 					}}>
 					Subscribe to SMS
-				</Checbox>
+				</Checkbox>
 			</div>
 			<div>
 				<Button type='submit' disabled={!formState.isValid}>

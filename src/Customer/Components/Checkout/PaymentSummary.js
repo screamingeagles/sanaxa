@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import classes from "./PaymentSummary.module.css";
 import LabelInput from "./../../../shared/components/FormElements/LabelInput";
 import Button from "../../../shared/components/FormElements/Button";
 import Subtotal from "./Subtotal";
 import MethodSelect from "./MethodSelect";
+import { BasketContext } from "../../../shared/context/basket-context";
 
 const PaymentSummary = (props) => {
+	const basket = useContext(BasketContext);
 	const [method, setMethod] = useState("Pay by Cash");
 	const setMethodHandler = (x) => {
 		setMethod(x);
@@ -33,7 +35,16 @@ const PaymentSummary = (props) => {
 					<MethodSelect setMethodHandler={setMethodHandler} />
 				</div>
 				<div className={classes.PaymentSummary_Method_Div}>
-					<Subtotal pay={method} />
+					<Subtotal
+						Checkout
+						orderHandler={props.orderHandler}
+						pay={method}
+						subtotal={basket.totalPrice}
+						delivery={20}
+						discount='0'
+						total={basket.totalPrice + 20}
+						payby={basket.totalPrice + 20}
+					/>
 				</div>
 			</div>
 		</div>

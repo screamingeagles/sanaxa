@@ -22,7 +22,7 @@ import CategoryView from "./CategoryView";
 const SingleRestaurant = (props) => {
 	const [restaurant, setRestaurant] = useState([]);
 	const restaurantId = useParams().id;
-	const RestaurantName = useParams().name.replace("+", " ");
+	const RestaurantName = useParams().name.replace(/\+/g, " ");
 	const { isLoading, sendRequest } = useHttpClient();
 
 	useEffect(() => {

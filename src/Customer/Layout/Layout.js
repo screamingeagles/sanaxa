@@ -62,8 +62,8 @@ const Layout = (props) => {
 					component={LocationSearchRestaurant}
 				/>
 
-				<Route path='/checkout' exact component={Checkout} />
-				<Route path='/checkout/:id' exact component={Checkout} />
+				{/* <Route path='/checkout' exact component={Checkout} />
+				<Route path='/checkout/:id' exact component={Checkout} /> */}
 				<Route component={Home} />
 			</Switch>
 		);

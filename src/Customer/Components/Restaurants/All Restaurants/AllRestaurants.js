@@ -47,7 +47,7 @@ const AllRestaurants = (props) => {
 		content = allRestaurants.map((name) => {
 			return (
 				<NavLink
-					to={`/restaurant/${name._id}/${name.name.replace(" ", "+")}`}
+					to={`/restaurant/${name._id}/${name.name.replace(/\s/g, "+")}`}
 					key={name.id}
 					className={classes.Restaurant}>
 					<div className={classes.Image}>

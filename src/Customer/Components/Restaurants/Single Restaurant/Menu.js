@@ -9,10 +9,10 @@ import Scroll from "react-scroll";
 const scroller = Scroll.scroller;
 
 const Menu = (props) => {
-	console.log(props.restaurant);
+	// console.log(props.restaurant);
 
 	const changeCategoryActive = (id) => {
-		console.log(id);
+		// console.log(id);
 		const elements = document.getElementsByClassName("CategoriesList");
 		for (let i in elements) {
 			if (i < 1500) {
@@ -39,9 +39,9 @@ const Menu = (props) => {
 					props.restaurant.map((i) => (
 						<AnchorLink
 							offset='100'
-							href={`#${i.categoryName}`.replace(" ", "")}
+							href={`#${i.categoryName}`.replace(/\s/g, "")}
 							onClick={() => {
-								changeCategoryActive(`${i.categoryName}`.replace(" ", ""));
+								changeCategoryActive(`${i.categoryName}`.replace(/\s/g, ""));
 							}}
 							className={["CategoriesList"].join(" ")}>
 							{i.categoryName}
@@ -59,7 +59,8 @@ const Menu = (props) => {
 								dishes={i.foodItems}
 								// name='Zinger 1'
 								// price='20'
-								// restaurantId={restaurantId}
+								restaurantId={props.restaurantId}
+								RestaurantName={props.RestaurantName}
 								shortDescription='Lorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem IpsumLorem Ipsum'
 							/>
 						);

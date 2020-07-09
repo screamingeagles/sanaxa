@@ -27,6 +27,7 @@ const Button = (props) => {
 					padding: props.padding,
 					borderRadius: props.borderRadius,
 					width: props.width,
+					textAlign: props.textAlign,
 				}}
 				className={`button button--${props.size || "default"} ${
 					props.inverse && "button--inverse"

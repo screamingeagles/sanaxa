@@ -20,7 +20,7 @@ import allRestaurant from "../../../../shared/assets/Images/allRestaurants.jpg";
 const LocationSearchRestaurant = (props) => {
 	// const [restaurant, setRestaurant] = useState([]);
 	const restaurantId = useParams().id;
-	const RestaurantName = useParams().name.replace("+", " ");
+	const RestaurantName = useParams().name.replace(/\+/g, " ");
 	// const { isLoading, sendRequest } = useHttpClient();
 
 	// useEffect(() => {
